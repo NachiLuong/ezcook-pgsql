@@ -1,0 +1,52 @@
+[User]
+id              bigint          integer     not null, auto increment, unique
+username        varchar(255)    String      not null, unique
+password        varchar(255)    String      not null
+fullname        varchar(255)    String      not null
+email           varchar(255)    String      not null
+createddate     timestamp       timestamp
+modifieddate    timestamp       timestamp   getDateTimeNow
+role_id         bigint          integer     not null
+
+[Role]
+id              bigint          integer     not null, auto increment, unique
+name            varchar(255)    String      not null, unique
+createddate     timestamp       timestamp
+modifieddate    timestamp       timestamp   getDateTimeNow
+
+[Comment]
+id              bigint          integer     not null, auto increment, unique
+user_id         bigint          integer     not null
+content         text            String      not null
+createddate     timestamp       timestamp
+modifieddate    timestamp       timestamp   getDateTimeNow
+
+[Food]
+id              bigint          integer     not null, auto increment, unique
+name            varchar(255)    String      not null, unique
+image           varchar(255)    String      not null
+content         text            String      not null
+createddate     timestamp       timestamp
+modifieddate    timestamp       timestamp   getDateTimeNow
+foodtype_id     Bigint          integer     not null
+
+[FoodType]
+id              bigint          integer     not null, auto increment, unique
+name            varchar(255)    String      not null
+createddate     timestamp       timestamp
+modifieddate    timestamp       timestamp   getDateTimeNow
+
+[Message]
+id              bigint          integer     not null, auto increment, unique
+user_id1        bigint          integer     not null
+user_id2        Bigint          integer     not null
+content         text            String      not null
+createddate     timestamp       timestamp
+modifieddate    timestamp       timestamp   getDateTimeNow
+
+[Statistics]
+id              bigint          integer     not null, auto increment, unique
+visits          bigint          integer
+comments        bigint          integer
+createddate     timestamp       timestamp
+modifieddate    timestamp       timestamp   getDateTimeNow
