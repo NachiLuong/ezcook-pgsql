@@ -1,7 +1,7 @@
 CREATE DATABASE ezcook
 go
 CREATE TABLE usertable(
-                          id_user  SERIAL NOT NULL  PRIMARY KEY,
+                          id_user  int NOT NULL  PRIMARY KEY,
                           username VARCHAR(255) UNIQUE NOT NULL,
                           password_user VARCHAR(255) NOT NULL,
                           fullname VARCHAR(255) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE roletb(
 )
     go
 CREATE TABLE commenttable(
-                             id_comment   SERIAL NOT NULL  PRIMARY KEY,
+                             id_comment   int NOT NULL  PRIMARY KEY,
                              id_user  int NOT NULL,
                              content_comment TEXT  NOT NULL,
                              time_comment TIMESTAMP ,
@@ -31,7 +31,7 @@ CREATE TABLE commenttable(
     go
 
 CREATE TABLE food(
-                     id_food   SERIAL NOT NULL PRIMARY KEY,
+                     id_food   int NOT NULL PRIMARY KEY,
                      name_food VARCHAR(255) UNIQUE NOT NULL,
                      image VARCHAR(255) NULL,
                      content_food TEXT  NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE foodtype(
 )
 
 CREATE TABLE statisticstable(
-                                id_statistics   SERIAL NOT NULL PRIMARY KEY,
+                                id_statistics   int NOT NULL PRIMARY KEY,
                                 visits  int ,
                                 comment_count  int ,
                                 createddate TIMESTAMP ,

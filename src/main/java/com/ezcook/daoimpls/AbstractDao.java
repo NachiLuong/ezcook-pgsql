@@ -5,7 +5,6 @@ import com.ezcook.daos.GenericDao;
 
 import com.ezcook.utils.HibernateUtil;
 import javassist.tools.rmi.ObjectNotFoundException;
-import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T> {
-    private final Logger logger= Logger.getLogger(this.getClass());
     private Class<T> persistenceClass;
 
     public AbstractDao()
@@ -49,7 +47,6 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         {
             transaction.rollback();
             System.out.println("Transectione is Null: " + e);
-            logger.error(e.getMessage(), e);
 
             throw e;
         }
@@ -74,8 +71,6 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         catch (HibernateException e)
         {
             transaction.rollback();
-            logger.error(e.getMessage(), e);
-
             throw e;
         }
         finally {
@@ -97,7 +92,6 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         catch (HibernateException e)
         {
             transaction.rollback();
-            logger.error(e.getMessage(), e);
             throw e;
         }
         finally {
@@ -119,7 +113,6 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         }
         catch (HibernateException e) {
             transaction.rollback();
-            logger.error(e.getMessage(), e);
 
             throw e;
         } catch (ObjectNotFoundException e) {
@@ -194,7 +187,6 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         catch (HibernateException e)
         {
             transaction.rollback();
-            logger.error(e.getMessage(), e);
 
             throw e;
         }
@@ -220,7 +212,6 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         catch (HibernateException e)
         {
             transaction.rollback();
-            logger.error(e.getMessage(), e);
 
             throw e;
         }
@@ -244,7 +235,6 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         catch (HibernateException e)
         {
             transaction.rollback();
-            logger.error(e.getMessage(), e);
             throw e;
         }
         finally {
