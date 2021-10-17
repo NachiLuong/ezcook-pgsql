@@ -17,7 +17,8 @@ public class AdminController extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws SecurityException, IOException, ServletException {
-
+        RequestDispatcher rd=request.getRequestDispatcher("/views/admin/home.jsp");
+        rd.forward(request,response);
 
     }
 }

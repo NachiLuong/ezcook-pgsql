@@ -1,6 +1,6 @@
 package com.ezcook.utils;
 
-import com.ezcook.constants.Web_Constants;
+import com.ezcook.constants.WebConstant;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -20,7 +20,7 @@ public class UploadUtil {
     private final int maxRequestSize = 1024*1024*50;
     public  Object[]  writeOrUpdateFile(HttpServletRequest request, Set<String> titleValue, String path)  {
 
-        String address = "/"+ Web_Constants.FOLDER_UPLOAD;
+        String address = "/"+ WebConstant.FOLDER_UPLOAD;
         checkAndCreatFolder(address,path);
         boolean check=true;
         String fileLocation=null;

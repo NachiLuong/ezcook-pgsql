@@ -23,16 +23,17 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="${formUrl}" method="post">
             <h1>Đăng Nhập</h1>
             <div class="social-container">
                 <a href="#" class="social "><i class="fa fa-google iconGoogle"></i></a>
             </div>
             <span>Hoặc</span>
-            <input type="text" placeholder="Tài khoản" />
-            <input type="password" placeholder="Mật khẩu" />
+
+            <input type="text" placeholder="Tài khoản" name="pojo.username"/>
+            <input type="password" placeholder="Mật khẩu" name="pojo.password_user"/>
             <a href="#">Quên mật khẩu</a>
-            <button>Đăng Nhập</button>
+            <button type="submit">Đăng Nhập</button>
         </form>
     </div>
     <div class="overlay-container">

@@ -1,6 +1,6 @@
 package com.ezcook.daos.daoimpls;
 
-import com.ezcook.constants.Web_Constants;
+import com.ezcook.constants.WebConstant;
 import com.ezcook.daos.GenericDao;
 
 import com.ezcook.utils.HibernateUtil;
@@ -152,7 +152,7 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
             if(sortDirection!=null && sortExpression!=null)
             {
                 sql.append(" order by ").append(sortExpression);
-                sql.append(" " + (sortDirection.equals(Web_Constants.SORT_ASC)?"asc":"desc"));
+                sql.append(" " + (sortDirection.equals(WebConstant.SORT_ASC)?"asc":"desc"));
             }
             Query query1 = session.createQuery(sql.toString());
             if(property.size()>0){
