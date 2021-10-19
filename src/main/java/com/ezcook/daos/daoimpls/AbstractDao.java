@@ -6,9 +6,9 @@ import com.ezcook.daos.GenericDao;
 import com.ezcook.utils.HibernateUtil;
 import javassist.tools.rmi.ObjectNotFoundException;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T> {
 
-    private Class<T> persistenceClass;
+    private final Class<T> persistenceClass;
 
     public AbstractDao() {
         this.persistenceClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
@@ -31,7 +31,7 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
     @Override
     public List<T> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<T> list = new ArrayList<T>();
+        List list;
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -44,9 +44,9 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
             list = query.list();
             transaction.commit();
         } catch (HibernateException e) {
+            assert transaction != null;
             transaction.rollback();
             System.out.println("Transectione is Null: " + e);
-
             throw e;
         } finally {
             session.close();
