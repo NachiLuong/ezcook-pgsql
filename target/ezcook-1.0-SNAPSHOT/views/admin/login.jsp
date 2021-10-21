@@ -6,6 +6,7 @@
     <script src="https://fonts.googleapis.com/css?family=Montserrat:400,800"></script>
     <link rel="stylesheet" href="<c:url value='/templates/login/query.js' />" />
     <link rel="stylesheet" href="<c:url value='/templates/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
+    <title></title>
 </head>
 <body>
 <div class="container" id="container">

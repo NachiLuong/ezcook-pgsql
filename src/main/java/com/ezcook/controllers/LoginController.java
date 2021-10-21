@@ -18,7 +18,11 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
+<<<<<<< HEAD
 //    ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
+=======
+    ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
+>>>>>>> refs/remotes/origin/master
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws SecurityException, IOException, ServletException {
