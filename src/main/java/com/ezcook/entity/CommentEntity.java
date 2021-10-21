@@ -1,4 +1,7 @@
 package com.ezcook.entity;
+import org.hibernate.annotations.Nationalized;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -9,7 +12,8 @@ public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_comment;
 
-    @Column(name = "content_comment")
+    @Column(name = "content_comment", length = 65000, columnDefinition ="TEXT")
+    @Type(type="text")
     private String content_comment;
 
     @Column(name = "createddate")
@@ -31,22 +35,6 @@ public class CommentEntity {
 
     public Integer getId_comment() {
         return id_comment;
-    }
-
-    public FoodEntity getFood() {
-        return food;
-    }
-
-    public void setFood(FoodEntity food) {
-        this.food = food;
-    }
-
-    public Timestamp getTime_comment() {
-        return time_comment;
-    }
-
-    public void setTime_comment(Timestamp time_comment) {
-        this.time_comment = time_comment;
     }
 
     public void setId_comment(Integer id_comment) {
@@ -77,6 +65,14 @@ public class CommentEntity {
         this.modifieddate = modifieddate;
     }
 
+    public Timestamp getTime_comment() {
+        return time_comment;
+    }
+
+    public void setTime_comment(Timestamp time_comment) {
+        this.time_comment = time_comment;
+    }
+
     public UserEntity getUser() {
         return user;
     }
@@ -85,5 +81,11 @@ public class CommentEntity {
         this.user = user;
     }
 
+    public FoodEntity getFood() {
+        return food;
+    }
 
+    public void setFood(FoodEntity food) {
+        this.food = food;
+    }
 }

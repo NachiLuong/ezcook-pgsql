@@ -1,4 +1,8 @@
 package com.ezcook.entity;
+
+import org.hibernate.annotations.Nationalized;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -16,7 +20,9 @@ public class FoodEntity {
     @Column(name = "image")
     private String image;
 
-    @Column(name = "content_food")
+
+    @Column(name = "content_food", length = 65000, columnDefinition ="TEXT")
+    @Type(type="text")
     private String content_food;
 
     @Column(name = "link_video")

@@ -12,13 +12,12 @@ import org.hibernate.Transaction;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T> {
 
-    private Class<T> persistenceClass;
+    private final Class<T> persistenceClass;
 
     public AbstractDao() {
         this.persistenceClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
@@ -31,19 +30,18 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
     @Override
     public List<T> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<T> list = new ArrayList<T>();
+        List<T> list;
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
 
             //HQL
-            StringBuilder sql = new StringBuilder("from ");
-            sql.append(this.getPersistenceClassName());
-            //
-            Query query = session.createQuery(sql.toString());
+            Query query = session.createQuery("from " + this.getPersistenceClassName()
+            );
             list = query.list();
             transaction.commit();
         } catch (HibernateException e) {
+            assert transaction != null;
             transaction.rollback();
             System.out.println("Transectione is Null: " + e);
 
@@ -57,7 +55,7 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
     @Override
     public T update(T entity) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        T result = null;
+        T result;
         Transaction transaction = session.beginTransaction();
         try {
             Object object = session.merge(entity);
@@ -95,9 +93,7 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
         T result = null;
         try {
             result = (T) session.get(persistenceClass, id);
-            if (result == null) {
-                throw new ObjectNotFoundException("Not found" + id, null);
-            }
+            if (result == null) throw new ObjectNotFoundException("Not found" + id, null);
         } catch (HibernateException e) {
             transaction.rollback();
 
@@ -115,13 +111,13 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
     public Object[] findByProperty(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        List<T> list = new ArrayList<T>();
-        Object total = 0;
+        List<T> list;
+        Object total;
         String[] params = new String[property.size()];
         Object[] values = new String[property.size()];
         int i = 0;
-        for (Map.Entry item : property.entrySet()) {
-            params[i] = (String) item.getKey();
+        for (Map.Entry<String, Object> item : property.entrySet()) {
+            params[i] = item.getKey();
             values[i] = item.getValue();
             i++;
         }
@@ -129,13 +125,13 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
             StringBuilder sql = new StringBuilder("from ");
             sql.append(getPersistenceClassName()).append(" where 1=1 ");
             if (property.size() > 0) {
-                for (int i1 = 0; i1 < params.length; i1++) {
-                    sql.append(" and ").append("LOWER(" + params[i1] + ") LIKE '%' || :" + params[i1] + " || '%'");
+                for (String param : params) {
+                    sql.append(" and ").append("LOWER(").append(param).append(") LIKE '%' || :").append(param).append(" || '%'");
                 }
             }
             if (sortDirection != null && sortExpression != null) {
                 sql.append(" order by ").append(sortExpression);
-                sql.append(" " + (sortDirection.equals(WebConstant.SORT_ASC) ? "asc" : "desc"));
+                sql.append(" ").append(sortDirection.equals(WebConstant.SORT_ASC) ? "asc" : "desc");
             }
             Query query1 = session.createQuery(sql.toString());
             if (property.size() > 0) {
@@ -154,8 +150,8 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
             StringBuilder sql1 = new StringBuilder("select count(*) from ");
             sql1.append(getPersistenceClassName()).append(" where 1=1 ");
             if (property.size() > 0) {
-                for (int k = 0; k < params.length; k++) {
-                    sql1.append(" and ").append("LOWER(" + params[k] + ") LIKE '%' || :" + params[k] + " || '%'");
+                for (String param : params) {
+                    sql1.append(" and ").append("LOWER(").append(param).append(") LIKE '%' || :").append(param).append(" || '%'");
                 }
             }
             Query query2 = session.createQuery(sql1.toString());
@@ -202,10 +198,10 @@ public class AbstractDao<ID extends Serializable, T> implements GenericDao<ID, T
     public T findEqualUnique(String property, Object value) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        T result = null;
+        T result;
         try {
             String sql = " FROM " + getPersistenceClassName() + " model WHERE model." + property + "= :value";
-            Query query = session.createQuery(sql.toString());
+            Query query = session.createQuery(sql);
             query.setParameter("value", value);
             result = (T) query.uniqueResult();
         } catch (HibernateException e) {
