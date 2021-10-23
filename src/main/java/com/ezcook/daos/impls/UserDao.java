@@ -17,13 +17,14 @@ public class UserDao extends AbstractDao<Integer, User> implements IUserDao {
         boolean isUserExist = false;
         String roleName = null;
         try {
-            Query query = session.createQuery(" FROM UserEntity ue WHERE ue.username= :username AND ue.password_user= :password_user");
+            @SuppressWarnings("unchecked")
+            Query query = session.createQuery(" FROM User ue WHERE ue.username= :username AND ue.password= :password_user");
             query.setParameter("username", username);
             query.setParameter("password_user", password_user);
             if (query.list().size() > 0) {
                 isUserExist = true;
                 User userEntity = (User) query.uniqueResult();
-                roleName = userEntity.getRole().getName_role();
+                roleName = userEntity.getRole().getName();
             }
         } catch (HibernateException e) {
             transaction.rollback();

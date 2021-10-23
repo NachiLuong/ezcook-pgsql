@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="fca4ca8e-11dd-48bf-9b5e-0683dbc8d00e" />
+          <unit-entry name="hibernate.cfg.xml" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/java/hibernate.cfg.xml" />
@@ -30,7 +30,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="ezcook" />
+          <factory-entry name="ezcook" value="fca4ca8e-11dd-48bf-9b5e-0683dbc8d00e" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

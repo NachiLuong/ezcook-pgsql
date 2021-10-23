@@ -4,32 +4,56 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "statisticstable")
+@Table(name = "statisticstable", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class Statistics {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_statistics;
-
-    @Column(name = "visits")
+    private int id;
+    private Integer commentCount;
+    private Timestamp createddate;
+    private Timestamp modifieddate;
     private Integer visits;
 
+    @Id
+    @Column(name = "id_statistics")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Basic
     @Column(name = "comment_count")
-    private Integer comment_count;
+    public Integer getCommentCount() {
+        return commentCount;
+    }
 
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    @Basic
     @Column(name = "createddate")
-    private Timestamp createdate;
+    public Timestamp getCreateddate() {
+        return createddate;
+    }
 
+    public void setCreateddate(Timestamp createddate) {
+        this.createddate = createddate;
+    }
+
+    @Basic
     @Column(name = "modifieddate")
-    private Timestamp modifieddate;
-
-    public Integer getId_statistics() {
-        return id_statistics;
+    public Timestamp getModifieddate() {
+        return modifieddate;
     }
 
-    public void setId_statistics(Integer id_statistics) {
-        this.id_statistics = id_statistics;
+    public void setModifieddate(Timestamp modifieddate) {
+        this.modifieddate = modifieddate;
     }
 
+    @Basic
+    @Column(name = "visits")
     public Integer getVisits() {
         return visits;
     }
@@ -38,27 +62,29 @@ public class Statistics {
         this.visits = visits;
     }
 
-    public Integer getComment_count() {
-        return comment_count;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Statistics that = (Statistics) o;
+
+        if (id != that.id) return false;
+        if (commentCount != null ? !commentCount.equals(that.commentCount) : that.commentCount != null) return false;
+        if (createddate != null ? !createddate.equals(that.createddate) : that.createddate != null) return false;
+        if (modifieddate != null ? !modifieddate.equals(that.modifieddate) : that.modifieddate != null) return false;
+        if (visits != null ? !visits.equals(that.visits) : that.visits != null) return false;
+
+        return true;
     }
 
-    public void setComment_count(Integer comment_count) {
-        this.comment_count = comment_count;
-    }
-
-    public Timestamp getCreatedate() {
-        return createdate;
-    }
-
-    public void setCreatedate(Timestamp createdate) {
-        this.createdate = createdate;
-    }
-
-    public Timestamp getModifieddate() {
-        return modifieddate;
-    }
-
-    public void setModifieddate(Timestamp modifieddate) {
-        this.modifieddate = modifieddate;
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (commentCount != null ? commentCount.hashCode() : 0);
+        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
+        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
+        result = 31 * result + (visits != null ? visits.hashCode() : 0);
+        return result;
     }
 }

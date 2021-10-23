@@ -1,66 +1,54 @@
-<<<<<<< HEAD:src/main/java/com/ezcook/entities/Food.java
 package com.ezcook.entities;
-=======
-package com.ezcook.entity;
 
-import org.hibernate.annotations.Nationalized;
-import org.hibernate.annotations.Type;
-
->>>>>>> 8eb3027fdeb4c0b0afb0bedf64a5833b754613fe:src/main/java/com/ezcook/entity/FoodEntity.java
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name = "food")
 public class Food {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_food;
-
-    @Column(name = "name_food")
-    private String name_food;
-
-    @Column(name = "image")
+    private int id;
+    private String contentFood;
+    private Timestamp createddate;
     private String image;
-
-
-    @Column(name = "content_food", length = 65000, columnDefinition ="TEXT")
-    @Type(type="text")
-    private String content_food;
-
-    @Column(name = "link_video")
-    private String link_video;
-
-    @Column(name = "createddate")
-    private Timestamp createdate;
-
-    @Column(name = "modifieddate")
+    private String linkVideo;
     private Timestamp modifieddate;
-
-    @ManyToOne
-    @JoinColumn(name = "id_foodtype")
+    private String nameFood;
+    private Integer idFoodtype;
+    private Collection<Comment> comments;
     private FoodType foodtype;
 
-    @OneToMany(mappedBy = "food", fetch = FetchType.LAZY)
-    private List<Comment> commentEntityList;
-
-    public Integer getId_food() {
-        return id_food;
+    @Id
+    @Column(name = "id_food")
+    public int getId() {
+        return id;
     }
 
-    public void setId_food(Integer id_food) {
-        this.id_food = id_food;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getName_food() {
-        return name_food;
+    @Basic
+    @Column(name = "content_food")
+    public String getContentFood() {
+        return contentFood;
     }
 
-    public void setName_food(String name_food) {
-        this.name_food = name_food;
+    public void setContentFood(String contentFood) {
+        this.contentFood = contentFood;
     }
 
+    @Basic
+    @Column(name = "createddate")
+    public Timestamp getCreateddate() {
+        return createddate;
+    }
+
+    public void setCreateddate(Timestamp createddate) {
+        this.createddate = createddate;
+    }
+
+    @Basic
+    @Column(name = "image")
     public String getImage() {
         return image;
     }
@@ -69,30 +57,18 @@ public class Food {
         this.image = image;
     }
 
-    public String getContent_food() {
-        return content_food;
+    @Basic
+    @Column(name = "link_video")
+    public String getLinkVideo() {
+        return linkVideo;
     }
 
-    public void setContent_food(String content_food) {
-        this.content_food = content_food;
+    public void setLinkVideo(String linkVideo) {
+        this.linkVideo = linkVideo;
     }
 
-    public String getLink_video() {
-        return link_video;
-    }
-
-    public void setLink_video(String link_video) {
-        this.link_video = link_video;
-    }
-
-    public Timestamp getCreatedate() {
-        return createdate;
-    }
-
-    public void setCreatedate(Timestamp createdate) {
-        this.createdate = createdate;
-    }
-
+    @Basic
+    @Column(name = "modifieddate")
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -101,19 +77,74 @@ public class Food {
         this.modifieddate = modifieddate;
     }
 
+    @Basic
+    @Column(name = "name_food")
+    public String getNameFood() {
+        return nameFood;
+    }
+
+    public void setNameFood(String nameFood) {
+        this.nameFood = nameFood;
+    }
+
+    @Basic
+    @Column(name = "id_foodtype")
+    public Integer getIdFoodtype() {
+        return idFoodtype;
+    }
+
+    public void setIdFoodtype(Integer idFoodtype) {
+        this.idFoodtype = idFoodtype;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Food food = (Food) o;
+
+        if (id != food.id) return false;
+        if (contentFood != null ? !contentFood.equals(food.contentFood) : food.contentFood != null) return false;
+        if (createddate != null ? !createddate.equals(food.createddate) : food.createddate != null) return false;
+        if (image != null ? !image.equals(food.image) : food.image != null) return false;
+        if (linkVideo != null ? !linkVideo.equals(food.linkVideo) : food.linkVideo != null) return false;
+        if (modifieddate != null ? !modifieddate.equals(food.modifieddate) : food.modifieddate != null) return false;
+        if (nameFood != null ? !nameFood.equals(food.nameFood) : food.nameFood != null) return false;
+        if (idFoodtype != null ? !idFoodtype.equals(food.idFoodtype) : food.idFoodtype != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (contentFood != null ? contentFood.hashCode() : 0);
+        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
+        result = 31 * result + (image != null ? image.hashCode() : 0);
+        result = 31 * result + (linkVideo != null ? linkVideo.hashCode() : 0);
+        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
+        result = 31 * result + (nameFood != null ? nameFood.hashCode() : 0);
+        result = 31 * result + (idFoodtype != null ? idFoodtype.hashCode() : 0);
+        return result;
+    }
+
+    @OneToMany(mappedBy = "food")
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_foodtype", referencedColumnName = "id_foodtype")
     public FoodType getFoodtype() {
         return foodtype;
     }
 
     public void setFoodtype(FoodType foodtype) {
         this.foodtype = foodtype;
-    }
-
-    public List<Comment> getCommentEntityList() {
-        return commentEntityList;
-    }
-
-    public void setCommentEntityList(List<Comment> commentEntityList) {
-        this.commentEntityList = commentEntityList;
     }
 }

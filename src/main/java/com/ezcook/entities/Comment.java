@@ -1,85 +1,53 @@
-<<<<<<< HEAD:src/main/java/com/ezcook/entities/Comment.java
 package com.ezcook.entities;
-=======
-package com.ezcook.entity;
-import org.hibernate.annotations.Nationalized;
-import org.hibernate.annotations.Type;
->>>>>>> 8eb3027fdeb4c0b0afb0bedf64a5833b754613fe:src/main/java/com/ezcook/entity/CommentEntity.java
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "commenttable")
+@Table(name = "commenttable", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class Comment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_comment;
-
-    @Column(name = "content_comment", length = 65000, columnDefinition ="TEXT")
-    @Type(type="text")
-    private String content_comment;
-
-    @Column(name = "createddate")
-    private Timestamp createdate;
-
-    @Column(name = "modifieddate")
+    private int id;
+    private String contentComment;
+    private Timestamp createddate;
     private Timestamp modifieddate;
-
-    @Column(name = "time_comment")
-    private Timestamp time_comment;
-
-    @ManyToOne
-    @JoinColumn(name = "id_user")
+    private Timestamp timeComment;
+    private Integer idFood;
+    private Integer idUser;
+    private Food food;
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "id_food")
-    private Food food;
-
-    public Integer getId_comment() {
-        return id_comment;
+    @Id
+    @Column(name = "id_comment")
+    public int getId() {
+        return id;
     }
 
-<<<<<<< HEAD:src/main/java/com/ezcook/entities/Comment.java
-    public Food getFood() {
-        return food;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setFood(Food food) {
-        this.food = food;
+    @Basic
+    @Column(name = "content_comment")
+    public String getContentComment() {
+        return contentComment;
     }
 
-    public Timestamp getTime_comment() {
-        return time_comment;
+    public void setContentComment(String contentComment) {
+        this.contentComment = contentComment;
     }
 
-    public void setTime_comment(Timestamp time_comment) {
-        this.time_comment = time_comment;
+    @Basic
+    @Column(name = "createddate")
+    public Timestamp getCreateddate() {
+        return createddate;
     }
 
-=======
->>>>>>> 8eb3027fdeb4c0b0afb0bedf64a5833b754613fe:src/main/java/com/ezcook/entity/CommentEntity.java
-    public void setId_comment(Integer id_comment) {
-        this.id_comment = id_comment;
+    public void setCreateddate(Timestamp createddate) {
+        this.createddate = createddate;
     }
 
-    public String getContent_comment() {
-        return content_comment;
-    }
-
-    public void setContent_comment(String content_comment) {
-        this.content_comment = content_comment;
-    }
-
-    public Timestamp getCreatedate() {
-        return createdate;
-    }
-
-    public void setCreatedate(Timestamp createdate) {
-        this.createdate = createdate;
-    }
-
+    @Basic
+    @Column(name = "modifieddate")
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -88,34 +56,85 @@ public class Comment {
         this.modifieddate = modifieddate;
     }
 
-<<<<<<< HEAD:src/main/java/com/ezcook/entities/Comment.java
+    @Basic
+    @Column(name = "time_comment")
+    public Timestamp getTimeComment() {
+        return timeComment;
+    }
+
+    public void setTimeComment(Timestamp timeComment) {
+        this.timeComment = timeComment;
+    }
+
+    @Basic
+    @Column(name = "id_food")
+    public Integer getIdFood() {
+        return idFood;
+    }
+
+    public void setIdFood(Integer idFood) {
+        this.idFood = idFood;
+    }
+
+    @Basic
+    @Column(name = "id_user")
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Comment comment = (Comment) o;
+
+        if (id != comment.id) return false;
+        if (contentComment != null ? !contentComment.equals(comment.contentComment) : comment.contentComment != null)
+            return false;
+        if (createddate != null ? !createddate.equals(comment.createddate) : comment.createddate != null) return false;
+        if (modifieddate != null ? !modifieddate.equals(comment.modifieddate) : comment.modifieddate != null)
+            return false;
+        if (timeComment != null ? !timeComment.equals(comment.timeComment) : comment.timeComment != null) return false;
+        if (idFood != null ? !idFood.equals(comment.idFood) : comment.idFood != null) return false;
+        if (idUser != null ? !idUser.equals(comment.idUser) : comment.idUser != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (contentComment != null ? contentComment.hashCode() : 0);
+        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
+        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
+        result = 31 * result + (timeComment != null ? timeComment.hashCode() : 0);
+        result = 31 * result + (idFood != null ? idFood.hashCode() : 0);
+        result = 31 * result + (idUser != null ? idUser.hashCode() : 0);
+        return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_food", referencedColumnName = "id_food")
+    public Food getFood() {
+        return food;
+    }
+
+    public void setFood(Food food) {
+        this.food = food;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     public User getUser() {
-=======
-    public Timestamp getTime_comment() {
-        return time_comment;
-    }
-
-    public void setTime_comment(Timestamp time_comment) {
-        this.time_comment = time_comment;
-    }
-
-    public UserEntity getUser() {
->>>>>>> 8eb3027fdeb4c0b0afb0bedf64a5833b754613fe:src/main/java/com/ezcook/entity/CommentEntity.java
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
     }
-<<<<<<< HEAD:src/main/java/com/ezcook/entities/Comment.java
-=======
-
-    public FoodEntity getFood() {
-        return food;
-    }
-
-    public void setFood(FoodEntity food) {
-        this.food = food;
-    }
->>>>>>> 8eb3027fdeb4c0b0afb0bedf64a5833b754613fe:src/main/java/com/ezcook/entity/CommentEntity.java
 }

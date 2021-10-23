@@ -15,7 +15,7 @@ public class BlogController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/views/web/blog.jsp");
         rd.forward(req, resp);
     }
 

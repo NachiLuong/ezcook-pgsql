@@ -2,72 +2,44 @@ package com.ezcook.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name = "usertable")
+@Table(name = "usertable", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_user;
-
-    @Column(name = "username")
-    private String username;
-
-    @Column(name = "password_user")
-    private String password_user;
-
-    @Column(name = "fullname")
-    private String fullname;
-
-    @Column(name = "email")
+    private int id;
+    private Timestamp createddate;
     private String email;
-
-    @Column(name = "createddate")
-    private Timestamp createdate;
-
-    @Column(name = "modifieddate")
+    private String fullname;
     private Timestamp modifieddate;
-
-    @ManyToOne
-    @JoinColumn(name = "id_role")
+    private String password;
+    private String username;
+    private Integer idRole;
+    private Collection<Comment> comments;
     private Role role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Comment> commentEntityList;
-
-    public Integer getId_user() {
-        return id_user;
+    @Id
+    @Column(name = "id_user")
+    public int getId() {
+        return id;
     }
 
-    public void setId_user(Integer id_user) {
-        this.id_user = id_user;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    @Basic
+    @Column(name = "createddate")
+    public Timestamp getCreateddate() {
+        return createddate;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCreateddate(Timestamp createddate) {
+        this.createddate = createddate;
     }
 
-    public String getPassword_user() {
-        return password_user;
-    }
-
-    public void setPassword_user(String password_user) {
-        this.password_user = password_user;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
+    @Basic
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -76,14 +48,18 @@ public class User {
         this.email = email;
     }
 
-    public Timestamp getCreatedate() {
-        return createdate;
+    @Basic
+    @Column(name = "fullname")
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setCreatedate(Timestamp createdate) {
-        this.createdate = createdate;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
+    @Basic
+    @Column(name = "modifieddate")
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -92,19 +68,84 @@ public class User {
         this.modifieddate = modifieddate;
     }
 
+    @Basic
+    @Column(name = "password_user")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Basic
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Basic
+    @Column(name = "id_role")
+    public Integer getIdRole() {
+        return idRole;
+    }
+
+    public void setIdRole(Integer idRole) {
+        this.idRole = idRole;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != user.id) return false;
+        if (createddate != null ? !createddate.equals(user.createddate) : user.createddate != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (fullname != null ? !fullname.equals(user.fullname) : user.fullname != null) return false;
+        if (modifieddate != null ? !modifieddate.equals(user.modifieddate) : user.modifieddate != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
+        if (idRole != null ? !idRole.equals(user.idRole) : user.idRole != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
+        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (idRole != null ? idRole.hashCode() : 0);
+        return result;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_role", referencedColumnName = "id_role")
     public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public List<Comment> getCommentEntityList() {
-        return commentEntityList;
-    }
-
-    public void setCommentEntityList(List<Comment> commentEntityList) {
-        this.commentEntityList = commentEntityList;
     }
 }

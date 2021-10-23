@@ -1,51 +1,40 @@
 package com.ezcook.entities;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name = "roletb")
+@Table(name = "roletb", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class Role {
+    private int id;
+    private Timestamp createddate;
+    private Timestamp modifieddate;
+    private String name;
+    private Collection<User> users;
+
     @Id
     @Column(name = "id_role")
-    private Integer id_role;
+    public int getId() {
+        return id;
+    }
 
-    @Column(name = "name_role")
-    private  String name_role;
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    @Basic
     @Column(name = "createddate")
-    private Timestamp createdate;
+    public Timestamp getCreateddate() {
+        return createddate;
+    }
 
+    public void setCreateddate(Timestamp createddate) {
+        this.createddate = createddate;
+    }
+
+    @Basic
     @Column(name = "modifieddate")
-    private Timestamp modifieddate;
-
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    private  List<User> userList;
-
-    public Integer getId_role() {
-        return id_role;
-    }
-
-    public void setId_role(Integer id_role) {
-        this.id_role = id_role;
-    }
-
-    public String getName_role() {
-        return name_role;
-    }
-
-    public void setName_role(String name_role) {
-        this.name_role = name_role;
-    }
-
-    public Timestamp getCreatedate() {
-        return createdate;
-    }
-
-    public void setCreatedate(Timestamp createdate) {
-        this.createdate = createdate;
-    }
-
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -54,11 +43,46 @@ public class Role {
         this.modifieddate = modifieddate;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    @Basic
+    @Column(name = "name_role")
+    public String getName() {
+        return name;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Role role = (Role) o;
+
+        if (id != role.id) return false;
+        if (createddate != null ? !createddate.equals(role.createddate) : role.createddate != null) return false;
+        if (modifieddate != null ? !modifieddate.equals(role.modifieddate) : role.modifieddate != null) return false;
+        if (name != null ? !name.equals(role.name) : role.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
+        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
+
+    @OneToMany(mappedBy = "role")
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Collection<User> users) {
+        this.users = users;
     }
 }

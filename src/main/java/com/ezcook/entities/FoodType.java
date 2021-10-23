@@ -1,51 +1,39 @@
 package com.ezcook.entities;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name = "foodtype")
 public class FoodType {
+    private int id;
+    private Timestamp createddate;
+    private Timestamp modifieddate;
+    private String nameFoodtype;
+    private Collection<Food> foods;
+
     @Id
     @Column(name = "id_foodtype")
-    private Integer id_foodtype;
+    public int getId() {
+        return id;
+    }
 
-    @Column(name = "name_foodtype")
-    private  String name_foodtype;
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    @Basic
     @Column(name = "createddate")
-    private Timestamp createdate;
+    public Timestamp getCreateddate() {
+        return createddate;
+    }
 
+    public void setCreateddate(Timestamp createddate) {
+        this.createddate = createddate;
+    }
+
+    @Basic
     @Column(name = "modifieddate")
-    private Timestamp modifieddate;
-
-    @OneToMany(mappedBy = "foodtype", fetch = FetchType.LAZY)
-    private  List<Food> foodList;
-
-    public Integer getId_foodtype() {
-        return id_foodtype;
-    }
-
-    public void setId_foodtype(Integer id_foodtype) {
-        this.id_foodtype = id_foodtype;
-    }
-
-    public String getName_foodtype() {
-        return name_foodtype;
-    }
-
-    public void setName_foodtype(String name_foodtype) {
-        this.name_foodtype = name_foodtype;
-    }
-
-    public Timestamp getCreatedate() {
-        return createdate;
-    }
-
-    public void setCreatedate(Timestamp createdate) {
-        this.createdate = createdate;
-    }
-
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -54,11 +42,49 @@ public class FoodType {
         this.modifieddate = modifieddate;
     }
 
-    public List<Food> getFoodList() {
-        return foodList;
+    @Basic
+    @Column(name = "name_foodtype")
+    public String getNameFoodtype() {
+        return nameFoodtype;
     }
 
-    public void setFoodList(List<Food> foodList) {
-        this.foodList = foodList;
+    public void setNameFoodtype(String nameFoodtype) {
+        this.nameFoodtype = nameFoodtype;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FoodType foodtype = (FoodType) o;
+
+        if (id != foodtype.id) return false;
+        if (createddate != null ? !createddate.equals(foodtype.createddate) : foodtype.createddate != null)
+            return false;
+        if (modifieddate != null ? !modifieddate.equals(foodtype.modifieddate) : foodtype.modifieddate != null)
+            return false;
+        if (nameFoodtype != null ? !nameFoodtype.equals(foodtype.nameFoodtype) : foodtype.nameFoodtype != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
+        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
+        result = 31 * result + (nameFoodtype != null ? nameFoodtype.hashCode() : 0);
+        return result;
+    }
+
+    @OneToMany(mappedBy = "foodtype")
+    public Collection<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(Collection<Food> foods) {
+        this.foods = foods;
     }
 }
