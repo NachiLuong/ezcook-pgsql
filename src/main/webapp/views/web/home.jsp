@@ -1,168 +1,1639 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="Java" %>
+<%@ include file="/common/taglib.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
+
 <head>
-    <meta charset="utf-8" content="">
     <title>Home</title>
-    <link rel="stylesheet" href="<c:url value='/templates/web/css/myweb.css' />" />
-    <link rel="stylesheet" href="<c:url value='/templates/web/css/bootstrap-theme.min.css' />" />
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/home/css/home.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/home/css/home_responsive.css'/>">
 </head>
 
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Title</a>
-                    </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse navbar-ex1-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                        </ul>
-                        <form class="navbar-form navbar-left" role="search" action="">
-                            <div class="form-group">
-                                <label>
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div>
-            </nav>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div id="carousel-id" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-id" data-slide-to="0" class=""></li>
-                    <li data-target="#carousel-id" data-slide-to="1" class=""></li>
-                    <li data-target="#carousel-id" data-slide-to="2" class="active"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item">
-                        <img alt="First slide" src="images/1.jfif" width="500px" height="100px">
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <h1>Example headline.</h1>
-                                <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img alt="Second slide" src="images/2.jfif" width="500px" height="100px">
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <h1>Another example headline.</h1>
-                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item active">
-                        <img alt="Third slide" src="images/3.jfif" width="500px" height="100px">
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <h1>One more for good measure.</h1>
-                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+<%-- Container --%>
+<div id="container">
+
+    <%-- slider --%>
+    <div class="featured-area featured-style-9" id="slider">
+        <div class="penci-owl-carousel penci-owl-featured-area" data-item="3" data-desktop="3" data-tablet="2"
+             data-tabsmall="1" data-style="style-9" data-auto="false" data-autotime="4000" data-speed="400"
+             data-loop="true">
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-1">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i0.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/242768151_407692067393135_5100537142423214304_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="<c:url value='/#'/>"
+                           title="[SQUID GAME] Trò chơi con mực">
+                        </a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="<c:url value='/#'/>">
+                            </a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3>
+                                        <a title="[SQUID GAME] Trò chơi con mực"
+                                           href="<c:url value='/#'/>">
+                                            [SQUID GAME] Trò chơi con mực
+                                        </a>
+                                    </h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">September 25, 2021</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon alyphicon-chevron-left"></span></a>
-                <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-2">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i1.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/242296130_407064584122550_6841722089028900184_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="<c:url value='/#'/>"
+                           title="CÁCH LÀM “ROSÉ ROLL CAKE” – BÁNH CUỘN KEM PHOMAI BẰNG… CHẢO"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="<c:url value='/#'/>">
+                            </a>
+                            <a href="<c:url value='/#'/>" class="overlay-icon-format lager-size-icon">
+                                <i class="fa fa-play"></i>
+                            </a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3>
+                                        <a title="CÁCH LÀM “ROSÉ ROLL CAKE” – BÁNH CUỘN KEM PHOMAI BẰNG… CHẢO"
+                                           href="<c:url value='/#'/>">
+                                            CÁCH LÀM “ROSÉ ROLL CAKE” – BÁNH CUỘN KEM PHOMAI BẰNG… CHẢO
+                                        </a>
+                                    </h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">September 24, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-0">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i2.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/241443067_402732721222403_8263454304472512944_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="<c:url value='/#'/>"
+                           title="TẤT TẬT TỪ A-Z CÁCH TỰ LÀM GIÁ LƯỜI, AI CŨNG LÀM ĐƯỢC KHÔNG SỢ MẸ MẮNG"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="<c:url value='/#'/>">
+                            </a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3>
+                                        <a title="TẤT TẬT TỪ A-Z CÁCH TỰ LÀM GIÁ LƯỜI, AI CŨNG LÀM ĐƯỢC KHÔNG SỢ MẸ MẮNG"
+                                           href="<c:url value='/#'/>">TẤT
+                                            TẬT TỪ A-Z CÁCH TỰ LÀM GIÁ LƯỜI, AI CŨNG LÀM...</a></h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">September 18, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-1">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i2.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/240592596_10158698226213531_7156944578654639022_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="https://www.esheepkitchen.com/cong-bo-ket-qua-thu-thach-tuan-cuoc-phieu-luu-80-ngay-an-khap-the-gioi/"
+                           title="CÔNG BỐ KẾT QUẢ THỬ THÁCH TUẦN “CUỘC PHIÊU LƯU 80 NGÀY ĂN KHẮP THẾ GIỚI”"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="https://www.esheepkitchen.com/cong-bo-ket-qua-thu-thach-tuan-cuoc-phieu-luu-80-ngay-an-khap-the-gioi/"></a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3>
+                                        <a title="CÔNG BỐ KẾT QUẢ THỬ THÁCH TUẦN “CUỘC PHIÊU LƯU 80 NGÀY ĂN KHẮP THẾ GIỚI”"
+                                           href="https://www.esheepkitchen.com/cong-bo-ket-qua-thu-thach-tuan-cuoc-phieu-luu-80-ngay-an-khap-the-gioi/">CÔNG
+                                            BỐ KẾT QUẢ THỬ THÁCH TUẦN “CUỘC PHIÊU LƯU 80 NGÀY...</a></h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">September 15, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-2">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i2.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/240705233_398022765026732_813286415368641027_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="https://www.esheepkitchen.com/yeu-bep-feedback-thit-kho-trong-trang-kho-trung-ca-vo/"
+                           title="[Yêu Bếp feedback] THỊT KHO &#8220;TRONG TRẮNG&#8221; &#038; KHO TRỨNG CẢ VỎ"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="https://www.esheepkitchen.com/yeu-bep-feedback-thit-kho-trong-trang-kho-trung-ca-vo/"></a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3>
+                                        <a title="[Yêu Bếp feedback] THỊT KHO &#8220;TRONG TRẮNG&#8221; &#038; KHO TRỨNG CẢ VỎ"
+                                           href="https://www.esheepkitchen.com/yeu-bep-feedback-thit-kho-trong-trang-kho-trung-ca-vo/">[Yêu
+                                            Bếp feedback] THỊT KHO &#8220;TRONG TRẮNG&#8221; &#038; KHO TRỨNG CẢ
+                                            VỎ</a></h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">September 11, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-0">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i0.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/240620163_395383798623962_6691074099465274403_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="https://www.esheepkitchen.com/ve-dep-cua-rau-cu/" title="Vẻ đẹp của rau củ"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link" href="https://www.esheepkitchen.com/ve-dep-cua-rau-cu/"></a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3><a title="Vẻ đẹp của rau củ"
+                                           href="https://www.esheepkitchen.com/ve-dep-cua-rau-cu/">Vẻ đẹp của rau
+                                        củ</a></h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">September 7, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-1">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i2.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/240533572_10158676818998531_8316501353332400521_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="https://www.esheepkitchen.com/top-10-thu-vi-yeu-bep-bang-xep-hang-top-10-cay-but-than-yeu-bep-thang-8/"
+                           title="[TOP 10 THÚ VỊ YÊU BẾP] &#8220;BẢNG XẾP HẠNG&#8221; TOP 10 CÂY BÚT THẦN YÊU BẾP THÁNG 8"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="https://www.esheepkitchen.com/top-10-thu-vi-yeu-bep-bang-xep-hang-top-10-cay-but-than-yeu-bep-thang-8/"></a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3>
+                                        <a title="[TOP 10 THÚ VỊ YÊU BẾP] &#8220;BẢNG XẾP HẠNG&#8221; TOP 10 CÂY BÚT THẦN YÊU BẾP THÁNG 8"
+                                           href="https://www.esheepkitchen.com/top-10-thu-vi-yeu-bep-bang-xep-hang-top-10-cay-but-than-yeu-bep-thang-8/">[TOP
+                                            10 THÚ VỊ YÊU BẾP] &#8220;BẢNG XẾP HẠNG&#8221; TOP 10 CÂY...</a></h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">September 4, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-2">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i0.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/240998779_393022565526752_8772231243327937768_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="https://www.esheepkitchen.com/cach-lam-cha-ca-ha-noi-cha-ca-la-vong-bang-noi-chien-khong-dau/"
+                           title="CÁCH LÀM CHẢ CÁ HÀ NỘI – CHẢ CÁ LÃ VỌNG BẰNG NỒI CHIÊN KHÔNG DẦU"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="https://www.esheepkitchen.com/cach-lam-cha-ca-ha-noi-cha-ca-la-vong-bang-noi-chien-khong-dau/"></a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3><a title="CÁCH LÀM CHẢ CÁ HÀ NỘI – CHẢ CÁ LÃ VỌNG BẰNG NỒI CHIÊN KHÔNG DẦU"
+                                           href="https://www.esheepkitchen.com/cach-lam-cha-ca-ha-noi-cha-ca-la-vong-bang-noi-chien-khong-dau/">CÁCH
+                                        LÀM CHẢ CÁ HÀ NỘI – CHẢ CÁ LÃ VỌNG BẰNG...</a></h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">September 3, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-0">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i2.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/240592549_10158665120308531_1151239136467453639_n.jpeg?resize=585%2C585&amp;ssl=1');"
+                           href="https://www.esheepkitchen.com/%f0%9f%8d%91-thong-bao-sieu-hot%e2%9c%a8%f0%9f%8c%bf-moi-ban-tham-gia-thu-thach-tuan-cuoc-phieu-luu-80-ngay-an-khap-the-gioi-va-kham-pha-kho-bau-giai-thuong-do-bep/"
+                           title="🍑 THÔNG BÁO SIÊU HOT✨🌿 Mời bạn tham gia Thử thách tuần “CUỘC PHIÊU LƯU 80 NGÀY ĂN KHẮP THẾ GIỚI” và khám phá “kho báu giải thưởng đồ bếp”"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="https://www.esheepkitchen.com/%f0%9f%8d%91-thong-bao-sieu-hot%e2%9c%a8%f0%9f%8c%bf-moi-ban-tham-gia-thu-thach-tuan-cuoc-phieu-luu-80-ngay-an-khap-the-gioi-va-kham-pha-kho-bau-giai-thuong-do-bep/"></a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3>
+                                        <a title="🍑 THÔNG BÁO SIÊU HOT✨🌿 Mời bạn tham gia Thử thách tuần “CUỘC PHIÊU LƯU 80 NGÀY ĂN KHẮP THẾ GIỚI” và khám phá “kho báu giải thưởng đồ bếp”"
+                                           href="https://www.esheepkitchen.com/%f0%9f%8d%91-thong-bao-sieu-hot%e2%9c%a8%f0%9f%8c%bf-moi-ban-tham-gia-thu-thach-tuan-cuoc-phieu-luu-80-ngay-an-khap-the-gioi-va-kham-pha-kho-bau-giai-thuong-do-bep/">🍑
+                                            THÔNG BÁO SIÊU HOT✨🌿 Mời bạn tham gia Thử thách tuần...</a></h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">August 29, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item text-center">
+                <div class="wrapper-item wrapper-item-classess">
+                    <div class="penci-item-mag penci-item-1">
+                        <a class="penci-image-holder"
+                           style="background-image: url('https://i1.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/08/51400891257_5c2f379d66_k.jpg?resize=585%2C585&amp;ssl=1');"
+                           href="https://www.esheepkitchen.com/kham-pha-sach-80-ngay-an-khap-the-gioi-cach-lam-lassi-sua-chua-lac-kieu-an/"
+                           title="[Khám phá sách 80 Ngày Ăn Khắp Thế Giới] &#8211; CÁCH LÀM LASSI &#8220;SỮA CHUA LẮC KIỂU ẤN&#8221;"></a>
+                        <div class="penci-slide-overlay penci-slider7-overlay">
+                            <a class="overlay-link"
+                               href="https://www.esheepkitchen.com/kham-pha-sach-80-ngay-an-khap-the-gioi-cach-lam-lassi-sua-chua-lac-kieu-an/"></a>
+                            <div class="penci-mag-featured-content">
+                                <div class="feat-text">
+                                    <h3>
+                                        <a title="[Khám phá sách 80 Ngày Ăn Khắp Thế Giới] &#8211; CÁCH LÀM LASSI &#8220;SỮA CHUA LẮC KIỂU ẤN&#8221;"
+                                           href="https://www.esheepkitchen.com/kham-pha-sach-80-ngay-an-khap-the-gioi-cach-lam-lassi-sua-chua-lac-kieu-an/">[Khám
+                                            phá sách 80 Ngày Ăn Khắp Thế Giới] &#8211; CÁCH LÀM...</a></h3>
+                                    <div class="feat-meta">
+                                        <span class="feat-time">August 25, 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <img src="images/item1.jfif" alt="" class="thumbnail" width="100%"/>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <img src="images/item2.jfif" alt="" class="thumbnail" width="100%"/>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <img src="images/item3.jfif" alt="" class="thumbnail" width="100%"/>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <img src="images/item4.jfif" alt="" class="thumbnail" width="100%"/>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <img src="images/item5.jfif" alt="" class="thumbnail" width="100%"/>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <img src="images/item6.jfif" alt="" class="thumbnail" width="100%"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <footer class="clearfix">
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <h4>ABOUT EZCOOK</h4>
-                    <p>
-                        Welcome to our Cooking Website. We’ve got loads of ideas to keep you entertained, including recipes and top tips to share.
-                    </p>
-                    <p>
-                        Whether you’re just starting out, looking for some food inspiration or are an experienced chef, please do join us and get involved.
-                    </p>
+    <%-- slider --%>
+    <%-- content --%>
+    <div id="content" class="mx-auto">
+        <div class="session">
+            <h4>BÀI ĐĂNG MỚI NHẤT</h4>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value='/#'/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <h4>WHAT'S INVOLVED</h4>
-                    <p>
-                        Share your favourite recipes and inspiration with others
-                    </p>
-                    <p>
-                        Exchange tips and advice with fellow cooking and baking enthusiasts
-                    </p>
-                    <p>
-                        Have a go at our foodie quizzes and take part in our themed giveaways
-                    </p>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <h4>CONTACT US</h4>
-                    <h3>Hotline: 09090909</h3>
-                    <p>Email: group3@gmail.com</p>
-                    <ul>
-                        <li><a href="#"><img src="images/facebook.png" height="30px" width="30px" alt=""></a></li>
-                        <li><a href="#"><img src="images/twitter.png" height="30px" width="30px" alt=""></a></li>
-                        <li><a href="#"><img src="images/instagram.png" height="30px" width="30px" alt=""></a></li>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value='/#'/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value='/#'/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value='/#'/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value='/#'/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center"><a href="<c:url value="/#"/>" class="rounded">xem tiếp</a></p>
+        </div>
+        <hr>
+        <div class="session">
+            <h4>BÁNH NGỌT</h4>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="session">
+            <h4>CHÈ</h4>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="session">
+            <h4>KEM</h4>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <a href="<c:url value="/#"/>"><img src="<c:url value='/templates/web/home/2.jpg'/>" alt=""></a>
+                    <div>
+                        <span>Bánh ngọt <i class="fal fa-utensils-alt"></i> Đồ uống</span>
+                        <a href="<c:url value="/#"/>">
+                            <h5>[SQUID GAME] Trò chơi con mực</h5>
+                        </a>
+                        <span class="author">
+                                by <a href="<c:url value="/#"/>">Ezcook</a> | September 25, 2021
+                            </span>
+                        <hr>
+                        <p>[SQUID GAME] Trò chơi con mực Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị
+                            như vậy! Bảo sao nó siêu hot! Phim mình chưa xem nhưng kẹo thì mình biết làm. Hồi sang
+                            Hàn…
+                        </p>
+                        <a href="<c:url value="/#"/>">Xem tiếp...</a>
+                        <div class="social-icon">
+                            <a href="<c:url value="/#"/>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-twitter"></i></a>
+                            <a href="<c:url value="/#"/>"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    </ul>
-                </div>
-            </footer>
-        </div>
     </div>
+    <%-- content --%>
 </div>
+
 </body>
+
 </html>

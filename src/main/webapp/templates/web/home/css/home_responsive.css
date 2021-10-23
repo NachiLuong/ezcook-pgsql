@@ -1,0 +1,15 @@
+@media screen and (max-width: 1169px) {
+    #content {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    #content .session > div {
+        display: block;
+    }
+
+    #content .session > div .item img {
+        width: 100%;
+    }
+}

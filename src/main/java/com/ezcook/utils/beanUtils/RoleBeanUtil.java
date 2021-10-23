@@ -1,10 +1,10 @@
 package com.ezcook.utils.beanUtils;
 
 import com.ezcook.dtos.RoleDto;
-import com.ezcook.entity.RoleEntity;
+import com.ezcook.entities.Role;
 
 public class RoleBeanUtil {
-    public static RoleDto entity2Dto(RoleEntity entity){
+    public static RoleDto entity2Dto(Role entity){
         RoleDto dto=new RoleDto();
         dto.setId_role(entity.getId_role());
         dto.setCreatedate(entity.getCreatedate());
@@ -12,8 +12,8 @@ public class RoleBeanUtil {
         dto.setName_role(entity.getName_role());
         return dto;
     }
-    public static RoleEntity dto2Entity(RoleDto dto){
-        RoleEntity entity=new RoleEntity();
+    public static Role dto2Entity(RoleDto dto){
+        Role entity=new Role();
         entity.setModifieddate(dto.getModifieddate());
         entity.setName_role(dto.getName_role());
         entity.setId_role(dto.getId_role());

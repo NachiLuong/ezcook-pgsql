@@ -28,11 +28,11 @@
         <property name="show_sql">true</property>
 <!--        <property name="hbm2ddl.auto">update</property>-->
 
-        <mapping class="com.ezcook.entity.CommentEntity" />
-        <mapping class="com.ezcook.entity.FoodEntity" />
-        <mapping class="com.ezcook.entity.FoodTypeEntity"/>
-        <mapping class="com.ezcook.entity.RoleEntity"/>
-        <mapping class="com.ezcook.entity.StatisticsEntity"/>
-        <mapping class="com.ezcook.entity.UserEntity"/>
+        <mapping class="com.ezcook.entities.Comment" />
+        <mapping class="com.ezcook.entities.Food" />
+        <mapping class="com.ezcook.entities.FoodType"/>
+        <mapping class="com.ezcook.entities.Role"/>
+        <mapping class="com.ezcook.entities.Statistics"/>
+        <mapping class="com.ezcook.entities.User"/>
     </session-factory>
 </hibernate-configuration>

@@ -7,14 +7,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class UserController extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws SecurityException, IOException, ServletException {
 
+    private static final Long serialVersionUID = 1L;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws SecurityException, IOException, ServletException {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
 
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPut(req, resp);
+    }
 
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doDelete(req, resp);
     }
 }

@@ -8,17 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/admin-home.html")
+@WebServlet("/admin-home")
 public class AdminController extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
+    private static final Long serialVersionUID = 1L;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws SecurityException, IOException, ServletException {
-        RequestDispatcher rd=request.getRequestDispatcher("/views/admin/home.jsp");
-        rd.forward(request,response);
+        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
+        rd.forward(req, resp);
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws SecurityException, IOException, ServletException {
-        RequestDispatcher rd=request.getRequestDispatcher("/views/admin/home.jsp");
-        rd.forward(request,response);
+        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
+        rd.forward(req, resp);
 
     }
 }
