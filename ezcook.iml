@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="c58e8ac5-22ba-4304-a5d4-0964bf57f4b9" />
+          <unit-entry name="hibernate.cfg.xml" value="fca4ca8e-11dd-48bf-9b5e-0683dbc8d00e" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/java/hibernate.cfg.xml" />
@@ -53,7 +53,7 @@
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.2.24.jre7" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.5.7.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.5.8.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.4.2.Final" level="project" />
     <orderEntry type="library" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.27.0-GA" level="project" />

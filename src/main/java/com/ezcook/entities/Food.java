@@ -1,4 +1,12 @@
+<<<<<<< HEAD:src/main/java/com/ezcook/entities/Food.java
 package com.ezcook.entities;
+=======
+package com.ezcook.entity;
+
+import org.hibernate.annotations.Nationalized;
+import org.hibernate.annotations.Type;
+
+>>>>>>> 8eb3027fdeb4c0b0afb0bedf64a5833b754613fe:src/main/java/com/ezcook/entity/FoodEntity.java
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -16,7 +24,9 @@ public class Food {
     @Column(name = "image")
     private String image;
 
-    @Column(name = "content_food")
+
+    @Column(name = "content_food", length = 65000, columnDefinition ="TEXT")
+    @Type(type="text")
     private String content_food;
 
     @Column(name = "link_video")

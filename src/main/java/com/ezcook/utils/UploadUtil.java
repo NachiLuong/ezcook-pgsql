@@ -25,7 +25,7 @@ public class UploadUtil {
         boolean check=true;
         String fileLocation=null;
         String name=null;
-        Map<String,String> mapReturnValue= new HashMap<String,String>();
+        Map<String,String> mapReturnValue= new HashMap<>();
         // Check that we have a file upload request
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         if(!isMultipart) check=false;
@@ -68,7 +68,7 @@ public class UploadUtil {
                         String valueField= null;
                         try {
                             valueField = item.getString("UTF-8");
-                        } catch (UnsupportedEncodingException e) {
+                        } catch (UnsupportedEncodingException ignored) {
                         }
                         if(titleValue.contains(nameField)){
                             mapReturnValue.put(nameField,valueField);

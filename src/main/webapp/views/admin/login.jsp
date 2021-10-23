@@ -1,6 +1,6 @@
 <%@ include file="/common/taglib.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<c:url var="formUrl" value="/login.html"/>
+<c:url var="formUrl" value="/login"/>
 <html>
 <head>
     <script src="https://fonts.googleapis.com/css?family=Montserrat:400,800"></script>

@@ -30,7 +30,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
     @Override
     public List<T> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List list;
+        List<T> list;
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -55,7 +55,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
     @Override
     public T update(T entity) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        T result = null;
+        T result;
         Transaction transaction = session.beginTransaction();
         try {
             Object object = session.merge(entity);
@@ -96,6 +96,8 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
             if (result == null) {
                 throw new ObjectNotFoundException("Not found" + id);
             }
+            result = (T) session.get(persistenceClass, id);
+            if (result == null) throw new ObjectNotFoundException("Not found" + id, null);
         } catch (HibernateException e) {
             transaction.rollback();
             throw e;
@@ -116,8 +118,8 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         String[] params = new String[property.size()];
         Object[] values = new String[property.size()];
         int i = 0;
-        for (Map.Entry item : property.entrySet()) {
-            params[i] = (String) item.getKey();
+        for (Map.Entry<String, Object> item : property.entrySet()) {
+            params[i] = item.getKey();
             values[i] = item.getValue();
             i++;
         }

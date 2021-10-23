@@ -22,6 +22,7 @@ public class LoginController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
 
+//    ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
     ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
 
     @Override
@@ -41,6 +42,7 @@ public class LoginController extends HttpServlet {
             CheckLogin login = userService.checkLogin(pojo.getUsername(), pojo.getPassword_user());
             if (login.isUserExist()) {
                 if (login.getRoleName().equals(WebConstant.ROLE_ADMIN)) {
+
                     resp.sendRedirect("/admin-home");
                 } else if (login.getRoleName().equals(WebConstant.ROLE_USER)) {
                     resp.sendRedirect("/home");

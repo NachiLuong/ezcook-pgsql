@@ -1,31 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="d37tfeuqn9sfbb@ec2-54-159-35-35.compute-1.amazonaws.com" uuid="c58e8ac5-22ba-4304-a5d4-0964bf57f4b9">
+    <data-source source="LOCAL" name="d37tfeuqn9sfbb@ec2-54-159-35-35.compute-1.amazonaws.com" uuid="fca4ca8e-11dd-48bf-9b5e-0683dbc8d00e">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-54-159-35-35.compute-1.amazonaws.com:5432/d37tfeuqn9sfbb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="c1b2de8c-0922-420a-ae89-afc7417faa08">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="245f0b7c-3750-4d7e-8bba-c3526503db2d">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>Hibernate
 
-E:/Kì 5/Lap Trinh Web/CuoiKi/ezcook/src/main/resources/hibernate.cfg.xml</remarks>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-54-159-35-35.compute-1.amazonaws.com:5432/d37tfeuqn9sfbb</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="d536cd09-67d1-4fe0-ae74-653a890ac3a8">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate
-
-E:/Kì 5/Lap Trinh Web/CuoiKi/ezcook/src/main/java/hibernate.cfg.xml</remarks>
+E:/Kì 5/Lap Trinh Web/CuoiKi/ezcook-pgsql/src/main/resources/hibernate.cfg.xml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-54-159-35-35.compute-1.amazonaws.com:5432/d37tfeuqn9sfbb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
