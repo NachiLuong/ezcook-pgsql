@@ -67,7 +67,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "id_food")
+    @Column(name = "id_food", insertable = false, updatable = false)
     public Integer getIdFood() {
         return idFood;
     }
@@ -77,7 +77,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "id_user")
+    @Column(name = "id_user" , insertable = false, updatable = false)
     public Integer getIdUser() {
         return idUser;
     }

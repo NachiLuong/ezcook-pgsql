@@ -89,7 +89,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "id_role")
+    @Column(name = "id_role" , insertable = false, updatable = false)
     public Integer getIdRole() {
         return idRole;
     }

@@ -88,7 +88,7 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "id_foodtype")
+    @Column(name = "id_foodtype", insertable = false, updatable = false)
     public Integer getIdFoodtype() {
         return idFoodtype;
     }

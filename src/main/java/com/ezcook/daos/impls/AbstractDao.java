@@ -6,9 +6,9 @@ import com.ezcook.daos.IGenericDao;
 import com.ezcook.utils.HibernateUtil;
 import javassist.tools.rmi.ObjectNotFoundException;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -37,7 +37,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
 
             // Query use HQL
             @SuppressWarnings("unchecked")
-            Query<T> query = session.createQuery("from " + this.getPersistenceClassName());
+            Query query = session.createQuery("from " + this.getPersistenceClassName());
 
             list = query.list();
             transaction.commit();
@@ -92,7 +92,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         Transaction transaction = session.beginTransaction();
         T result = null;
         try {
-            result = session.get(persistenceClass, id);
+            result = (T) session.get(persistenceClass, id);
             if (result == null) {
                 throw new ObjectNotFoundException("Not found" + id);
             }
@@ -136,7 +136,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
                 sql.append(" ").append(sortDirection.equals(WebConstant.SORT_ASC) ? "asc" : "desc");
             }
             @SuppressWarnings("unchecked")
-            Query<T> query1 = session.createQuery(sql.toString());
+            Query query1 = session.createQuery(sql.toString());
             if (property.size() > 0) {
                 for (int i1 = 0; i1 < params.length; i1++) {
                     query1.setParameter(params[i1], values[i1]);
@@ -158,7 +158,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
                 }
             }
             @SuppressWarnings("unchecked")
-            Query<T> query2 = session.createQuery(sql1.toString());
+            Query query2 = session.createQuery(sql1.toString());
             if (property.size() > 0) {
                 for (int k1 = 0; k1 < params.length; k1++) {
                     query2.setParameter(params[k1], values[k1]);
@@ -182,7 +182,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         Integer count = 0;
         try {
             for (ID item : ids) {
-                T t = session.get(persistenceClass, item);
+                T t = (T) session.get(persistenceClass, item);
                 session.delete(t);
                 count++;
             }
@@ -204,9 +204,9 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         try {
             String sql = " FROM " + getPersistenceClassName() + " model WHERE model." + property + "= :value";
             @SuppressWarnings("unchecked")
-            Query<T> query = session.createQuery(sql);
+            Query query = session.createQuery(sql);
             query.setParameter("value", value);
-            result = query.uniqueResult();
+            result = (T) query.uniqueResult();
         } catch (HibernateException e) {
             transaction.rollback();
             throw e;
