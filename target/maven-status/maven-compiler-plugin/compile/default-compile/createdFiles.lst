@@ -5,6 +5,7 @@ com\ezcook\entities\Role.class
 com\ezcook\daos\impls\FoodDao.class
 com\ezcook\dtos\UserDto.class
 com\ezcook\services\IUserService.class
+com\ezcook\controllers\LoginGoogleController.class
 com\ezcook\services\IStatisticsService.class
 com\ezcook\controllers\admin\UserController.class
 com\ezcook\dtos\FoodTypeDto.class
@@ -14,6 +15,7 @@ com\ezcook\entities\Statistics.class
 com\ezcook\services\impls\FoodTypeService.class
 com\ezcook\controllers\LoginController.class
 com\ezcook\daos\IGenericDao.class
+com\ezcook\utils\GoogleUtil.class
 com\ezcook\command\UserCommand.class
 com\ezcook\daos\impls\FoodTypeDao.class
 com\ezcook\dtos\CommentDto.class
@@ -21,6 +23,7 @@ com\ezcook\utils\HibernateUtil.class
 com\ezcook\dtos\FoodDto.class
 com\ezcook\entities\FoodType.class
 com\ezcook\dtos\CheckLogin.class
+com\ezcook\constants\GoogleConstant.class
 com\ezcook\services\impls\RoleService.class
 com\ezcook\constants\WebConstant.class
 com\ezcook\services\IRoleService.class

@@ -7,6 +7,7 @@ import java.util.Collection;
 @Entity
 @Table(name = "usertable", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class User {
+
     private int id;
     private Timestamp createddate;
     private String email;

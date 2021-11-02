@@ -86,6 +86,10 @@
                                    href="<c:url value='/#'/>" data-id="penci-mega-138">
                                     <span>All</span>
                                 </a>
+                                <a class="mega-cat-child cat-active all-style"
+                                   href="<c:url value='/login-google?action=logout'/>" data-id="penci-mega-138">
+                                    <span>Đăng xuất</span>
+                                </a>
                             </div>
 
                             <div class="penci-content-megamenu">
@@ -3706,6 +3710,9 @@
                 </li>
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52">
                     <a href="https://www.esheepkitchen.com/about-me/">Về Esheep Kitchen</a>
+                </li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52">
+                    <a href="<c:url value='/login-google?action=logout'/>">Logout</a>
                 </li>
             </ul>
         </div>

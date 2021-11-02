@@ -4,8 +4,8 @@
 <html>
 <head>
     <script src="https://fonts.googleapis.com/css?family=Montserrat:400,800"></script>
-    <link rel="stylesheet" href="<c:url value='/templates/login/query.js' />" />
-    <link rel="stylesheet" href="<c:url value='/templates/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='/templates/login/query.js' />"/>
+    <link rel="stylesheet" href="<c:url value='/templates/admin/font-awesome/4.5.0/css/font-awesome.min.css' />"/>
     <title></title>
 </head>
 <body>
@@ -15,11 +15,11 @@
             <h1>Tạo tài khoản</h1>
             <br>
             <span>Nhập thông tin</span>
-            <input type="text" placeholder="Họ và Tên" />
-            <input type="text" placeholder="Tài khoản" />
-            <input type="password" placeholder="Mật khẩu" />
-            <input type="password" placeholder="Nhập lại mật khẩu" />
-            <input type="email" placeholder="Email" />
+            <input type="text" placeholder="Họ và Tên"/>
+            <input type="text" placeholder="Tài khoản"/>
+            <input type="password" placeholder="Mật khẩu"/>
+            <input type="password" placeholder="Nhập lại mật khẩu"/>
+            <input type="email" placeholder="Email"/>
             <button>Đăng kí</button>
         </form>
     </div>
@@ -27,7 +27,9 @@
         <form action="${formUrl}" method="post">
             <h1>Đăng Nhập</h1>
             <div class="social-container">
-                <a href="#" class="social "><i class="fa fa-google iconGoogle"></i></a>
+                <a href="<c:url value='https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
+    &client_id=405005216042-pno7k9oitgqllnqr6to7tk36cnqn43g8.apps.googleusercontent.com&approval_prompt=force'/>"
+                   class="social "><i class="fa fa-google iconGoogle"></i></a>
             </div>
             <span>Hoặc</span>
 

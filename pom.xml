@@ -26,6 +26,11 @@
         <commons.fileupload.version>1.4</commons.fileupload.version>
         <commons.io.version>20030203.000550</commons.io.version>
         <testng.version>7.4.0</testng.version>
+        <inject.version>1</inject.version>
+        <weld.servlet.version>2.4.8.Final</weld.servlet.version>
+        <jackson.databind.version>2.13.0</jackson.databind.version>
+        <gson.version>2.8.8</gson.version>
+        <okhttp3.version>4.9.2</okhttp3.version>
         <apache.maven.plugins.version>3.3.1</apache.maven.plugins.version>
     </properties>
 
@@ -54,7 +59,7 @@
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <version>${hibernate.javax.persistence.version}</version>
         </dependency>
-<!--..........https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api................-->
+        <!--..........https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api................-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -67,19 +72,19 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-<!--................https://mvnrepository.com/artifact/opensymphony/sitemesh..........-->
+        <!--................https://mvnrepository.com/artifact/opensymphony/sitemesh..........-->
         <dependency>
             <groupId>opensymphony</groupId>
             <artifactId>sitemesh</artifactId>
             <version>${sitemesh.version}</version>
         </dependency>
-<!--       .......... https://mvnrepository.com/artifact/javax.servlet/jstl............-->
+        <!--       .......... https://mvnrepository.com/artifact/javax.servlet/jstl............-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${javax.servlet.version}</version>
         </dependency>
-<!--      ......  https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils...-->
+        <!--      ......  https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils...-->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
@@ -101,13 +106,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
-<!--     ........   https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload........-->
+        <!--     ........   https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload........-->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>${commons.fileupload.version}</version>
         </dependency>
-<!--.............https://mvnrepository.com/artifact/commons-io/commons-io.............-->
+        <!--.............https://mvnrepository.com/artifact/commons-io/commons-io.............-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -119,6 +124,40 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
+        </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.inject/javax.inject &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>javax.inject</groupId>-->
+<!--            <artifactId>javax.inject</artifactId>-->
+<!--            <version>${inject.version}</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.jboss.weld.servlet</groupId>-->
+<!--            <artifactId>weld-servlet</artifactId>-->
+<!--            <version>${weld.servlet.version}</version>-->
+<!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp3.version}</version>
         </dependency>
     </dependencies>
     <build>
