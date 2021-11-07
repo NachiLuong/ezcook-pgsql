@@ -10,7 +10,8 @@ public interface IGenericDao<ID extends Serializable, T>
     T update(T entity);
     void save(T entity);
     T findByID(ID id);
-    Object[] findByProperty(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit);
+    //Object[] findByProperty(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit);
+    Object[] findByProperty(String property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit);
     Integer delete(List<ID> ids);
     T findEqualUnique(String property, Object value);
 }

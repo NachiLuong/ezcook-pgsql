@@ -62,7 +62,7 @@
 }
 
 .penci-owl-carousel .owl-stage:after {
-    content: ".";
+    content: '.';
     display: block;
     clear: both;
     visibility: hidden;
@@ -3477,7 +3477,7 @@
 .justified-gallery>div>.caption.caption-visible {
     display: initial;
     opacity: .7;
-    filter: "alpha(opacity=70)";
+    filter: 'alpha(opacity=70)';
     -webkit-animation: justified-gallery-show-caption-animation 500ms 0 ease;
     -moz-animation: justified-gallery-show-caption-animation 500ms 0 ease;
     -ms-animation: justified-gallery-show-caption-animation 500ms 0 ease
@@ -3635,7 +3635,7 @@ iframe {
     max-width: none;
 }
 
-iframe[name="google_conversion_frame"] {
+iframe[name='google_conversion_frame'] {
     height: 0;
     display: block;
     overflow: hidden;
@@ -4159,7 +4159,7 @@ div.penci-topbar-menu>ul ul.sub-menu li:first-child>a {
 
 #navigation ul.menu>li>a:before,
 #navigation .menu>ul>li>a:before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 18px;
     transition: all 0.2s;
@@ -4426,7 +4426,7 @@ li.penci-mega-menu>ul.sub-menu {
 }
 
 #navigation .penci-megamenu .penci-mega-child-categories:after {
-    content: "";
+    content: '';
     width: 1px;
     height: 100%;
     position: absolute;
@@ -4458,7 +4458,7 @@ li.penci-mega-menu>ul.sub-menu {
 }
 
 #navigation .penci-megamenu .penci-mega-child-categories a.cat-active:before {
-    content: "";
+    content: '';
     width: 1px;
     height: 100%;
     position: absolute;
@@ -4723,7 +4723,7 @@ li.penci-mega-menu>ul.sub-menu {
 
 #navigation ul.menu>li.megamenu>ul.sub-menu>li:before {
     left: 0;
-    content: "";
+    content: '';
     position: absolute;
     top: 15px;
     bottom: 15px;
@@ -4775,7 +4775,7 @@ li.penci-mega-menu>ul.sub-menu {
 #navigation ul.menu>li.penci-mega-menu>a:after,
 #navigation .menu>ul>li.penci-mega-menu>a:after {
     font-family: FontAwesome;
-    content: "\f107";
+    content: '\f107';
     margin-left: 5px;
     color: inherit;
     font-size: 13px;

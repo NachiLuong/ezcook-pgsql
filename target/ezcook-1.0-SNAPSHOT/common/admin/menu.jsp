@@ -1,30 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<c:url value="/admin-user-list" var="userList"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <div id="sidebar" class="sidebar responsive ace-save-state">
-    <script type="text/javascript">
-        try{ace.settings.loadState('sidebar')}catch(e){}
-    </script>
     <ul class="nav nav-list">
-        <li class="">
-            <a href="#" class="dropdown-toggle">
+        <li href="${userList}" >
+            <a href="${userList}" >
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"></span>
                 <fmt:message key="label.manager.account" bundle="${lang}"/>
             </a>
         </li>
         <li class="">
-            <a href="#" class="dropdown-toggle">
+            <a href="#">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"></span>
                 <fmt:message key="label.manager.food" bundle="${lang}"/>
             </a>
         </li>
         <li class="">
-            <a href="#" class="dropdown-toggle">
+            <a href="#">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text"></span>
                 <fmt:message key="label.manager.foodType" bundle="${lang}"/>

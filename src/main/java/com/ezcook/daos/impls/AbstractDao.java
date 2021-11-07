@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,11 +35,9 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-
             // Query use HQL
             @SuppressWarnings("unchecked")
             Query query = session.createQuery("from " + this.getPersistenceClassName());
-
             list = query.list();
             transaction.commit();
         } catch (HibernateException e) {
@@ -110,6 +109,53 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
     }
 
     @Override
+    public Object[] findByProperty(String property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit) {
+        List<T> list = new ArrayList<T>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Object totalItem = 0;
+        try {
+            StringBuilder sql1 = new StringBuilder("from ");
+            sql1.append(getPersistenceClassName());
+            if (property != null && value != null) {
+                sql1.append(" where ").append(property).append("= :value");
+            }
+            if (sortExpression != null && sortDirection != null) {
+                sql1.append(" order by ").append(sortExpression);
+                sql1.append(" " +(sortDirection.equals(WebConstant.SORT_ASC)?"asc":"desc"));
+            }
+            Query query1 = session.createQuery(sql1.toString());
+            if (value != null) {
+                query1.setParameter("value", value);
+            }
+            if (offset != null && offset >= 0) {
+                query1.setFirstResult(offset);
+            }
+            if (limit != null && limit > 0) {
+                query1.setMaxResults(limit);
+            }
+            list = query1.list();
+            StringBuilder sql2 = new StringBuilder("select count(*) from ");
+            sql2.append(getPersistenceClassName());
+            if (property != null && value != null) {
+                sql2.append(" where ").append(property).append("= :value");
+            }
+            Query query2 = session.createQuery(sql2.toString());
+            if (value != null) {
+                query2.setParameter("value", value);
+            }
+            totalItem = query2.list().get(0);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+        return new Object[]{totalItem, list};
+    }
+
+   /* @Override
     public Object[] findByProperty(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
@@ -173,7 +219,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
             session.close();
         }
         return new Object[]{total, list};
-    }
+    }*/
 
     @Override
     public Integer delete(List<ID> ids) {

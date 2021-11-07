@@ -3,13 +3,18 @@ package com.ezcook.services.impls;
 import com.ezcook.daos.IUserDao;
 import com.ezcook.daos.impls.UserDao;
 import com.ezcook.dtos.CheckLogin;
+import com.ezcook.dtos.UserDto;
 import com.ezcook.entities.User;
 import com.ezcook.services.IUserService;
+import com.ezcook.utils.SingletonDaoUtil;
+import com.ezcook.utils.beanUtils.UserBeanUtil;
 
 //import javax.inject.Inject;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class UserService implements IUserService {
 
@@ -63,4 +68,28 @@ public class UserService implements IUserService {
         user.setModifieddate(Timestamp.from(Instant.now()));
         userDao.save(user);
     }
+
+    @Override
+    public Object[] findUsersByProperties(String property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit) {
+        List<UserDto> result = new ArrayList<UserDto>();
+        Object[] objects = userDao.findByProperty(property, value, sortExpression, sortDirection, offset, limit);
+        for (User item: (List<User>)objects[1]) {
+            UserDto dto = UserBeanUtil.entity2Dto(item);
+            result.add(dto);
+        }
+        objects[1] = result;
+        return objects;
+    }
+
+   /* @Override
+    public Object[] findUserByProperties(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit) {
+        Object[] objects= SingletonDaoUtil.getUserDaoInstance().findByProperty(property,sortExpression,sortDirection,offset,limit);
+        List<UserDto> userDTOs= new ArrayList<>();
+        for (User item: (List<User>)objects[1]){
+            UserDto userDTO= UserBeanUtil.entity2Dto(item);
+            userDTOs.add(userDTO);
+        }
+        objects[1]=userDTOs;
+        return objects;
+    }*/
 }
