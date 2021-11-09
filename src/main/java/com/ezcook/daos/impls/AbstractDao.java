@@ -15,7 +15,14 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
 
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+
 public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, T> {
+    // Get session factory
+    SessionFactory factory = HibernateUtil.getSessionFactory();
 
     private final Class<T> persistenceClass;
 
@@ -215,4 +222,5 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         }
         return result;
     }
+
 }

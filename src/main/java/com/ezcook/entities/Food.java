@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
+@Table(name = "food")
 public class Food {
     private int id;
     private String contentFood;
@@ -16,6 +17,24 @@ public class Food {
     private Integer idFoodtype;
     private Collection<Comment> comments;
     private FoodType foodtype;
+
+    public Food() {
+
+    }
+
+    public Food(int id,String contentFood,Timestamp createddate,String image,String linkVideo,Timestamp modifieddate,String nameFood,Integer idFoodtype,Collection<Comment> comments,FoodType foodtype) {
+        this.id=id;
+        this.contentFood=contentFood;
+        this.createddate=createddate;
+        this.image=image;
+        this.linkVideo=linkVideo;
+        this.modifieddate=modifieddate;
+        this.nameFood=nameFood;
+        this.idFoodtype=idFoodtype;
+        this.comments=comments;
+        this.foodtype=foodtype;
+    }
+
 
     @Id
     @Column(name = "id_food")
