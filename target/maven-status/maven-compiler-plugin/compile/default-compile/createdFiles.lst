@@ -6,6 +6,7 @@ com\ezcook\daos\impls\FoodDao.class
 com\ezcook\dtos\UserDto.class
 com\ezcook\services\IUserService.class
 com\ezcook\controllers\LoginGoogleController.class
+com\ezcook\utils\RequestUtil.class
 com\ezcook\services\IStatisticsService.class
 com\ezcook\controllers\admin\UserController.class
 com\ezcook\dtos\FoodTypeDto.class
@@ -27,6 +28,7 @@ com\ezcook\constants\GoogleConstant.class
 com\ezcook\services\impls\RoleService.class
 com\ezcook\constants\WebConstant.class
 com\ezcook\services\IRoleService.class
+com\ezcook\utils\SingletonServiceUtil.class
 com\ezcook\services\impls\StatisticsService.class
 com\ezcook\command\AbstractCommand.class
 com\ezcook\daos\impls\AbstractDao.class
@@ -37,6 +39,7 @@ com\ezcook\daos\impls\CommentDao.class
 com\ezcook\services\ICommentService.class
 com\ezcook\controllers\admin\AdminController.class
 com\ezcook\controllers\admin\FoodController.class
+com\ezcook\utils\SingletonDaoUtil.class
 com\ezcook\daos\impls\RoleDao.class
 com\ezcook\controllers\admin\RoleController.class
 com\ezcook\daos\IStatisticsDao.class

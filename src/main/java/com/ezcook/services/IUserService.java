@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface IUserService {
 
-    CheckLogin checkLogin(String username, String password_user);
+    CheckLogin checkLogin(String username, String password);
     User findById(int id);
     boolean isExistEmail(String email);
     User findOneByEmail(String email);

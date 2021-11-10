@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class UserDto implements Serializable {
     private Integer id_user;
     private String username;
-    private String password_user;
+    private String password;
     private String fullname;
     private String email;
     private Timestamp createdate;
@@ -38,12 +38,12 @@ public class UserDto implements Serializable {
         this.username = username;
     }
 
-    public String getPassword_user() {
-        return password_user;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassword_user(String password_user) {
-        this.password_user = password_user;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFullname() {

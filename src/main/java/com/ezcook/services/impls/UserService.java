@@ -22,11 +22,11 @@ public class UserService implements IUserService {
     IUserDao userDao = new UserDao();
 
     @Override
-    public CheckLogin checkLogin(String username, String password_user) {
+    public CheckLogin checkLogin(String username, String password) {
         CheckLogin checkLogin = new CheckLogin();
         IUserDao userDao=new UserDao();
-        if (username != null && password_user != null) {
-            Object[] objects = userDao.checkLogin(username, password_user);
+        if (username != null && password != null) {
+            Object[] objects = userDao.checkLogin(username, password);
             checkLogin.setUserExist((Boolean) objects[0]);
             if (checkLogin.isUserExist()) {
                 checkLogin.setRoleName(objects[1].toString());
@@ -64,8 +64,8 @@ public class UserService implements IUserService {
 
     @Override
     public void save(User user) {
-        user.setCreateddate(Timestamp.from(Instant.now()));
-        user.setModifieddate(Timestamp.from(Instant.now()));
+        user.setCreatedOn(Timestamp.from(Instant.now()));
+        user.setModifiedOn(Timestamp.from(Instant.now()));
         userDao.save(user);
     }
 

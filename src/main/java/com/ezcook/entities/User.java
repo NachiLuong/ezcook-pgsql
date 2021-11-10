@@ -1,27 +1,35 @@
 package com.ezcook.entities;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Nationalized;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
-@Table(name = "usertable", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "user", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class User {
 
     private int id;
-    private Timestamp createddate;
-    private String email;
-    private String fullname;
-    private Timestamp modifieddate;
     private String password;
     private String username;
-    private Integer idRole;
-    private Collection<Comment> comments;
+    private String name;
+    private String email;
+    private Integer roleId;
+
+    private Timestamp createdOn;
+    private Timestamp modifiedOn;
+
+    private Collection<Comment> commentsById;
+
     private Role role;
 
+
     @Id
-    @Column(name = "id_user")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -31,57 +39,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "createddate")
-    public Timestamp getCreateddate() {
-        return createddate;
-    }
-
-    public void setCreateddate(Timestamp createddate) {
-        this.createddate = createddate;
-    }
-
-    @Basic
-    @Column(name = "email")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Basic
-    @Column(name = "fullname")
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
-    @Basic
-    @Column(name = "modifieddate")
-    public Timestamp getModifieddate() {
-        return modifieddate;
-    }
-
-    public void setModifieddate(Timestamp modifieddate) {
-        this.modifieddate = modifieddate;
-    }
-
-    @Basic
-    @Column(name = "password_user")
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Basic
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     public String getUsername() {
         return username;
     }
@@ -91,13 +49,64 @@ public class User {
     }
 
     @Basic
-    @Column(name = "id_role" , insertable = false, updatable = false)
-    public Integer getIdRole() {
-        return idRole;
+    @Column(name = "password", nullable = false)
+    public String getPassword() {
+        return password;
     }
 
-    public void setIdRole(Integer idRole) {
-        this.idRole = idRole;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Basic
+    @Column(name = "name", nullable = false)
+    @Nationalized
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Basic
+    @Column(name = "email", nullable = false)
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Basic
+    @Column(name = "role_id", nullable = false)
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    @Basic
+    @Column(name = "created_on")
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    @Basic
+    @Column(name = "modified_on")
+    public Timestamp getModifiedOn() {
+        return modifiedOn;
+    }
+
+    public void setModifiedOn(Timestamp modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
     @Override
@@ -108,41 +117,40 @@ public class User {
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (createddate != null ? !createddate.equals(user.createddate) : user.createddate != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (fullname != null ? !fullname.equals(user.fullname) : user.fullname != null) return false;
-        if (modifieddate != null ? !modifieddate.equals(user.modifieddate) : user.modifieddate != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        if (idRole != null ? !idRole.equals(user.idRole) : user.idRole != null) return false;
-
-        return true;
+        if (!Objects.equals(createdOn, user.createdOn)) return false;
+        if (!Objects.equals(email, user.email)) return false;
+        if (!Objects.equals(name, user.name)) return false;
+        if (!Objects.equals(modifiedOn, user.modifiedOn)) return false;
+        if (!Objects.equals(password, user.password)) return false;
+        if (!Objects.equals(username, user.username)) return false;
+        return Objects.equals(roleId, user.roleId);
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
+        result = 31 * result + (createdOn != null ? createdOn.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
-        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (modifiedOn != null ? modifiedOn.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (idRole != null ? idRole.hashCode() : 0);
+        result = 31 * result + (roleId != null ? roleId.hashCode() : 0);
         return result;
     }
 
     @OneToMany(mappedBy = "user")
-    public Collection<Comment> getComments() {
-        return comments;
+    @Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
+    public Collection<Comment> getCommentsById() {
+        return commentsById;
     }
 
-    public void setComments(Collection<Comment> comments) {
-        this.comments = comments;
+    public void setCommentsById(Collection<Comment> commentsById) {
+        this.commentsById = commentsById;
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_role", referencedColumnName = "id_role")
+    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public Role getRole() {
         return role;
     }

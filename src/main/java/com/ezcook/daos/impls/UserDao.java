@@ -11,16 +11,17 @@ import org.hibernate.Transaction;
 public class UserDao extends AbstractDao<Integer, User> implements IUserDao {
 
     @Override
-    public Object[] checkLogin(String username, String password_user) {
+    public Object[] checkLogin(String username, String password) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         boolean isUserExist = false;
         String roleName = null;
         try {
-            @SuppressWarnings("unchecked")
-            Query query = session.createQuery(" FROM User ue WHERE ue.username= :username AND ue.password= :password_user");
-            query.setParameter("username", username);
-            query.setParameter("password_user", password_user);
+            StringBuilder sql= new StringBuilder("FROM user ue WHERE ue.username=" + username + " AND ue.password=" + password);
+            Query query = session.createQuery(sql.toString());
+//            Query query = session.createQuery(" FROM user ue WHERE ue.username= :username AND ue.password= :password");
+//            query.setParameter("username", username);
+//            query.setParameter("password", password);
             if (query.list().size() > 0) {
                 isUserExist = true;
                 User userEntity = (User) query.uniqueResult();

@@ -5,7 +5,6 @@
 <head>
     <script src="https://fonts.googleapis.com/css?family=Montserrat:400,800"></script>
     <link rel="stylesheet" href="<c:url value='/templates/login/query.js' />"/>
-    <link rel="stylesheet" href="<c:url value='/templates/admin/font-awesome/4.5.0/css/font-awesome.min.css' />"/>
     <title></title>
 </head>
 <body>
@@ -34,7 +33,7 @@
             <span>Hoặc</span>
 
             <input type="text" placeholder="Tài khoản" name="pojo.username"/>
-            <input type="password" placeholder="Mật khẩu" name="pojo.password_user"/>
+            <input type="password" placeholder="Mật khẩu" name="pojo.password"/>
             <a href="#">Quên mật khẩu</a>
             <button type="submit">Đăng Nhập</button>
         </form>

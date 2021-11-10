@@ -1,105 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ include file="/common/taglib.jsp" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><dec:title default="Admin Page" /></title>
-    <link rel="stylesheet" href="<c:url value='/templates/admin/assets/css/bootstrap.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='/templates/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='/templates/admin/assets/css/ace.min.css' />" class="ace-main-stylesheet" id="main-ace-style" />
-    <script src="<c:url value='/templates/admin/assets/js/ace-extra.min.js' />"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type='text/javascript' src='<c:url value="/templates/admin/js/jquery-2.2.3.min.js" />'></script>
-    <script src="<c:url value='/templates/admin/assets/js/jquery.2.1.1.min.js' />"></script>
-    <script src="<c:url value='/templates/admin/assets/js/jquery.validate.min.js' />"></script>
-
-    <link rel="stylesheet" href="<c:url value="/templates/admin/css/global_admin_style.css"/>">
-    <script type="text/javascript" src="<c:url value="/templates/admin/js/global_admin_script.js"/>"></script>
-    <%-- ckeditor plungin--%>
-    <script type="text/javascript" src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/ckfinder/ckfinder.js"/>"></script>
-
-    <%--sweetalert--%>
-    <script type='text/javascript' src='<c:url value="/templates/admin/sweetalert/sweetalert2.min.js"/>'></script>
-    <link rel="stylesheet" href="<c:url value="/templates/admin/sweetalert/sweetalert2.min.css"/>">
-
-    <%--datatable--%>
-    <%--<link href="<c:url value="/template/data-table/media/css/dataTables.bootstrap4_v4.6.1.min.css"/>" rel="stylesheet">
-    <script type="text/javascript" src="<c:url value="/template/data-table/data_table-1.0.0.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/template/data-table/data-table-bootstrap4-1.0.0.js"/>"></script>--%>
-    <dec:head />
+    <title>Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<c:url value='/templates/admin/css/style.css' />"/>
+    <dec:head/>
 </head>
-<body class="no-skin">
-
-<!-- Header -->
-<%@ include file="/common/admin/header.jsp" %>
-<!-- End Header -->
-
-<div class="main-container ace-save-state" id="main-container">
-
-    <script type="text/javascript">
-        try{ace.settings.loadState('main-container')}catch(e){}
-    </script>
-
-    <!-- Begin menu -->
+<body>
+<div class="wrapper d-flex align-items-stretch">
     <%@ include file="/common/admin/menu.jsp" %>
-    <!-- End menu -->
-
-
-    <!-- Begin body -->
-    <dec:body/>
-    <!-- End body -->
-
-    <!-- Begin footer -->
-    <%@ include file="/common/admin/footer.jsp" %>
-    <!-- end footer -->
-
-    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-    </a>
-
+    <div id="content" class="p-4 p-md-5">
+        <%@ include file="/common/admin/header.jsp" %>
+        <dec:body/>
+    </div>
 </div>
-<!-- /.main-container -->
+<script type='text/javascript' src="<c:url value='/templates/admin/js/bootstrap.min.js'/>"></script>
+<script type='text/javascript' src="<c:url value='/templates/admin/js/popper.js'/>"></script>
+<script type='text/javascript' src="<c:url value='/templates/admin/js/jquery.min.js'/>"></script>
+<script type='text/javascript' src="<c:url value='/templates/admin/js/main.js'/>"></script>
 
-
-<script src="<c:url value='/templates/admin/assets/js/bootstrap.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/jquery-ui.custom.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/jquery.ui.touch-punch.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/jquery.easypiechart.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/jquery.sparkline.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/jquery.flot.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/jquery.flot.pie.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/jquery.flot.resize.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/ace-elements.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/ace.min.js' />"></script>
-<script src="<c:url value='/templates/admin/assets/js/bootstrap.min.js'/>"></script>
-
-<!-- page specific plugin scripts -->
-<script src="<c:url value='/templates/admin/assets/js/jquery-ui.min.js'/>"></script>
-
-<%--tu viet--%>
-<%--<script type="text/javascript">
-    function showAlertBeforeDelete(callback){
-        swal({
-            title: "Xác nhận xóa",
-            text: "Bạn có chắc chắn muốn xóa không",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Đồng ý",
-            cancelButtonText: "Hủy",
-            confirmButtonClass: "btn btn-success",
-            cancelButtonClass: "btn btn-danger"
-        }).then(function (isConfirm){
-            if(isConfirm){
-                callback();
-            }
-        });
-    }
-</script>--%>
 </body>
 </html>

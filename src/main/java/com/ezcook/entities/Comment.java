@@ -1,23 +1,41 @@
 package com.ezcook.entities;
 
+import org.hibernate.annotations.Nationalized;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
-@Table(name = "commenttable", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "comment", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class Comment {
+
     private int id;
-    private String contentComment;
-    private Timestamp createddate;
-    private Timestamp modifieddate;
-    private Timestamp timeComment;
-    private Integer idFood;
-    private Integer idUser;
+    private String content;
+    private Timestamp time;
+    private Integer foodId;
+    private Integer userId;
+
+    private Timestamp createdOn;
+    private Timestamp modifiedOn;
+
     private Food food;
     private User user;
 
+    public Comment() {
+
+    }
+
+    public Comment(String content, Timestamp time, Integer foodId, Integer userId) {
+        this.content = content;
+        this.time = time;
+        this.foodId = foodId;
+        this.userId = userId;
+    }
+
     @Id
-    @Column(name = "id_comment")
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -27,63 +45,64 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "content_comment")
-    public String getContentComment() {
-        return contentComment;
+    @Column(name = "content", nullable = false)
+    @Nationalized
+    public String getContent() {
+        return content;
     }
 
-    public void setContentComment(String contentComment) {
-        this.contentComment = contentComment;
-    }
-
-    @Basic
-    @Column(name = "createddate")
-    public Timestamp getCreateddate() {
-        return createddate;
-    }
-
-    public void setCreateddate(Timestamp createddate) {
-        this.createddate = createddate;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Basic
-    @Column(name = "modifieddate")
-    public Timestamp getModifieddate() {
-        return modifieddate;
+    @Column(name = "time", nullable = false)
+    public Timestamp getTime() {
+        return time;
     }
 
-    public void setModifieddate(Timestamp modifieddate) {
-        this.modifieddate = modifieddate;
-    }
-
-    @Basic
-    @Column(name = "time_comment")
-    public Timestamp getTimeComment() {
-        return timeComment;
-    }
-
-    public void setTimeComment(Timestamp timeComment) {
-        this.timeComment = timeComment;
+    public void setTime(Timestamp time) {
+        this.time = time;
     }
 
     @Basic
-    @Column(name = "id_food", insertable = false, updatable = false)
-    public Integer getIdFood() {
-        return idFood;
+    @Column(name = "food_id", nullable = false)
+    public Integer getFoodId() {
+        return foodId;
     }
 
-    public void setIdFood(Integer idFood) {
-        this.idFood = idFood;
+    public void setFoodId(Integer foodId) {
+        this.foodId = foodId;
     }
 
     @Basic
-    @Column(name = "id_user" , insertable = false, updatable = false)
-    public Integer getIdUser() {
-        return idUser;
+    @Column(name = "user_id", nullable = false)
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    @Basic
+    @Column(name = "created_on")
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    @Basic
+    @Column(name = "modified_on")
+    public Timestamp getModifiedOn() {
+        return modifiedOn;
+    }
+
+    public void setModifiedOn(Timestamp modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
     @Override
@@ -94,32 +113,28 @@ public class Comment {
         Comment comment = (Comment) o;
 
         if (id != comment.id) return false;
-        if (contentComment != null ? !contentComment.equals(comment.contentComment) : comment.contentComment != null)
-            return false;
-        if (createddate != null ? !createddate.equals(comment.createddate) : comment.createddate != null) return false;
-        if (modifieddate != null ? !modifieddate.equals(comment.modifieddate) : comment.modifieddate != null)
-            return false;
-        if (timeComment != null ? !timeComment.equals(comment.timeComment) : comment.timeComment != null) return false;
-        if (idFood != null ? !idFood.equals(comment.idFood) : comment.idFood != null) return false;
-        if (idUser != null ? !idUser.equals(comment.idUser) : comment.idUser != null) return false;
-
-        return true;
+        if (!Objects.equals(content, comment.content)) return false;
+        if (!Objects.equals(createdOn, comment.createdOn)) return false;
+        if (!Objects.equals(modifiedOn, comment.modifiedOn)) return false;
+        if (!Objects.equals(time, comment.time)) return false;
+        if (!Objects.equals(foodId, comment.foodId)) return false;
+        return Objects.equals(userId, comment.userId);
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (contentComment != null ? contentComment.hashCode() : 0);
-        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
-        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
-        result = 31 * result + (timeComment != null ? timeComment.hashCode() : 0);
-        result = 31 * result + (idFood != null ? idFood.hashCode() : 0);
-        result = 31 * result + (idUser != null ? idUser.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (createdOn != null ? createdOn.hashCode() : 0);
+        result = 31 * result + (modifiedOn != null ? modifiedOn.hashCode() : 0);
+        result = 31 * result + (time != null ? time.hashCode() : 0);
+        result = 31 * result + (foodId != null ? foodId.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_food", referencedColumnName = "id_food")
+    @JoinColumn(name = "food_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public Food getFood() {
         return food;
     }
@@ -129,7 +144,7 @@ public class Comment {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public User getUser() {
         return user;
     }

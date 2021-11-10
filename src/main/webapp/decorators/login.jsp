@@ -10,7 +10,7 @@
 <body>
     <%@ include file="/common/login/header.jsp" %>
      <dec:body/>
-</div>
+
 <script type='text/javascript' src="<c:url value='/templates/login/query.js'/>"></script>
 </body>
 </html>

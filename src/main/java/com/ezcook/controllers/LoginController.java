@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
         UserDto pojo = command.getPojo();
         IUserService userService = new UserService();
         if (pojo != null) {
-            CheckLogin login = userService.checkLogin(pojo.getUsername(), pojo.getPassword_user());
+            CheckLogin login = userService.checkLogin(pojo.getUsername(), pojo.getPassword());
             if (login.isUserExist()) {
                 if (login.getRoleName().equals(WebConstant.ROLE_ADMIN)) {
                     resp.sendRedirect("/admin-home");
