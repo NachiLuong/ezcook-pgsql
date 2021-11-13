@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
-@Table(name = "roletb", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "role", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class Role {
     private int id;
     private Timestamp createddate;
@@ -14,7 +14,7 @@ public class Role {
     private Collection<User> users;
 
     @Id
-    @Column(name = "id_role")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -24,7 +24,7 @@ public class Role {
     }
 
     @Basic
-    @Column(name = "createddate")
+    @Column(name = "created_on")
     public Timestamp getCreateddate() {
         return createddate;
     }
@@ -34,7 +34,7 @@ public class Role {
     }
 
     @Basic
-    @Column(name = "modifieddate")
+    @Column(name = "modified_on")
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -44,7 +44,7 @@ public class Role {
     }
 
     @Basic
-    @Column(name = "name_role")
+    @Column(name = "name")
     public String getName() {
         return name;
     }

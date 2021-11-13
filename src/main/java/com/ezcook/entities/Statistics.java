@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "statisticstable", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "statistical", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class Statistics {
     private int id;
     private Integer commentCount;
@@ -13,7 +13,7 @@ public class Statistics {
     private Integer visits;
 
     @Id
-    @Column(name = "id_statistics")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -23,7 +23,7 @@ public class Statistics {
     }
 
     @Basic
-    @Column(name = "comment_count")
+    @Column(name = "comments")
     public Integer getCommentCount() {
         return commentCount;
     }
@@ -33,7 +33,7 @@ public class Statistics {
     }
 
     @Basic
-    @Column(name = "createddate")
+    @Column(name = "created_on")
     public Timestamp getCreateddate() {
         return createddate;
     }
@@ -43,7 +43,7 @@ public class Statistics {
     }
 
     @Basic
-    @Column(name = "modifieddate")
+    @Column(name = "modified_on")
     public Timestamp getModifieddate() {
         return modifieddate;
     }

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
-@Table(name = "food")
+@Table(name = "food",schema = "public")
 public class Food {
     private int id;
     private String contentFood;
@@ -17,6 +17,7 @@ public class Food {
     private Integer idFoodtype;
     private Collection<Comment> comments;
     private FoodType foodtype;
+
 
     public Food() {
 
@@ -37,7 +38,7 @@ public class Food {
 
 
     @Id
-    @Column(name = "id_food")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -47,7 +48,7 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "content_food")
+    @Column(name = "content")
     public String getContentFood() {
         return contentFood;
     }
@@ -57,7 +58,7 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "createddate")
+    @Column(name = "created_on")
     public Timestamp getCreateddate() {
         return createddate;
     }
@@ -77,7 +78,7 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "link_video")
+    @Column(name = "video")
     public String getLinkVideo() {
         return linkVideo;
     }
@@ -87,7 +88,7 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "modifieddate")
+    @Column(name = "modified_on")
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -97,7 +98,7 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "name_food")
+    @Column(name = "name")
     public String getNameFood() {
         return nameFood;
     }
@@ -107,7 +108,7 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "id_foodtype", insertable = false, updatable = false)
+    @Column(name = "foodtype_id", insertable = false, updatable = false)
     public Integer getIdFoodtype() {
         return idFoodtype;
     }
@@ -158,7 +159,7 @@ public class Food {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_foodtype", referencedColumnName = "id_foodtype")
+    @JoinColumn(name = "foodtype_id", referencedColumnName = "id")
     public FoodType getFoodtype() {
         return foodtype;
     }

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
-@Table(name = "usertable", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "user", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class User {
     private int id;
     private Timestamp createddate;
@@ -19,7 +19,7 @@ public class User {
     private Role role;
 
     @Id
-    @Column(name = "id_user")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -29,7 +29,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "createddate")
+    @Column(name = "created_on")
     public Timestamp getCreateddate() {
         return createddate;
     }
@@ -49,7 +49,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "fullname")
+    @Column(name = "name")
     public String getFullname() {
         return fullname;
     }
@@ -59,7 +59,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "modifieddate")
+    @Column(name = "modified_on")
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -69,7 +69,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "password_user")
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -89,7 +89,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "id_role" , insertable = false, updatable = false)
+    @Column(name = "role_id" , insertable = false, updatable = false)
     public Integer getIdRole() {
         return idRole;
     }
@@ -140,7 +140,7 @@ public class User {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_role", referencedColumnName = "id_role")
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     public Role getRole() {
         return role;
     }

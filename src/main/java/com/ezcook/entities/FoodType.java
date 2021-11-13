@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
+@Table(name = "foodtype",schema = "public")
 public class FoodType {
     private int id;
     private Timestamp createddate;
@@ -13,7 +14,7 @@ public class FoodType {
     private Collection<Food> foods;
 
     @Id
-    @Column(name = "id_foodtype")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -23,7 +24,7 @@ public class FoodType {
     }
 
     @Basic
-    @Column(name = "createddate")
+    @Column(name = "created_on")
     public Timestamp getCreateddate() {
         return createddate;
     }
@@ -33,7 +34,7 @@ public class FoodType {
     }
 
     @Basic
-    @Column(name = "modifieddate")
+    @Column(name = "modified_on")
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -43,7 +44,7 @@ public class FoodType {
     }
 
     @Basic
-    @Column(name = "name_foodtype")
+    @Column(name = "name")
     public String getNameFoodtype() {
         return nameFoodtype;
     }

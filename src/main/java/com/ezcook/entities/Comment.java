@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "commenttable", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "comment", schema = "public", catalog = "d37tfeuqn9sfbb")
 public class Comment {
     private int id;
     private String contentComment;
@@ -17,7 +17,7 @@ public class Comment {
     private User user;
 
     @Id
-    @Column(name = "id_comment")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -27,7 +27,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "content_comment")
+    @Column(name = "content")
     public String getContentComment() {
         return contentComment;
     }
@@ -37,7 +37,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "createddate")
+    @Column(name = "created_on")
     public Timestamp getCreateddate() {
         return createddate;
     }
@@ -47,7 +47,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "modifieddate")
+    @Column(name = "modified_on")
     public Timestamp getModifieddate() {
         return modifieddate;
     }
@@ -57,7 +57,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "time_comment")
+    @Column(name = "time")
     public Timestamp getTimeComment() {
         return timeComment;
     }
@@ -67,7 +67,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "id_food", insertable = false, updatable = false)
+    @Column(name = "food_id", insertable = false, updatable = false)
     public Integer getIdFood() {
         return idFood;
     }
@@ -77,7 +77,7 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "id_user" , insertable = false, updatable = false)
+    @Column(name = "user_id" , insertable = false, updatable = false)
     public Integer getIdUser() {
         return idUser;
     }
@@ -119,7 +119,7 @@ public class Comment {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_food", referencedColumnName = "id_food")
+    @JoinColumn(name = "food_id", referencedColumnName = "id")
     public Food getFood() {
         return food;
     }
@@ -129,7 +129,7 @@ public class Comment {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     public User getUser() {
         return user;
     }
