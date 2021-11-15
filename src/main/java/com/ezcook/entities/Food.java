@@ -1,7 +1,6 @@
 package com.ezcook.entities;
 
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -9,37 +8,46 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "food", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "food",schema = "public")
 public class Food {
-
     private int id;
-    private String name;
     private String content;
+    private Timestamp createdOn;
     private String image;
     private String video;
-    private Integer foodtypeId;
-
-    private Timestamp createdOn;
     private Timestamp modifiedOn;
-
+    private String name;
+    private Integer idFoodtype;
     private Collection<Comment> comments;
-
     private FoodType foodtype;
+
 
     public Food() {
 
     }
 
+    public Food(int id,String contentFood,Timestamp createddate,String image,String linkVideo,Timestamp modifieddate,String nameFood,Integer idFoodtype,Collection<Comment> comments,FoodType foodtype) {
+        this.id=id;
+        this.content=contentFood;
+        this.createdOn=createddate;
+        this.image=image;
+        this.video=linkVideo;
+        this.modifiedOn=modifieddate;
+        this.name=nameFood;
+        this.idFoodtype=idFoodtype;
+        this.comments=comments;
+        this.foodtype=foodtype;
+    }
     public Food(String name, String content, String image, String video, Integer foodtypeId) {
         this.name = name;
         this.content = content;
         this.image = image;
         this.video = video;
-        this.foodtypeId = foodtypeId;
+        this.idFoodtype = foodtypeId;
     }
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id" , nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
@@ -50,18 +58,7 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "name", nullable = false)
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Basic
-    @Column(name = "content", nullable = false)
-    @Nationalized
+    @Column(name = "content" , nullable = false)
     public String getContent() {
         return content;
     }
@@ -71,7 +68,17 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "image", nullable = false)
+    @Column(name = "created_on")
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    @Basic
+    @Column(name = "image" , nullable = false)
     public String getImage() {
         return image;
     }
@@ -91,26 +98,6 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "foodtype_id", nullable = false)
-    public Integer getFoodtypeId() {
-        return foodtypeId;
-    }
-
-    public void setFoodtypeId(Integer foodtypeId) {
-        this.foodtypeId = foodtypeId;
-    }
-
-    @Basic
-    @Column(name = "created_on")
-    public Timestamp getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Timestamp createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    @Basic
     @Column(name = "modified_on")
     public Timestamp getModifiedOn() {
         return modifiedOn;
@@ -118,6 +105,26 @@ public class Food {
 
     public void setModifiedOn(Timestamp modifiedOn) {
         this.modifiedOn = modifiedOn;
+    }
+
+    @Basic
+    @Column(name = "name" , nullable = false)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Basic
+    @Column(name = "foodtype_id", insertable = false, updatable = false)
+    public Integer getIdFoodtype() {
+        return idFoodtype;
+    }
+
+    public void setIdFoodtype(Integer idFoodtype) {
+        this.idFoodtype = idFoodtype;
     }
 
     @Override
@@ -134,7 +141,9 @@ public class Food {
         if (!Objects.equals(video, food.video)) return false;
         if (!Objects.equals(modifiedOn, food.modifiedOn)) return false;
         if (!Objects.equals(name, food.name)) return false;
-        return Objects.equals(foodtypeId, food.foodtypeId);
+        if (!Objects.equals(idFoodtype, food.idFoodtype)) return false;
+
+        return true;
     }
 
     @Override
@@ -146,7 +155,7 @@ public class Food {
         result = 31 * result + (video != null ? video.hashCode() : 0);
         result = 31 * result + (modifiedOn != null ? modifiedOn.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (foodtypeId != null ? foodtypeId.hashCode() : 0);
+        result = 31 * result + (idFoodtype != null ? idFoodtype.hashCode() : 0);
         return result;
     }
 
@@ -161,7 +170,7 @@ public class Food {
     }
 
     @ManyToOne
-    @JoinColumn(name = "foodtype_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "foodtype_id", referencedColumnName = "id")
     public FoodType getFoodtype() {
         return foodtype;
     }

@@ -10,10 +10,6 @@
     <div class="main-content-inner">
         <div class="breadcrumbs" id="breadcrumbs">
             <ul class="breadcrumb">
-                <li>
-                    <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#"><fmt:message key="label.home" bundle="${lang}"/></a>
-                </li>
                 <li class="active"><fmt:message key="label.user.list" bundle="${lang}"/></li>
             </ul><!-- /.breadcrumb -->
         </div>
@@ -27,9 +23,9 @@
                                            size="${items.totalItems}" pagesize="${items.maxPageItems}" sort="external"
                                            class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
                                            style="margin: 3em 0 1.5em;">
-                                <display:column property="fullname" titleKey="label.user.fullname" sortable="true" sortName="fullname"/>
+                                <display:column property="name" titleKey="label.user.fullname" sortable="true" sortName="name"/>
                                 <display:column property="username" titleKey="label.user.username" sortable="true" sortName="username"/>
-                                <display:column property="password_user" titleKey="labeb.user.password" />
+                                <display:column property="password" titleKey="labeb.user.password" />
                             </display:table>
                         </fmt:bundle>
                     </div>

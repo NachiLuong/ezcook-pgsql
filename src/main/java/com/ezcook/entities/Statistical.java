@@ -5,15 +5,13 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "statistical", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "statistical", schema = "public")
 public class Statistical {
-
     private int id;
     private Integer comments;
-    private Integer visits;
-
     private Timestamp createdOn;
     private Timestamp modifiedOn;
+    private Integer visits;
 
     public Statistical() {
 
@@ -23,10 +21,8 @@ public class Statistical {
         this.comments = comments;
         this.visits = visits;
     }
-
     @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id" , nullable = false)
     public int getId() {
         return id;
     }
@@ -36,23 +32,13 @@ public class Statistical {
     }
 
     @Basic
-    @Column(name = "comments", nullable = false)
+    @Column(name = "comments" , nullable = false)
     public Integer getComments() {
         return comments;
     }
 
     public void setComments(Integer comments) {
         this.comments = comments;
-    }
-
-    @Basic
-    @Column(name = "visits", nullable = false)
-    public Integer getVisits() {
-        return visits;
-    }
-
-    public void setVisits(Integer visits) {
-        this.visits = visits;
     }
 
     @Basic
@@ -75,6 +61,16 @@ public class Statistical {
         this.modifiedOn = modifiedOn;
     }
 
+    @Basic
+    @Column(name = "visits" , nullable = false)
+    public Integer getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Integer visits) {
+        this.visits = visits;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -86,7 +82,9 @@ public class Statistical {
         if (!Objects.equals(comments, that.comments)) return false;
         if (!Objects.equals(createdOn, that.createdOn)) return false;
         if (!Objects.equals(modifiedOn, that.modifiedOn)) return false;
-        return Objects.equals(visits, that.visits);
+        if (!Objects.equals(visits, that.visits)) return false;
+
+        return true;
     }
 
     @Override

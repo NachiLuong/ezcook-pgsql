@@ -1,7 +1,6 @@
 package com.ezcook.entities;
 
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -9,27 +8,16 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "role", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "role", schema = "public")
 public class Role {
-
     private int id;
-    private String name;
-
     private Timestamp createdOn;
     private Timestamp modifiedOn;
-
+    private String name;
     private Collection<User> users;
 
-    public Role() {
-
-    }
-
-    public Role(String name) {
-        this.name = name;
-    }
-
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id" , nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
@@ -37,17 +25,6 @@ public class Role {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "name", nullable = false)
-    @Nationalized
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Basic
@@ -70,6 +47,16 @@ public class Role {
         this.modifiedOn = modifiedOn;
     }
 
+    @Basic
+    @Column(name = "name" , nullable = false)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,7 +67,9 @@ public class Role {
         if (id != role.id) return false;
         if (!Objects.equals(createdOn, role.createdOn)) return false;
         if (!Objects.equals(modifiedOn, role.modifiedOn)) return false;
-        return Objects.equals(name, role.name);
+        if (!Objects.equals(name, role.name)) return false;
+
+        return true;
     }
 
     @Override

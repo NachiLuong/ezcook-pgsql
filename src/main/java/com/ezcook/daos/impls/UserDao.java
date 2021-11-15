@@ -17,11 +17,9 @@ public class UserDao extends AbstractDao<Integer, User> implements IUserDao {
         boolean isUserExist = false;
         String roleName = null;
         try {
-            StringBuilder sql= new StringBuilder("FROM user ue WHERE ue.username=" + username + " AND ue.password=" + password);
-            Query query = session.createQuery(sql.toString());
-//            Query query = session.createQuery(" FROM user ue WHERE ue.username= :username AND ue.password= :password");
-//            query.setParameter("username", username);
-//            query.setParameter("password", password);
+            Query query = session.createQuery(" FROM User ue WHERE ue.username= :username AND ue.password= :password");
+            query.setParameter("username", username);
+            query.setParameter("password", password);
             if (query.list().size() > 0) {
                 isUserExist = true;
                 User userEntity = (User) query.uniqueResult();

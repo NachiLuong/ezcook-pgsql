@@ -9,8 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><dec:title default='Home &#8211; Esheep Kitchen'/></title>
-    <link rel="stylesheet" type="text/css"
-          href="<c:url value='/templates/common/vendor/bootstrap/css/bootstrap.min.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/templates/common/vendor/bootstrap/css/bootstrap.min.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/common/font/awesome/css/all.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/common/css/penci.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/common/css/base.css'/>">

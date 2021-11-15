@@ -36,7 +36,6 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         try {
             transaction = session.beginTransaction();
             // Query use HQL
-            @SuppressWarnings("unchecked")
             Query query = session.createQuery("from " + this.getPersistenceClassName());
             list = query.list();
             transaction.commit();

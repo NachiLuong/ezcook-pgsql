@@ -40,7 +40,7 @@ public class GoogleUtil {
         user.setUsername(email.replace(email.indexOf("@"), email.length(), "").toString());
 
         // set properties role..
-        user.setRoleId(1);
+        user.setIdRole(1);
         return user;
     }
 
