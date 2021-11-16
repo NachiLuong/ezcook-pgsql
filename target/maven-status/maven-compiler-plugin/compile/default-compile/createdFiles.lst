@@ -12,7 +12,6 @@ com\ezcook\controllers\admin\UserController.class
 com\ezcook\dtos\FoodTypeDto.class
 com\ezcook\services\IFoodService.class
 com\ezcook\utils\UploadUtil.class
-com\ezcook\entities\Statistics.class
 com\ezcook\services\impls\FoodTypeService.class
 com\ezcook\controllers\LoginController.class
 com\ezcook\daos\IGenericDao.class
@@ -55,6 +54,7 @@ com\ezcook\entities\Food.class
 com\ezcook\utils\beanUtils\FoodTypeBeanUtil.class
 com\ezcook\services\impls\FoodService.class
 com\ezcook\entities\User.class
+com\ezcook\entities\Statistical.class
 com\ezcook\daos\IFoodTypeDao.class
 com\ezcook\utils\FormUtil.class
 com\ezcook\daos\impls\UserDao.class

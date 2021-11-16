@@ -1,20 +1,21 @@
 package com.ezcook.daos.impls;
 
-import com.ezcook.constants.WebConstant;
 import com.ezcook.daos.IGenericDao;
-
 import com.ezcook.utils.HibernateUtil;
-import javassist.tools.rmi.ObjectNotFoundException;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import javassist.tools.rmi.ObjectNotFoundException;
+import org.hibernate.*;
+import org.hibernate.criterion.Order;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+
+
 
 public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, T> {
 
@@ -31,7 +32,7 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
     @Override
     public List<T> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<T> list;
+        List list;
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
@@ -107,118 +108,6 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         return result;
     }
 
-    @Override
-    public Object[] findByProperty(String property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit) {
-        List<T> list = new ArrayList<T>();
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        Object totalItem = 0;
-        try {
-            StringBuilder sql1 = new StringBuilder("from ");
-            sql1.append(getPersistenceClassName());
-            if (property != null && value != null) {
-                sql1.append(" where ").append(property).append("= :value");
-            }
-            if (sortExpression != null && sortDirection != null) {
-                sql1.append(" order by ").append(sortExpression);
-                sql1.append(" " +(sortDirection.equals(WebConstant.SORT_ASC)?"asc":"desc"));
-            }
-            Query query1 = session.createQuery(sql1.toString());
-            if (value != null) {
-                query1.setParameter("value", value);
-            }
-            if (offset != null && offset >= 0) {
-                query1.setFirstResult(offset);
-            }
-            if (limit != null && limit > 0) {
-                query1.setMaxResults(limit);
-            }
-            list = query1.list();
-            StringBuilder sql2 = new StringBuilder("select count(*) from ");
-            sql2.append(getPersistenceClassName());
-            if (property != null && value != null) {
-                sql2.append(" where ").append(property).append("= :value");
-            }
-            Query query2 = session.createQuery(sql2.toString());
-            if (value != null) {
-                query2.setParameter("value", value);
-            }
-            totalItem = query2.list().get(0);
-            transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-            throw e;
-        } finally {
-            session.close();
-        }
-        return new Object[]{totalItem, list};
-    }
-
-   /* @Override
-    public Object[] findByProperty(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        List<T> list;
-        Object total = 0;
-        String[] params = new String[property.size()];
-        Object[] values = new String[property.size()];
-        int i = 0;
-        for (Map.Entry<String, Object> item : property.entrySet()) {
-            params[i] = item.getKey();
-            values[i] = item.getValue();
-            i++;
-        }
-        try {
-            StringBuilder sql = new StringBuilder("from ");
-            sql.append(getPersistenceClassName()).append(" where 1=1 ");
-            if (property.size() > 0) {
-                for (String param : params) {
-                    sql.append(" and ").append("LOWER(").append(param).append(") LIKE '%' || :").append(param).append(" || '%'");
-                }
-            }
-            if (sortDirection != null && sortExpression != null) {
-                sql.append(" order by ").append(sortExpression);
-                sql.append(" ").append(sortDirection.equals(WebConstant.SORT_ASC) ? "asc" : "desc");
-            }
-            @SuppressWarnings("unchecked")
-            Query query1 = session.createQuery(sql.toString());
-            if (property.size() > 0) {
-                for (int i1 = 0; i1 < params.length; i1++) {
-                    query1.setParameter(params[i1], values[i1]);
-                }
-            }
-            if (offset != null && offset >= 0) {
-                query1.setFirstResult(offset);
-            }
-            if (limit != null && limit > 0) {
-                query1.setMaxResults(limit);
-            }
-            list = query1.list();
-            //
-            StringBuilder sql1 = new StringBuilder("select count(*) from ");
-            sql1.append(getPersistenceClassName()).append(" where 1=1 ");
-            if (property.size() > 0) {
-                for (String param : params) {
-                    sql1.append(" and ").append("LOWER(").append(param).append(") LIKE '%' || :").append(param).append(" || '%'");
-                }
-            }
-            @SuppressWarnings("unchecked")
-            Query query2 = session.createQuery(sql1.toString());
-            if (property.size() > 0) {
-                for (int k1 = 0; k1 < params.length; k1++) {
-                    query2.setParameter(params[k1], values[k1]);
-                }
-            }
-            total = query2.list().get(0);
-            transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-            throw e;
-        } finally {
-            session.close();
-        }
-        return new Object[]{total, list};
-    }*/
 
     @Override
     public Integer delete(List<ID> ids) {
@@ -259,5 +148,48 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
             session.close();
         }
         return result;
+    }
+    public List<T> pagination(Integer pageNumber, Integer pageSize){
+        List<T> listResult = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            Criteria criteria = session.createCriteria(persistenceClass);
+            criteria.setFirstResult((pageNumber - 1) * pageSize);
+            criteria.setMaxResults(pageSize);
+            criteria.addOrder(Order.asc("id"));
+
+            listResult = (List<T>) criteria.list();
+            session.getTransaction().commit();
+        }
+        catch (HibernateException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }finally {
+            session.close();
+        }
+
+        return listResult;
+    }
+    public Long count() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Long countResults;
+        try {
+            // Query use HQL
+            String countQ = "select count(id) from " + this.getPersistenceClassName() ;
+            Query query = session.createQuery(countQ);
+            countResults = (long) query.uniqueResult();
+            transaction.commit();
+        } catch (HibernateException e) {
+            assert transaction != null;
+            transaction.rollback();
+            System.out.println("Transectione is Null: " + e);
+            throw e;
+        } finally {
+            session.close();
+        }
+
+        return countResults;
     }
 }

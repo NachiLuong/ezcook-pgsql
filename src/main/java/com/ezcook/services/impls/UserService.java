@@ -66,30 +66,23 @@ public class UserService implements IUserService {
     public void save(User user) {
         user.setCreatedOn(Timestamp.from(Instant.now()));
         user.setModifiedOn(Timestamp.from(Instant.now()));
+        user.setIdRole(1);
         userDao.save(user);
     }
 
     @Override
-    public Object[] findUsersByProperties(String property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit) {
-        List<UserDto> result = new ArrayList<UserDto>();
-        Object[] objects = userDao.findByProperty(property, value, sortExpression, sortDirection, offset, limit);
-        for (User item: (List<User>)objects[1]) {
-            UserDto dto = UserBeanUtil.entity2Dto(item);
-            result.add(dto);
+    public List<UserDto> pagination(Integer pageNumber, Integer pageSize) {
+        List<User> userList= SingletonDaoUtil.getUserDaoInstance().pagination(pageNumber,pageSize);
+        List<UserDto> dtos=new ArrayList<UserDto>();
+        for (User user:userList)  {
+            dtos.add(UserBeanUtil.entity2Dto(user));
         }
-        objects[1] = result;
-        return objects;
+        return dtos;
     }
 
-   /* @Override
-    public Object[] findUserByProperties(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit) {
-        Object[] objects= SingletonDaoUtil.getUserDaoInstance().findByProperty(property,sortExpression,sortDirection,offset,limit);
-        List<UserDto> userDTOs= new ArrayList<>();
-        for (User item: (List<User>)objects[1]){
-            UserDto userDTO= UserBeanUtil.entity2Dto(item);
-            userDTOs.add(userDTO);
-        }
-        objects[1]=userDTOs;
-        return objects;
-    }*/
+    @Override
+    public Integer countUser() {
+        return Math.toIntExact(SingletonDaoUtil.getUserDaoInstance().count());
+    }
+
 }

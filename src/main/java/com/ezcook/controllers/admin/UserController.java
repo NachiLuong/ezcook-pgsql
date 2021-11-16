@@ -3,8 +3,10 @@ package com.ezcook.controllers.admin;
 import com.ezcook.command.UserCommand;
 import com.ezcook.constants.WebConstant;
 import com.ezcook.dtos.UserDto;
+import com.ezcook.entities.User;
 import com.ezcook.services.IUserService;
 import com.ezcook.services.impls.UserService;
+import com.ezcook.utils.FormUtil;
 import com.ezcook.utils.RequestUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 
@@ -16,32 +18,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(urlPatterns = {"/admin-user-list"})
 public class UserController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
     private IUserService userService = new UserService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserCommand command=new UserCommand();
+        UserCommand command = FormUtil.populate(UserCommand.class, req);
+        UserDto pojo = command.getPojo();
+        List<UserDto> users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+        int sotrang;
+        if (SingletonServiceUtil.getUserServiceInstance().countUser() % command.getMaxPageItems() == 0)
+            sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems();
+        else
+            sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems() + 1;
+        command.setTotalItems(sotrang);
 
-        command.setMaxPageItems(2);
-        RequestUtil.initSearchBean(req,command);
-        Object[] objects = userService.findUsersByProperties(null, null, command.getSortExpression(), command.getSortDirection(),command.getFirstItem(),command.getMaxPageItems());
-        command.setListResult((List<UserDto>) objects[1]);
-        command.setTotalItems(Integer.parseInt(objects[0].toString()));
-        req.setAttribute(WebConstant.LIST_ITEMS, command);
-        RequestDispatcher rd=req.getRequestDispatcher("/views/admin/user/listUser.jsp");
-        rd.forward(req,resp);
+        req.setAttribute("users", users);
+        req.setAttribute("pojo", command);
+        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/listUser.jsp");
+        rd.forward(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
     }
-
 
 
     @Override

@@ -16,8 +16,9 @@ public class testSave {
 //        IFoodDao foodDao=new FoodDao();
 //        List<Food> lst= foodDao.findAll();
 
-        IFoodTypeDao userDao=new FoodTypeDao();
-        List<FoodType> list= userDao.findAll();
+        IUserDao userDao=new UserDao();
+        List<User> userList= userDao.pagination(2,3);
+        System.out.println("sdfsdfd");
     }
 
 }

@@ -1,8 +1,10 @@
 package com.ezcook.services;
 
 import com.ezcook.dtos.CheckLogin;
+import com.ezcook.dtos.UserDto;
 import com.ezcook.entities.User;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IUserService {
@@ -12,7 +14,7 @@ public interface IUserService {
     boolean isExistEmail(String email);
     User findOneByEmail(String email);
     void save(User user);
-    //Object[] findUserByProperties(Map<String, Object> property, String sortExpression, String sortDirection, Integer offset, Integer limit);
-    Object[] findUsersByProperties(String property, Object value, String sortExpression, String sortDirection, Integer offset, Integer limit);
+    List<UserDto> pagination(Integer pageNumber, Integer pageSize);
+    Integer countUser();
 
 }
