@@ -9,19 +9,20 @@
 </head>
 <body>
 <ul class="breadcrumb">
-    <li class="active"><fmt:message key="label.user.list" bundle="${lang}"/></li>
+    <li class="active" style="padding-top: -10px"><fmt:message key="label.user.list" bundle="${lang}"/></li>
 </ul><!-- /.breadcrumb -->
 <div class="row">
     <div class="col-xs-12">
+        <a class="btn" style="float: right; background-color:#cccccc; margin-bottom: 5px" href="<c:url value='#'/>">Thêm User</a>
         <table class="table table-striped table-bordered table-hover" id="sample_1">
             <thead>
             <tr>
                 <th>Tên</th>
-                <th>UserName</th>
+                <th>Tài khoản</th>
                 <th>Email</th>
-                <th>Password</th>
-                <th>Role</th>
-                <th></th>
+                <th>Mật khẩu</th>
+                <th>Vai trò</th>
+                <th>Chức năng</th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +33,14 @@
                     <td>${user.email}</td>
                     <td>${user.password}</td>
                     <td>${user.roleDto.name_role}</td>
+                    <td style="display: flex;height: 80% " class="suaxoacunghang">
+                        <form action="<c:url value="#"/>" method="post">
+                            <input type="hidden" name="idDelete" value="${user.id_user}"/>
+                            <button style="background-color: red" type="submit" class="btn btn-secondary">Xóa</button>
+                        </form>
+                        <a class="btn btn-secondary" style="height: 80%; margin-left: 5px; background-color: green"
+                           href="${updateURL}">Sửa</a>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>

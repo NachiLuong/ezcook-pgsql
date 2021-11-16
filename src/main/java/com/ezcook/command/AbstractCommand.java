@@ -6,7 +6,7 @@ public class AbstractCommand<T> {
     private String crudaction;
     protected T pojo;
 
-    private int maxPageItems=5;
+    private int maxPageItems=4;
     private int firstItem=0;
     private int totalItems=0;
     private String sortExpression;
