@@ -13,7 +13,21 @@
 </ul><!-- /.breadcrumb -->
 <div class="row">
     <div class="col-xs-12">
-        <a class="btn" style="float: right; background-color:#cccccc; margin-bottom: 5px" href="<c:url value='#'/>">Thêm User</a>
+        <div style="display: flex; justify-content: space-between">
+            <form action="admin-user-list" method="get" class="form-inline my-2 my-lg-0">
+                <div class="input-group input-group-sm">
+                    <input type="text" name="txt" class="form-control" placeholder="Nhập tài khoản">
+                    <div class="input-group-append">
+                        <button style="margin-left: 10px" type="submit" class="btn btn-secondary">
+                            <i class="fa fa-search"></i>Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <a class="btn btn-secondary" style="float: right; margin-bottom: 5px" href="<c:url value='#'/>">Thêm
+                User</a>
+        </div>
+
         <table class="table table-striped table-bordered table-hover" id="sample_1">
             <thead>
             <tr>

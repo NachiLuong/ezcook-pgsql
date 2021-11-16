@@ -32,7 +32,10 @@ public class UserController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
         UserDto pojo = command.getPojo();
-        List<UserDto> users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+        String search = req.getParameter("txt");
+        List<UserDto> users = SingletonServiceUtil.getUserServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(),search);
+
+        //List<UserDto> users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
         int sotrang;
         if (SingletonServiceUtil.getUserServiceInstance().countUser() % command.getMaxPageItems() == 0)
             sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems();

@@ -15,6 +15,7 @@ public interface IUserService {
     User findOneByEmail(String email);
     void save(User user);
     List<UserDto> pagination(Integer pageNumber, Integer pageSize);
+    List<UserDto> paginationSearch(Integer pageNumber, Integer pageSize, Object value);
     Integer countUser();
 
 }

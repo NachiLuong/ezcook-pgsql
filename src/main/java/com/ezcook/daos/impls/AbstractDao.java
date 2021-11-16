@@ -2,6 +2,7 @@ package com.ezcook.daos.impls;
 
 import com.ezcook.daos.IGenericDao;
 import com.ezcook.utils.HibernateUtil;
+
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
@@ -9,10 +10,7 @@ import java.util.List;
 import javassist.tools.rmi.ObjectNotFoundException;
 import org.hibernate.*;
 import org.hibernate.criterion.Order;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import org.hibernate.criterion.Restrictions;
 
 
 
@@ -149,12 +147,35 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         }
         return result;
     }
-    public List<T> pagination(Integer pageNumber, Integer pageSize){
+    public List<T> paginationSearch(Integer pageNumber, Integer pageSize, String key, Object value){
         List<T> listResult = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         try {
             Criteria criteria = session.createCriteria(persistenceClass);
+            criteria.add(Restrictions.ilike(key, "%"+value+"%"));
+            criteria.setFirstResult((pageNumber - 1) * pageSize);
+            criteria.setMaxResults(pageSize);
+            criteria.addOrder(Order.asc("id"));
+
+            listResult = (List<T>) criteria.list();
+            session.getTransaction().commit();
+        }
+        catch (HibernateException e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }finally {
+            session.close();
+        }
+
+        return listResult;
+    }
+    public List<T> pagination(Integer pageNumber, Integer pageSize){
+        List<T> listResult = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            Criteria criteria = session.createCriteria(persistenceClass );
             criteria.setFirstResult((pageNumber - 1) * pageSize);
             criteria.setMaxResults(pageSize);
             criteria.addOrder(Order.asc("id"));

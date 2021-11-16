@@ -81,6 +81,16 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public List<UserDto> paginationSearch(Integer pageNumber, Integer pageSize, Object value) {
+        List<User> userList= SingletonDaoUtil.getUserDaoInstance().paginationSearch(pageNumber,pageSize,"username",value);
+        List<UserDto> dtos=new ArrayList<UserDto>();
+        for (User user:userList)  {
+            dtos.add(UserBeanUtil.entity2Dto(user));
+        }
+        return dtos;
+    }
+
+    @Override
     public Integer countUser() {
         return Math.toIntExact(SingletonDaoUtil.getUserDaoInstance().count());
     }

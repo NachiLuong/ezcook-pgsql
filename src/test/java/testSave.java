@@ -17,7 +17,9 @@ public class testSave {
 //        List<Food> lst= foodDao.findAll();
 
         IUserDao userDao=new UserDao();
-        List<User> userList= userDao.pagination(2,3);
+        List<User> userList= userDao.paginationSearch(1,7, "username", "tr");
+        //List<User> aaaa=userDao.pagination(1,3);
+       // Long aaa=userDao.count();
         System.out.println("sdfsdfd");
     }
 

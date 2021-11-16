@@ -13,5 +13,6 @@ public interface IGenericDao<ID extends Serializable, T>
     Integer delete(List<ID> ids);
     Long count();
     List<T> pagination(Integer pageNumber, Integer pageSize);
+    List<T> paginationSearch(Integer pageNumber, Integer pageSize, String key, Object value);
     T findEqualUnique(String property, Object value);
 }
