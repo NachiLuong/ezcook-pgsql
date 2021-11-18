@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/common/vendor/bootstrap/css/bootstrap.min.css'/>">
-
     <link rel="stylesheet" href="<c:url value='/templates/admin/css/style.css' />"/>
     <dec:head/>
 </head>
@@ -20,10 +19,25 @@
         <dec:body/>
     </div>
 </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/bootstrap.min.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/popper.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/jquery.min.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/main.js'/>"></script>
-
+<%--<script type="text/javascript">
+    function showAlertBeforeDelete() {
+        swal({
+            title: "Xác nhận xóa",
+            text: "Bạn có chắc chắn xóa không, một khi xóa sẽ không khôi phục lại",
+            type: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                //callback();
+            }
+        });
+    }
+</script>--%>
 </body>
 </html>

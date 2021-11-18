@@ -14,6 +14,7 @@ public interface IUserService {
     boolean isExistEmail(String email);
     User findOneByEmail(String email);
     void save(User user);
+    void delete(List<Integer> ids);
     List<UserDto> pagination(Integer pageNumber, Integer pageSize);
     List<UserDto> paginationSearch(Integer pageNumber, Integer pageSize, Object value);
     Integer countUser();

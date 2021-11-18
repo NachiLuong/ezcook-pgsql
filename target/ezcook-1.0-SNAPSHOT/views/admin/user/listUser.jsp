@@ -12,6 +12,13 @@
     <li class="active" style="padding-top: -10px"><fmt:message key="label.user.list" bundle="${lang}"/></li>
 </ul><!-- /.breadcrumb -->
 <div class="row">
+    <c:if test="${not empty messageResponse}">
+        <div id="thongbao" class="alert alert-dismissible alert-success ">
+            <button type="button" class="close" id="btnClose">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </c:if>
     <div class="col-xs-12">
         <div style="display: flex; justify-content: space-between">
             <form action="admin-user-list" method="get" class="form-inline my-2 my-lg-0">
@@ -24,10 +31,9 @@
                     </div>
                 </div>
             </form>
-            <a class="btn btn-secondary" style="float: right; margin-bottom: 5px" href="<c:url value='#'/>">Thêm
+            <a class="btn btn-secondary" id="addUser" style="float: right; margin-bottom: 5px">Thêm
                 User</a>
         </div>
-
         <table class="table table-striped table-bordered table-hover" id="sample_1">
             <thead>
             <tr>
@@ -47,13 +53,13 @@
                     <td>${user.email}</td>
                     <td>${user.password}</td>
                     <td>${user.roleDto.name_role}</td>
+<%--                    <c:param name="useridel" value="${user.id_user}"/>--%>
                     <td style="display: flex;height: 80% " class="suaxoacunghang">
-                        <form action="<c:url value="#"/>" method="post">
-                            <input type="hidden" name="idDelete" value="${user.id_user}"/>
-                            <button style="background-color: red" type="submit" class="btn btn-secondary">Xóa</button>
+                        <form id="frmDel" method="post" onsubmit="return false;" onclick="showAlertBeforeDelete();" >
+                            <input type="hidden" name="idDelete" value="${user.id_user}" />
+                            <button style="background-color: red" class="btn btn-secondary" >Xóa</button>
                         </form>
-                        <a class="btn btn-secondary" style="height: 80%; margin-left: 5px; background-color: green"
-                           href="${updateURL}">Sửa</a>
+                        <a class="btn btn-secondary " href="<c:url value="/admin-user-list/edit"/>" style="height: 80%; margin-left: 5px; background-color: green">Sửa</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -94,5 +100,31 @@
         </ul>
     </nav>
 </div>
+<script>
+
+    document.getElementById("btnClose").onclick = function () {
+        document.getElementById("thongbao").style.display = "none";
+    };
+
+    function showAlertBeforeDelete() {
+        swal({
+            title: "Xác nhận xóa",
+            text: "Bạn có chắc chắn xóa không, một khi xóa sẽ không khôi phục lại",
+            type: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                document.getElementById("frmDel").submit();
+                swal("Bạn đã xóa thành công", {
+                    icon: "success"
+                });
+            } else {
+            }
+        });
+    }
+
+</script>
 </body>
+
 </html>

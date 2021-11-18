@@ -71,6 +71,12 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void delete(List<Integer> ids) {
+        userDao.delete(ids);
+    }
+
+
+    @Override
     public List<UserDto> pagination(Integer pageNumber, Integer pageSize) {
         List<User> userList= SingletonDaoUtil.getUserDaoInstance().pagination(pageNumber,pageSize);
         List<UserDto> dtos=new ArrayList<UserDto>();

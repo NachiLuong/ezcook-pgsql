@@ -11,9 +11,9 @@ import java.util.Objects;
 @Table(name = "user", schema = "public")
 public class User {
 
-    private int id;;
+    private Integer id;;
     private String email;
-    private String name;;
+    private String name;
     private Timestamp createdOn;
     private Timestamp modifiedOn;
     private String password;
@@ -25,16 +25,16 @@ public class User {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "created_on", nullable = false)
+    @Column(name = "created_on")
     public Timestamp getCreatedOn() {
         return createdOn;
     }

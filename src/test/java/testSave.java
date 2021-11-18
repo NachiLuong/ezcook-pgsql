@@ -5,6 +5,7 @@ import com.ezcook.entities.*;
 import org.testng.annotations.Test;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class testSave {
@@ -17,7 +18,11 @@ public class testSave {
 //        List<Food> lst= foodDao.findAll();
 
         IUserDao userDao=new UserDao();
-        List<User> userList= userDao.paginationSearch(1,7, "username", "tr");
+        List<Integer> list= new ArrayList<>();
+        list.add(5);
+        userDao.delete(list);
+
+        //List<User> userList= userDao.paginationSearch(1,7, "username", "tr");
         //List<User> aaaa=userDao.pagination(1,3);
        // Long aaa=userDao.count();
         System.out.println("sdfsdfd");

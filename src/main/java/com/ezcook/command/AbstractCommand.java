@@ -18,6 +18,18 @@ public class AbstractCommand<T> {
     private int page=1;
     private String urlType;
 
+    public String getIdDelete() {
+        return idDelete;
+    }
+
+    public void setIdDelete(String idDelete) {
+        this.idDelete = idDelete;
+    }
+
+    private String idDelete;
+
+
+
     public String getCrudaction() {
         return crudaction;
     }

@@ -1,13 +1,10 @@
-package com.ezcook.controllers.admin;
+package com.ezcook.controllers.admin.user;
 
 import com.ezcook.command.UserCommand;
-import com.ezcook.constants.WebConstant;
 import com.ezcook.dtos.UserDto;
-import com.ezcook.entities.User;
 import com.ezcook.services.IUserService;
 import com.ezcook.services.impls.UserService;
 import com.ezcook.utils.FormUtil;
-import com.ezcook.utils.RequestUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -18,11 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-@WebServlet(urlPatterns = {"/admin-user-list"})
+@WebServlet(urlPatterns = {"/admin-user-list", "/admin-user-import"})
 public class UserController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
@@ -33,9 +28,12 @@ public class UserController extends HttpServlet {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
         UserDto pojo = command.getPojo();
         String search = req.getParameter("txt");
-        List<UserDto> users = SingletonServiceUtil.getUserServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(),search);
-
-        //List<UserDto> users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+        List<UserDto> users;
+        if (search == "" || search==null){
+             users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+        }else {
+             users = SingletonServiceUtil.getUserServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(), search);
+        }
         int sotrang;
         if (SingletonServiceUtil.getUserServiceInstance().countUser() % command.getMaxPageItems() == 0)
             sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems();
@@ -52,7 +50,20 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        UserCommand command = FormUtil.populate(UserCommand.class, req);
+        UserDto pojo = command.getPojo();
+        Integer id = Integer.parseInt(req.getParameter("idDelete"));
+        try {
+            List ids=new ArrayList();
+            ids.add(id);
+             SingletonServiceUtil.getUserServiceInstance().delete(ids);
+            req.setAttribute("messageResponse", "thanh cong");
+            resp.sendRedirect("/admin-user-list");
+        } catch (Exception e) {
+            req.setAttribute("messageResponse", "That bai");
+            resp.sendRedirect("/admin-user-list");
+            throw e;
+        }
     }
 
 

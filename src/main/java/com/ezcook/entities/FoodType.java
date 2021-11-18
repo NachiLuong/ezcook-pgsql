@@ -10,7 +10,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "foodtype",schema = "public")
 public class FoodType {
-    private int id;
+    private Integer id;
     private Timestamp createdOn;
     private Timestamp modifiedOn;
     private String name;
@@ -19,11 +19,11 @@ public class FoodType {
     @Id
     @Column(name = "id" , nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

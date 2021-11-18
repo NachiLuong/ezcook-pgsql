@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "statistical", schema = "public")
 public class Statistical {
-    private int id;
+    private Integer id;
     private Integer comments;
     private Timestamp createdOn;
     private Timestamp modifiedOn;
@@ -23,11 +23,11 @@ public class Statistical {
     }
     @Id
     @Column(name = "id" , nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
