@@ -1,6 +1,7 @@
 package com.ezcook.services.impls;
 
 import com.ezcook.daos.IUserDao;
+import com.ezcook.daos.impls.AbstractDao;
 import com.ezcook.daos.impls.UserDao;
 import com.ezcook.dtos.CheckLogin;
 import com.ezcook.dtos.UserDto;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class UserService implements IUserService {
+public class UserService  implements IUserService {
 
 //    @Inject
     IUserDao userDao = new UserDao();
@@ -100,5 +101,19 @@ public class UserService implements IUserService {
     public Integer countUser() {
         return Math.toIntExact(SingletonDaoUtil.getUserDaoInstance().count());
     }
-
+    public UserDto  findEqualUnique(String property, Object value){
+        User entity = SingletonDaoUtil.getUserDaoInstance().findEqualUnique(property,value);
+        UserDto userDto= UserBeanUtil.entity2Dto(entity);
+        return userDto;
+    }
+    public UserDto updateUser(UserDto userDto){
+        User entity= UserBeanUtil.dto2Entity(userDto);
+        entity=SingletonDaoUtil.getUserDaoInstance().update(entity);
+        userDto= UserBeanUtil.entity2Dto(entity);
+        return userDto;
+    }
+    public void saveUser(UserDto userDto){
+        User userEntity= UserBeanUtil.dto2Entity(userDto);
+        SingletonDaoUtil.getUserDaoInstance().save(userEntity);
+    }
 }

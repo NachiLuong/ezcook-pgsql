@@ -3,6 +3,7 @@
 <c:url var="url" value="/admin-user-list">
     <c:param name="urlType" value="url_edit"/>
 </c:url>
+
 <html>
 <head>
     <title><fmt:message key="label.user.manage" bundle="${lang}"/></title>
@@ -53,18 +54,47 @@
                     <td>${user.email}</td>
                     <td>${user.password}</td>
                     <td>${user.roleDto.name_role}</td>
-<%--                    <c:param name="useridel" value="${user.id_user}"/>--%>
                     <td style="display: flex;height: 80% " class="suaxoacunghang">
-                        <form id="frmDel" method="post" onsubmit="return false;" onclick="showAlertBeforeDelete();" >
-                            <input type="hidden" name="idDelete" value="${user.id_user}" />
-                            <button style="background-color: red" class="btn btn-secondary" >Xóa</button>
-                        </form>
-                        <a class="btn btn-secondary " href="<c:url value="/admin-user-list/edit"/>" style="height: 80%; margin-left: 5px; background-color: green">Sửa</a>
+                            <%--<form id="frmDel" method="post">
+                                <input type="hidden" name="idDelete" value="${user.id_user}"/>
+                                <button style="background-color: red" class="btn btn-secondary"
+                                        onclick="showAlertBeforeDelete();">Xóa
+                                </button>
+                            </form>--%>
+                        <c:url value="/admin-user-delete" var="del">
+                            <c:param name="delete" value="${user.id_user}"/>
+                        </c:url>
+                        <a class="btn btn-secondary " id="link-delete" onclick="showAlertBeforeDelete()"
+                           href="${del}">Xóa</a>
+
+                        <c:url value="/admin-user-list/edit" var="editurl">
+                            <c:param name="userId" value="${user.id_user}"/>
+                            <c:param name="page" value="1"/>
+                        </c:url>
+                        <a class="btn btn-secondary "  href="${editurl}"
+                           style="height: 80%; margin-left: 5px; background-color: green">Sửa</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+    </div>
+</div>
+<div class="modal fade text-center" id="confirmModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalTitle">Delete Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <span id="confirmText"></span>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success" href="" id="yesButton">Yes</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+            </div>
+        </div>
     </div>
 </div>
 <div style="text-align: center;">
@@ -101,12 +131,11 @@
     </nav>
 </div>
 <script>
-
-    document.getElementById("btnClose").onclick = function () {
-        document.getElementById("thongbao").style.display = "none";
-    };
-
+    // document.getElementById("btnClose").onclick = function () {
+    //     document.getElementById("thongbao").style.display = "none";
+    // };
     function showAlertBeforeDelete() {
+        e.preventDefault();
         swal({
             title: "Xác nhận xóa",
             text: "Bạn có chắc chắn xóa không, một khi xóa sẽ không khôi phục lại",
@@ -115,7 +144,7 @@
             dangerMode: true,
         }).then(function (isConfirm) {
             if (isConfirm) {
-                document.getElementById("frmDel").submit();
+                document.getElementById("link-delete").submit();
                 swal("Bạn đã xóa thành công", {
                     icon: "success"
                 });
@@ -123,6 +152,23 @@
             }
         });
     }
+
+    /*function showthongbao(){
+        e.preventDefault();
+       link = $(this);
+       $('#yesButton').attr("href", link.attr("href"));
+       $('#confirmText').text("Are you sure you want to delete this ID ?");
+        document.getElementById("confirmModal").style.display = "block";
+    }*/
+    /*$(document).ready(function () {
+        $('#link-delete').onclick(function (e) {
+            e.preventDefault();
+            link = $(this);
+            $('#yesButton').attr("href", link.attr("href"));
+            $('#confirmText').text("Are you sure you want to delete this ID ?");
+            $("#confirmModal").modal();
+        });
+    });*/
 
 </script>
 </body>

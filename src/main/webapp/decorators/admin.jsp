@@ -20,24 +20,11 @@
     </div>
 </div>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type='text/javascript' src="<c:url value='/templates/admin/js/jquery.2.1.1.min.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/bootstrap.min.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/popper.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/jquery.min.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/main.js'/>"></script>
-<%--<script type="text/javascript">
-    function showAlertBeforeDelete() {
-        swal({
-            title: "Xác nhận xóa",
-            text: "Bạn có chắc chắn xóa không, một khi xóa sẽ không khôi phục lại",
-            type: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then(function (isConfirm) {
-            if (isConfirm) {
-                //callback();
-            }
-        });
-    }
-</script>--%>
+<script type='text/javascript' src="<c:url value='/templates/admin/js/jquery.validate.min.js'/>"></script>
 </body>
 </html>

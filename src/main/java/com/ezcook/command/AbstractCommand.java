@@ -2,6 +2,7 @@ package com.ezcook.command;
 
 import java.util.List;
 
+
 public class AbstractCommand<T> {
     private String crudaction;
     protected T pojo;

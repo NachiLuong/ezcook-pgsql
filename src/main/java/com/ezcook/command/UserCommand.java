@@ -6,4 +6,13 @@ public class  UserCommand extends AbstractCommand<UserDto>{
     public UserCommand() {
         this.pojo = new UserDto();
     }
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
