@@ -2,8 +2,6 @@ package com.ezcook.controllers.admin.user;
 
 import com.ezcook.command.UserCommand;
 import com.ezcook.dtos.UserDto;
-import com.ezcook.services.IUserService;
-import com.ezcook.services.impls.UserService;
 import com.ezcook.utils.FormUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 
@@ -21,7 +19,6 @@ import java.util.List;
 public class UserController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
-    private IUserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,11 +26,10 @@ public class UserController extends HttpServlet {
         UserDto pojo = command.getPojo();
         String search = req.getParameter("txt");
         Integer id=0;
-        if (req.getParameter("delete") !=null){
+        /*if (req.getParameter("delete") !=null){
             id = Integer.parseInt(req.getParameter("delete"));
             System.out.println(id);
-        }
-
+        }*/
         List<UserDto> users;
         if (search == "" || search==null){
              users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
@@ -58,28 +54,27 @@ public class UserController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
         UserDto pojo = command.getPojo();
-        Integer id = Integer.parseInt(req.getParameter("delete"));
+        int sotrang;
+        List<UserDto> users;
+        Integer id = Integer.parseInt(req.getParameter("idDelete"));
         try {
             List ids=new ArrayList();
             ids.add(id);
-             SingletonServiceUtil.getUserServiceInstance().delete(ids);
-            req.setAttribute("messageResponse", "thanh cong");
-            resp.sendRedirect("/admin-user-list");
+            SingletonServiceUtil.getUserServiceInstance().delete(ids);
+            users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+            if (SingletonServiceUtil.getUserServiceInstance().countUser() % command.getMaxPageItems() == 0)
+                sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems();
+            else
+                sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems() + 1;
+            command.setTotalItems(sotrang);
+            req.setAttribute("messageResponse", "Xóa tài khoản thành công");
         } catch (Exception e) {
-            req.setAttribute("messageResponse", "That bai");
-            resp.sendRedirect("/admin-user-list");
-            throw e;
+            users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+            req.setAttribute("messageResponse", "Xóa tài khoản thất bại");
         }
-    }
-
-
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPut(req, resp);
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
+        req.setAttribute("users", users);
+        req.setAttribute("pojo", command);
+        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/listUser.jsp");
+        rd.forward(req, resp);
     }
 }

@@ -108,12 +108,19 @@ public class UserService  implements IUserService {
     }
     public UserDto updateUser(UserDto userDto){
         User entity= UserBeanUtil.dto2Entity(userDto);
+        entity.setModifiedOn(Timestamp.from(Instant.now()));
         entity=SingletonDaoUtil.getUserDaoInstance().update(entity);
         userDto= UserBeanUtil.entity2Dto(entity);
+
         return userDto;
     }
-    public void saveUser(UserDto userDto){
-        User userEntity= UserBeanUtil.dto2Entity(userDto);
-        SingletonDaoUtil.getUserDaoInstance().save(userEntity);
+    public UserDto saveUser(UserDto userDto){
+        User entity= UserBeanUtil.dto2Entity(userDto);
+        entity.setCreatedOn(Timestamp.from(Instant.now()));
+        entity.setModifiedOn(Timestamp.from(Instant.now()));
+        entity=SingletonDaoUtil.getUserDaoInstance().update(entity);
+        userDto= UserBeanUtil.entity2Dto(entity);
+
+        return userDto;
     }
 }

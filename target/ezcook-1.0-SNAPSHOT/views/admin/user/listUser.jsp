@@ -13,11 +13,12 @@
     <li class="active" style="padding-top: -10px"><fmt:message key="label.user.list" bundle="${lang}"/></li>
 </ul><!-- /.breadcrumb -->
 <div class="row">
-    <c:if test="${not empty messageResponse}">
+    <c:if test="${messageResponse !=null}">
         <div id="thongbao" class="alert alert-dismissible alert-success ">
             <button type="button" class="close" id="btnClose">
                 <i class="fa fa-times"></i>
             </button>
+            <c:out value="${messageResponse}"></c:out>
         </div>
     </c:if>
     <div class="col-xs-12">
@@ -32,7 +33,8 @@
                     </div>
                 </div>
             </form>
-            <a class="btn btn-secondary" id="addUser" style="float: right; margin-bottom: 5px">Thêm
+            <a class="btn btn-secondary" id="addUser" style="float: right; margin-bottom: 5px"
+               href="<c:url value="/admin-user-list/edit"/> ">Thêm
                 User</a>
         </div>
         <table class="table table-striped table-bordered table-hover" id="sample_1">
@@ -55,23 +57,22 @@
                     <td>${user.password}</td>
                     <td>${user.roleDto.name_role}</td>
                     <td style="display: flex;height: 80% " class="suaxoacunghang">
-                            <%--<form id="frmDel" method="post">
-                                <input type="hidden" name="idDelete" value="${user.id_user}"/>
-                                <button style="background-color: red" class="btn btn-secondary"
-                                        onclick="showAlertBeforeDelete();">Xóa
-                                </button>
-                            </form>--%>
-                        <c:url value="/admin-user-delete" var="del">
-                            <c:param name="delete" value="${user.id_user}"/>
-                        </c:url>
-                        <a class="btn btn-secondary " id="link-delete" onclick="showAlertBeforeDelete()"
-                           href="${del}">Xóa</a>
-
+                        <form id="frmDel" method="post">
+                            <input type="hidden" name="idDelete" value="${user.id_user}"/>
+                            <button style="background-color: red" class="btn btn-secondary"
+                                    onclick="showthongbao();">Xóa
+                            </button>
+                        </form>
+                            <%-- <c:url value="/admin-user-delete" var="del">
+                                 <c:param name="delete" value="${user.id_user}"/>
+                             </c:url>
+                             <a class="btn btn-secondary " id="link-delete" onclick="showAlertBeforeDelete()"
+                                href="${del}">Xóa</a>--%>
                         <c:url value="/admin-user-list/edit" var="editurl">
                             <c:param name="userId" value="${user.id_user}"/>
                             <c:param name="page" value="1"/>
                         </c:url>
-                        <a class="btn btn-secondary "  href="${editurl}"
+                        <a class="btn btn-secondary " href="${editurl}"
                            style="height: 80%; margin-left: 5px; background-color: green">Sửa</a>
                     </td>
                 </tr>
@@ -131,9 +132,9 @@
     </nav>
 </div>
 <script>
-    // document.getElementById("btnClose").onclick = function () {
-    //     document.getElementById("thongbao").style.display = "none";
-    // };
+    document.getElementById("btnClose").onclick = function () {
+        document.getElementById("thongbao").style.display = "none";
+    };
     function showAlertBeforeDelete() {
         e.preventDefault();
         swal({
@@ -153,22 +154,6 @@
         });
     }
 
-    /*function showthongbao(){
-        e.preventDefault();
-       link = $(this);
-       $('#yesButton').attr("href", link.attr("href"));
-       $('#confirmText').text("Are you sure you want to delete this ID ?");
-        document.getElementById("confirmModal").style.display = "block";
-    }*/
-    /*$(document).ready(function () {
-        $('#link-delete').onclick(function (e) {
-            e.preventDefault();
-            link = $(this);
-            $('#yesButton').attr("href", link.attr("href"));
-            $('#confirmText').text("Are you sure you want to delete this ID ?");
-            $("#confirmModal").modal();
-        });
-    });*/
 
 </script>
 </body>
