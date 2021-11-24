@@ -3,6 +3,7 @@ package com.ezcook.daos.impls;
 import com.ezcook.daos.IUserDao;
 import com.ezcook.entities.User;
 import com.ezcook.utils.HibernateUtil;
+import com.ezcook.utils.SingletonDaoUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -32,5 +33,17 @@ public class UserDao extends AbstractDao<Integer, User> implements IUserDao {
             session.close();
         }
         return new Object[]{isUserExist, roleName};
+    }
+
+    public boolean userUnique(User entity) {
+        try {
+            if (isUnique("email", entity.getEmail()) && isUnique("username", entity.getUsername())) {
+                SingletonDaoUtil.getUserDaoInstance().save(entity);
+                return true;
+            }
+        } catch (HibernateException e) {
+            throw e;
+        }
+        return false;
     }
 }

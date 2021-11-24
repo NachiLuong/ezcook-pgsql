@@ -13,6 +13,7 @@
         <li class="active" style="padding-top: -10px">Chỉnh sửa tài khoản người dùng</li>
     </ul>
     <div class="row">
+
         <div class="col-md-12">
             <div class="form-body">
                 <form action="${editUser}" method="post" style="max-width: 800px; margin: 0 auto">
@@ -81,6 +82,14 @@
         <li class="active" style="padding-top: -10px">Thêm tài khoản người dùng</li>
     </ul>
     <div class="row">
+        <c:if test="${ not empty messexist}">
+            <div id="thongbao" class="alert alert-warning alert-danger ">
+                <button type="button" class="close" id="btnClose">
+                    <i class="fa fa-times"></i>
+                </button>
+                <c:out value="${messexist}"></c:out>
+            </div>
+        </c:if>
         <div class="col-md-12">
             <div class="form-body">
                 <form action="${editUser}" method="post" style="max-width: 800px; margin: 0 auto" name="frminput">
@@ -133,5 +142,15 @@
         </div>
     </div>
 </c:if>
+<script>
+    $(document).ready(function (){
+        closeallow();
+    });
+    function closeallow(){
+        document.getElementById("btnClose").onclick = function () {
+            document.getElementById("thongbao").style.display = "none";
+        };
+    };
+</script>
 </body>
 </html>

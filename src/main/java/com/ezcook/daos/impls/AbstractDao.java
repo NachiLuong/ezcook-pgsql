@@ -213,4 +213,23 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
 
         return countResults;
     }
+    public boolean isUnique(String property, String value){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            String sql= "FROM "+ this.getPersistenceClassName() + " u WHERE u." +property+ "= :value";
+            Query query = session.createQuery(sql);
+            query.setParameter("value", value);
+            if(query.list().size() >0) {
+                transaction.commit();
+                return false;
+            }
+        }catch (HibernateException e){
+            transaction.rollback();
+            throw e;
+        }finally {
+            session.close();
+        }
+        return true;
+    }
 }

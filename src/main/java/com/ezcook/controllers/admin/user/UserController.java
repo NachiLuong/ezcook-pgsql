@@ -61,6 +61,7 @@ public class UserController extends HttpServlet {
             List ids=new ArrayList();
             ids.add(id);
             SingletonServiceUtil.getUserServiceInstance().delete(ids);
+
             users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
             if (SingletonServiceUtil.getUserServiceInstance().countUser() % command.getMaxPageItems() == 0)
                 sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems();

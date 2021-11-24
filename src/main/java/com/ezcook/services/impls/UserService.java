@@ -8,6 +8,7 @@ import com.ezcook.dtos.UserDto;
 import com.ezcook.entities.User;
 import com.ezcook.services.IUserService;
 import com.ezcook.utils.SingletonDaoUtil;
+import com.ezcook.utils.SingletonServiceUtil;
 import com.ezcook.utils.beanUtils.UserBeanUtil;
 
 //import javax.inject.Inject;
@@ -120,7 +121,12 @@ public class UserService  implements IUserService {
         entity.setModifiedOn(Timestamp.from(Instant.now()));
         entity=SingletonDaoUtil.getUserDaoInstance().update(entity);
         userDto= UserBeanUtil.entity2Dto(entity);
-
         return userDto;
+    }
+    public boolean userUnique(UserDto userDto){
+        User entity= UserBeanUtil.dto2Entity(userDto);
+        boolean a = SingletonDaoUtil.getUserDaoInstance().isUnique("email", userDto.getEmail())
+                || SingletonDaoUtil.getUserDaoInstance().isUnique("username", userDto.getUsername());
+        return a;
     }
 }

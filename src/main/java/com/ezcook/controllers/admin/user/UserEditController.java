@@ -1,6 +1,7 @@
 package com.ezcook.controllers.admin.user;
 
 import com.ezcook.command.UserCommand;
+import com.ezcook.constants.WebConstant;
 import com.ezcook.dtos.RoleDto;
 import com.ezcook.dtos.UserDto;
 import com.ezcook.utils.FormUtil;
@@ -42,17 +43,6 @@ public class UserEditController extends HttpServlet {
         Integer a = pojo.getId_user();
         RoleDto roleDto = RoleBeanUtil.entity2Dto(SingletonServiceUtil.getRoleServiceInstance().findEqualUnique("name", command.getRole()));
         pojo.setRoleDto(roleDto);
-        try {
-            if (a != null && a != 0) { // sua
-                SingletonServiceUtil.getUserServiceInstance().updateUser(pojo);
-                req.setAttribute("messageResponse", "Cập nhật tài khoản thành công");
-            } else { //them
-                SingletonServiceUtil.getUserServiceInstance().saveUser(pojo);
-                req.setAttribute("messageResponse", "Thêm tài khoản thành công");
-            }
-        } catch (Exception e) {
-            req.setAttribute("messageResponse", "Thao tác thất bại");
-        }
         List<UserDto> users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
         int sotrang;
         if (SingletonServiceUtil.getUserServiceInstance().countUser() % command.getMaxPageItems() == 0)
@@ -60,6 +50,27 @@ public class UserEditController extends HttpServlet {
         else
             sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems() + 1;
         command.setTotalItems(sotrang);
+        boolean checkEmailAndUsername = SingletonServiceUtil.getUserServiceInstance().userUnique(pojo);
+        try {
+            if (a != null && a != 0) { // sua
+                SingletonServiceUtil.getUserServiceInstance().updateUser(pojo);
+                req.setAttribute("messageResponse", "Cập nhật tài khoản thành công");
+            } else { //them
+                if (checkEmailAndUsername) { //username hoac emai chua ton tai
+                    SingletonServiceUtil.getUserServiceInstance().saveUser(pojo);
+                    req.setAttribute("messageResponse", "Thêm tài khoản thành công");
+                } else { //da ton tai
+                    req.setAttribute("messexist", WebConstant.USER_NOT_UNIQUE);
+                    List<RoleDto> roles = SingletonServiceUtil.getRoleServiceInstance().getAllRole();
+                    req.setAttribute("roles", roles);
+                    RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/edit.jsp");
+                    rd.forward(req, resp);
+                }
+            }
+        } catch (Exception e) {
+            req.setAttribute("messageResponse", "Thao tác thất bại");
+
+        }
         req.setAttribute("users", users);
         req.setAttribute("pojo", command);
         RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/listUser.jsp");

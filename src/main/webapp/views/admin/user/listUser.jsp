@@ -57,17 +57,10 @@
                     <td>${user.password}</td>
                     <td>${user.roleDto.name_role}</td>
                     <td style="display: flex;height: 80% " class="suaxoacunghang">
-                        <form id="frmDel" method="post">
+                        <form id="frmDel" method="post"  onclick="return confirm('Do you want to delete?');">
                             <input type="hidden" name="idDelete" value="${user.id_user}"/>
-                            <button style="background-color: red" class="btn btn-secondary"
-                                    onclick="showthongbao();">Xóa
-                            </button>
+                            <button style="background-color: red" class="btn btn-secondary">Xóa</button>
                         </form>
-                            <%-- <c:url value="/admin-user-delete" var="del">
-                                 <c:param name="delete" value="${user.id_user}"/>
-                             </c:url>
-                             <a class="btn btn-secondary " id="link-delete" onclick="showAlertBeforeDelete()"
-                                href="${del}">Xóa</a>--%>
                         <c:url value="/admin-user-list/edit" var="editurl">
                             <c:param name="userId" value="${user.id_user}"/>
                             <c:param name="page" value="1"/>
@@ -132,11 +125,15 @@
     </nav>
 </div>
 <script>
-    document.getElementById("btnClose").onclick = function () {
-        document.getElementById("thongbao").style.display = "none";
+    $(document).ready(function (){
+       closeallow();
+    });
+    function closeallow(){
+        document.getElementById("btnClose").onclick = function () {
+            document.getElementById("thongbao").style.display = "none";
+        };
     };
     function showAlertBeforeDelete() {
-        e.preventDefault();
         swal({
             title: "Xác nhận xóa",
             text: "Bạn có chắc chắn xóa không, một khi xóa sẽ không khôi phục lại",
@@ -144,6 +141,7 @@
             buttons: true,
             dangerMode: true,
         }).then(function (isConfirm) {
+            e.preventDefault();
             if (isConfirm) {
                 document.getElementById("link-delete").submit();
                 swal("Bạn đã xóa thành công", {
@@ -152,7 +150,7 @@
             } else {
             }
         });
-    }
+    };
 
 
 </script>
