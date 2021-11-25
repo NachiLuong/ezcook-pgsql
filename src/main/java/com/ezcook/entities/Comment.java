@@ -2,22 +2,33 @@ package com.ezcook.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
-@Table(name = "comment", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "comment", schema = "public")
 public class Comment {
     private int id;
-    private String contentComment;
-    private Timestamp createddate;
-    private Timestamp modifieddate;
-    private Timestamp timeComment;
+    private String content;
+    private Timestamp createdOn;
+    private Timestamp modifiedOn;
+    private Timestamp time;
     private Integer idFood;
     private Integer idUser;
     private Food food;
     private User user;
+    public Comment() {
 
+    }
+
+    public Comment(String content, Timestamp time, Integer foodId, Integer userId) {
+        this.content = content;
+        this.time = time;
+        this.idFood = foodId;
+        this.idUser = userId;
+    }
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -27,43 +38,44 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "content")
-    public String getContentComment() {
-        return contentComment;
+    @Column(name = "content" , nullable = false)
+
+    public String getContent() {
+        return content;
     }
 
-    public void setContentComment(String contentComment) {
-        this.contentComment = contentComment;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Basic
     @Column(name = "created_on")
-    public Timestamp getCreateddate() {
-        return createddate;
+    public Timestamp getCreatedOn() {
+        return createdOn;
     }
 
-    public void setCreateddate(Timestamp createddate) {
-        this.createddate = createddate;
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
     }
 
     @Basic
     @Column(name = "modified_on")
-    public Timestamp getModifieddate() {
-        return modifieddate;
+    public Timestamp getModifiedOn() {
+        return modifiedOn;
     }
 
-    public void setModifieddate(Timestamp modifieddate) {
-        this.modifieddate = modifieddate;
+    public void setModifiedOn(Timestamp modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
     @Basic
-    @Column(name = "time")
-    public Timestamp getTimeComment() {
-        return timeComment;
+    @Column(name = "time" , nullable = false)
+    public Timestamp getTime() {
+        return time;
     }
 
-    public void setTimeComment(Timestamp timeComment) {
-        this.timeComment = timeComment;
+    public void setTime(Timestamp time) {
+        this.time = time;
     }
 
     @Basic
@@ -94,14 +106,14 @@ public class Comment {
         Comment comment = (Comment) o;
 
         if (id != comment.id) return false;
-        if (contentComment != null ? !contentComment.equals(comment.contentComment) : comment.contentComment != null)
+        if (!Objects.equals(content, comment.content))
             return false;
-        if (createddate != null ? !createddate.equals(comment.createddate) : comment.createddate != null) return false;
-        if (modifieddate != null ? !modifieddate.equals(comment.modifieddate) : comment.modifieddate != null)
+        if (!Objects.equals(createdOn, comment.createdOn)) return false;
+        if (!Objects.equals(modifiedOn, comment.modifiedOn))
             return false;
-        if (timeComment != null ? !timeComment.equals(comment.timeComment) : comment.timeComment != null) return false;
-        if (idFood != null ? !idFood.equals(comment.idFood) : comment.idFood != null) return false;
-        if (idUser != null ? !idUser.equals(comment.idUser) : comment.idUser != null) return false;
+        if (!Objects.equals(time, comment.time)) return false;
+        if (!Objects.equals(idFood, comment.idFood)) return false;
+        if (!Objects.equals(idUser, comment.idUser)) return false;
 
         return true;
     }
@@ -109,10 +121,10 @@ public class Comment {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (contentComment != null ? contentComment.hashCode() : 0);
-        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
-        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
-        result = 31 * result + (timeComment != null ? timeComment.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (createdOn != null ? createdOn.hashCode() : 0);
+        result = 31 * result + (modifiedOn != null ? modifiedOn.hashCode() : 0);
+        result = 31 * result + (time != null ? time.hashCode() : 0);
         result = 31 * result + (idFood != null ? idFood.hashCode() : 0);
         result = 31 * result + (idUser != null ? idUser.hashCode() : 0);
         return result;

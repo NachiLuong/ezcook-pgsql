@@ -2,6 +2,11 @@ package com.ezcook.services.impls;
 
 import com.ezcook.services.IFoodService;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FoodService implements IFoodService {
     @Override
     public String getTextBetweenTags(String tag, String searchText) {
@@ -27,5 +32,12 @@ public class FoodService implements IFoodService {
         }
 
         return result.replace("<strong>"," ").replace("<strong >","").replace("</strong>"," ").replace("<br/>"," ").replace("<br>"," ").replace("<em>"," ").replace("</em>"," ");
+    }
+    @Override
+    public String formatTime(Timestamp timestamp) {
+        long time = timestamp.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("MMMMMMMMM dd, yyyy");
+        String strDate = formatter.format(time);
+        return strDate;
     }
 }

@@ -2,22 +2,14 @@ package com.ezcook.daos.impls;
 
 import com.ezcook.constants.WebConstant;
 import com.ezcook.daos.IGenericDao;
-
 import com.ezcook.utils.HibernateUtil;
 import javassist.tools.rmi.ObjectNotFoundException;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
-
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 
 public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, T> {

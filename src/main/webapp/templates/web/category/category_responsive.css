@@ -1,0 +1,49 @@
+@media screen and (max-width: 1169px) {
+    #main {
+        width: 100%;
+    }
+    #container {
+        flex-basis: 100%;
+    }
+    #author {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #related-posts > div {
+        display: block;
+    }
+}
+
+
+@media only screen and (max-width: 1300px) {
+    #container {
+        padding: 0 100px;
+    }
+    #container .content .item {
+        flex-basis: 70%;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    #container{
+        padding: 0 20px;
+    }
+    #container .content {
+        with: 100%
+    }
+}
+
+@media only screen and (max-width: 756px){
+    #container .content .item .food-content{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #container .content .image img {
+        width: 100%;
+        height: auto;
+    }
+}
