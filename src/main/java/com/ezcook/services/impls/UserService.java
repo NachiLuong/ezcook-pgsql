@@ -126,7 +126,7 @@ public class UserService  implements IUserService {
     public boolean userUnique(UserDto userDto){
         User entity= UserBeanUtil.dto2Entity(userDto);
         boolean a = SingletonDaoUtil.getUserDaoInstance().isUnique("email", userDto.getEmail())
-                || SingletonDaoUtil.getUserDaoInstance().isUnique("username", userDto.getUsername());
+                && SingletonDaoUtil.getUserDaoInstance().isUnique("username", userDto.getUsername());
         return a;
     }
 }

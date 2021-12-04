@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/admin-user-list/edit"})
+@WebServlet(urlPatterns = {"/admin/user/edit"})
 public class UserEditController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
@@ -25,6 +25,7 @@ public class UserEditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
+        req.setCharacterEncoding("UTF-8");
         List<RoleDto> roles = SingletonServiceUtil.getRoleServiceInstance().getAllRole();
         req.setAttribute("roles", roles);
         if (req.getParameter("userId") != null) { //sua
@@ -39,6 +40,7 @@ public class UserEditController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
+        req.setCharacterEncoding("UTF-8");
         UserDto pojo = command.getPojo();
         Integer a = pojo.getId_user();
         RoleDto roleDto = RoleBeanUtil.entity2Dto(SingletonServiceUtil.getRoleServiceInstance().findEqualUnique("name", command.getRole()));
@@ -54,11 +56,11 @@ public class UserEditController extends HttpServlet {
         try {
             if (a != null && a != 0) { // sua
                 SingletonServiceUtil.getUserServiceInstance().updateUser(pojo);
-                req.setAttribute("messageResponse", "Cập nhật tài khoản thành công");
+                resp.sendRedirect("/admin/user?messageResponse=updateSuss");
             } else { //them
                 if (checkEmailAndUsername) { //username hoac emai chua ton tai
                     SingletonServiceUtil.getUserServiceInstance().saveUser(pojo);
-                    req.setAttribute("messageResponse", "Thêm tài khoản thành công");
+                    resp.sendRedirect("/admin/user?messageResponse=addSuss");
                 } else { //da ton tai
                     req.setAttribute("messexist", WebConstant.USER_NOT_UNIQUE);
                     List<RoleDto> roles = SingletonServiceUtil.getRoleServiceInstance().getAllRole();
@@ -68,12 +70,13 @@ public class UserEditController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            req.setAttribute("messageResponse", "Thao tác thất bại");
-
+            resp.sendRedirect("/admin/user?messageResponse=fail");
         }
-        req.setAttribute("users", users);
+
+       // resp.sendRedirect("/admin-user-list?messageResponse=ThanhCong");
+      /*  req.setAttribute("users", users);
         req.setAttribute("pojo", command);
         RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/listUser.jsp");
-        rd.forward(req, resp);
+        rd.forward(req, resp);*/
     }
 }

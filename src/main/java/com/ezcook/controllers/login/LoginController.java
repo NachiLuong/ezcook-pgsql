@@ -1,4 +1,4 @@
-package com.ezcook.controllers;
+package com.ezcook.controllers.login;
 
 import com.ezcook.command.UserCommand;
 import com.ezcook.constants.WebConstant;
@@ -16,15 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ResourceBundle;
-
-@WebServlet("/login")
+@WebServlet(urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
-
-//    ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
-    ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws SecurityException, IOException, ServletException {
@@ -47,6 +42,7 @@ public class LoginController extends HttpServlet {
                     resp.sendRedirect("/home");
                 }
             } else {
+                req.setAttribute("messageResponse", "Tài khoản hoặc mật khẩu sai");
                 RequestDispatcher rd = req.getRequestDispatcher("/views/admin/login.jsp");
                 rd.forward(req, resp);
             }

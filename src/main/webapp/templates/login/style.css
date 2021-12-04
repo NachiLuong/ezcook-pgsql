@@ -14,7 +14,11 @@ body {
     height: 100vh;
     margin: -20px 0 50px;
 }
-
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
 h1 {
     font-weight: bold;
     margin: 0;

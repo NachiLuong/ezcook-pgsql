@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/admin-user-list", "/admin-user-delete"})
+@WebServlet(urlPatterns = {"/admin/user"})
 public class UserController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
@@ -23,27 +23,25 @@ public class UserController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
+        req.setCharacterEncoding("UTF-8");
         UserDto pojo = command.getPojo();
         String search = req.getParameter("txt");
-        Integer id=0;
-        /*if (req.getParameter("delete") !=null){
-            id = Integer.parseInt(req.getParameter("delete"));
-            System.out.println(id);
-        }*/
         List<UserDto> users;
-        if (search == "" || search==null){
-             users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
-        }else {
-             users = SingletonServiceUtil.getUserServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(), search);
+        if (search == "" || search == null) {
+            users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+        } else {
+            users = SingletonServiceUtil.getUserServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(), search);
         }
         int sotrang;
         if (SingletonServiceUtil.getUserServiceInstance().countUser() % command.getMaxPageItems() == 0)
             sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems();
         else
             sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems() + 1;
+
         command.setTotalItems(sotrang);
 
         req.setAttribute("users", users);
+        checkMessage(req);
         req.setAttribute("pojo", command);
         RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/listUser.jsp");
         rd.forward(req, resp);
@@ -53,15 +51,15 @@ public class UserController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
+        req.setCharacterEncoding("UTF-8");
         UserDto pojo = command.getPojo();
         int sotrang;
         List<UserDto> users;
         Integer id = Integer.parseInt(req.getParameter("idDelete"));
         try {
-            List ids=new ArrayList();
+            List ids = new ArrayList();
             ids.add(id);
             SingletonServiceUtil.getUserServiceInstance().delete(ids);
-
             users = SingletonServiceUtil.getUserServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
             if (SingletonServiceUtil.getUserServiceInstance().countUser() % command.getMaxPageItems() == 0)
                 sotrang = SingletonServiceUtil.getUserServiceInstance().countUser() / command.getMaxPageItems();
@@ -74,8 +72,22 @@ public class UserController extends HttpServlet {
             req.setAttribute("messageResponse", "Xóa tài khoản thất bại");
         }
         req.setAttribute("users", users);
+
         req.setAttribute("pojo", command);
         RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/listUser.jsp");
         rd.forward(req, resp);
+    }
+
+    public void checkMessage(HttpServletRequest request) {
+        String message = request.getParameter("messageResponse");
+        if(message != null) {
+            if(message.trim().equals("updateSuss")) {
+                request.setAttribute("messageResponse","Cập nhật tài khoản thành công");
+            } else if (message.trim().equals("addSuss")){
+                request.setAttribute("messageResponse","Thêm tài khoản thành công");
+            } else if (message.trim().equals("fail")) {
+                request.setAttribute("messageResponse","Thao tác thất bại");
+            }
+        }
     }
 }

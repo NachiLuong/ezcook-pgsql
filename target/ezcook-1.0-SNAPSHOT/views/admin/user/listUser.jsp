@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
-<c:url var="url" value="/admin-user-list">
+<c:url var="url" value="/admin/user">
     <c:param name="urlType" value="url_edit"/>
 </c:url>
 
@@ -13,7 +13,7 @@
     <li class="active" style="padding-top: -10px"><fmt:message key="label.user.list" bundle="${lang}"/></li>
 </ul><!-- /.breadcrumb -->
 <div class="row">
-    <c:if test="${messageResponse !=null}">
+    <c:if test="${messageResponse != null}">
         <div id="thongbao" class="alert alert-dismissible alert-success ">
             <button type="button" class="close" id="btnClose">
                 <i class="fa fa-times"></i>
@@ -23,7 +23,7 @@
     </c:if>
     <div class="col-xs-12">
         <div style="display: flex; justify-content: space-between">
-            <form action="admin-user-list" method="get" class="form-inline my-2 my-lg-0">
+            <form action="<c:url value="/admin/user"/> " method="get" class="form-inline my-2 my-lg-0">
                 <div class="input-group input-group-sm">
                     <input type="text" name="txt" class="form-control" placeholder="Nhập tài khoản">
                     <div class="input-group-append">
@@ -34,7 +34,7 @@
                 </div>
             </form>
             <a class="btn btn-secondary" id="addUser" style="float: right; margin-bottom: 5px"
-               href="<c:url value="/admin-user-list/edit"/> ">Thêm
+               href="<c:url value="/admin/user/edit"/> ">Thêm
                 User</a>
         </div>
         <table class="table table-striped table-bordered table-hover" id="sample_1">
@@ -61,7 +61,7 @@
                             <input type="hidden" name="idDelete" value="${user.id_user}"/>
                             <button style="background-color: red" class="btn btn-secondary">Xóa</button>
                         </form>
-                        <c:url value="/admin-user-list/edit" var="editurl">
+                        <c:url value="/admin/user/edit" var="editurl">
                             <c:param name="userId" value="${user.id_user}"/>
                             <c:param name="page" value="1"/>
                         </c:url>
@@ -95,7 +95,7 @@
     <nav aria-label="...">
         <ul class="pagination justify-content-center=">
             <li class="page-item ">
-                <c:url var="urlPageBegin" value="/admin-user-list">
+                <c:url var="urlPageBegin" value="/admin/user">
                     <c:param name="page" value="${(pojo.page-1) < 1 ? 1 : (pojo.page-1) }"/>
                 </c:url>
                 <a class="page-link" href="${urlPageBegin}">Previous</a>
@@ -108,7 +108,7 @@
                 </c:if>
                 <c:if test="${i!=pojo.page}">
                     <li class="page-item">
-                        <c:url var="urlPage" value="/admin-user-list">
+                        <c:url var="urlPage" value="/admin/user">
                             <c:param name="page" value="${i}"/>
                         </c:url>
                         <a class="page-link" href="${urlPage}">${i}</a>
@@ -116,7 +116,7 @@
                 </c:if>
             </c:forEach>
             <li class="page-item">
-                <c:url var="urlPageEnd" value="/admin-user-list">
+                <c:url var="urlPageEnd" value="/admin/user">
                     <c:param name="page" value="${(pojo.page+1)> pojo.totalItems ? pojo.totalItems : (pojo.page+1) }"/>
                 </c:url>
                 <a class="page-link" href="${urlPageEnd}">Next</a>

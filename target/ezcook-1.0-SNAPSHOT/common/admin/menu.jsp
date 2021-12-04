@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
-<c:url value="/admin-user-list" var="userlist"/>
+<c:url value="/admin/user" var="userlist"/>
+<c:url value="/admin/food" var="foodlist"/>
+<c:url value="/admin/foodtype" var="foodtypelist"/>
+<c:url value="/admin/statistics" var="statisticslist"/>
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <a href="#" class="img logo rounded-circle mb-5"
@@ -11,13 +14,13 @@
                     <a href="${userlist}">Tài khoản</a>
                 </li>
                 <li>
-                    <a href="#">Loại thức ăn</a>
+                    <a href="${foodtypelist}">Loại thức ăn</a>
                 </li>
                 <li>
-                    <a href="#">Món ăn</a>
+                    <a href="${foodlist}">Món ăn</a>
                 </li>
                 <li>
-                    <a href="#">Thống kê</a>
+                    <a href="${statisticslist}">Thống kê</a>
                 </li>
             </ul>
             <div class="footer">

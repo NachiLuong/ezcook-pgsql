@@ -1,6 +1,7 @@
 <%@ include file="/common/taglib.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<c:url var="formUrl" value="/login"/>
+<c:url var="login" value="/login"/>
+<c:url var="register" value="/register"/>
 <html>
 <head>
     <script src="https://fonts.googleapis.com/css?family=Montserrat:400,800"></script>
@@ -10,20 +11,25 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="#">
+        <form action="${register}">
             <h1>Tạo tài khoản</h1>
             <br>
             <span>Nhập thông tin</span>
-            <input type="text" placeholder="Họ và Tên"/>
-            <input type="text" placeholder="Tài khoản"/>
-            <input type="password" placeholder="Mật khẩu"/>
-            <input type="password" placeholder="Nhập lại mật khẩu"/>
-            <input type="email" placeholder="Email"/>
+            <c:if test="${messexist !=null}">
+                <div id="thongbao" class="alert alert-dismissible alert-success ">
+                    <h5 style="color: red">${messexist}</h5>
+                </div>
+            </c:if>
+            <input type="text" placeholder="Họ và Tên" name="pojo.fullname" />
+            <input type="text" placeholder="Tài khoản" name="pojo.username"/>
+            <input type="password" placeholder="Mật khẩu" name="pojo.password"/>
+            <input type="password" placeholder="Nhập lại mật khẩu" name="pojo.username"/>
+            <input type="email" placeholder="Email" name="pojo.email"/>
             <button>Đăng kí</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="${formUrl}" method="post">
+        <form action="${login}" method="post">
             <h1>Đăng Nhập</h1>
             <div class="social-container">
                 <a href="<c:url value='https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
@@ -31,7 +37,11 @@
                    class="social "><i class="fa fa-google iconGoogle"></i></a>
             </div>
             <span>Hoặc</span>
-
+            <c:if test="${messageResponse !=null}">
+                <div id="thongbao" class="alert alert-dismissible alert-success ">
+                    <h5 style="color: red">${messageResponse}</h5>
+                </div>
+            </c:if>
             <input type="text" placeholder="Tài khoản" name="pojo.username"/>
             <input type="password" placeholder="Mật khẩu" name="pojo.password"/>
             <a href="#">Quên mật khẩu</a>

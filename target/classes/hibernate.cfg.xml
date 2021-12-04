@@ -14,7 +14,9 @@
         <property name="connection.url">jdbc:postgresql://ec2-54-159-35-35.compute-1.amazonaws.com:5432/d37tfeuqn9sfbb</property>
         <property name="connection.username">ukffckmjxuwehs</property>
         <property name="connection.password">37b320e7be9f32ee6edd7d88a59fe3009bb9b0814e2512e8ab98f54faf687ccc</property>
-
+        <property name="hibernate.connection.CharSet">utf8</property>
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+        <property name="hibernate.connection.useUnicode">true</property>
         <!-- JDBC connection pool (use the built-in) -->
 <!--        <property name="connection.pool_size">1</property>-->
 

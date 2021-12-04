@@ -1,12 +1,13 @@
-package com.ezcook.controllers.admin;
+package com.ezcook.controllers.admin.food;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-public class FoodTypeController extends HttpServlet {
+@WebServlet(urlPatterns = {"/admin/food"})
+public class FoodController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
 

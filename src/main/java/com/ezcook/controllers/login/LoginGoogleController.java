@@ -1,4 +1,4 @@
-package com.ezcook.controllers;
+package com.ezcook.controllers.login;
 
 import com.ezcook.entities.User;
 import com.ezcook.services.IUserService;

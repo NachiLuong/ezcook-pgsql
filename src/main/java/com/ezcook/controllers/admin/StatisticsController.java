@@ -1,11 +1,12 @@
 package com.ezcook.controllers.admin;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+@WebServlet(urlPatterns = {"/admin/statistics"})
 public class StatisticsController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
