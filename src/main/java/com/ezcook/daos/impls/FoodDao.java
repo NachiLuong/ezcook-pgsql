@@ -45,8 +45,32 @@ public class FoodDao extends AbstractDao<Integer,Food> implements IFoodDao {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM Food WHERE idFoodtype = :foodTypeId ORDER BY createdOn DESC");
+            Query query = session.createQuery("FROM Food WHERE idFoodtype = :foodTypeId");
             query.setLong("foodTypeId", foodTypeId);
+            query.setMaxResults(limit);
+            List<Food> list = query.list();
+            Collections.shuffle(list);
+            transaction.commit();
+            return list;
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return null;
+    }
+    public List<Food> getListByFoodTypeIDAndCount(long foodTypeId,int first,int limit) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM Food WHERE idFoodtype = :foodTypeId");
+            query.setLong("foodTypeId", foodTypeId);
+            query.setFirstResult(first);
             query.setMaxResults(limit);
             List<Food> list = query.list();
             Collections.shuffle(list);

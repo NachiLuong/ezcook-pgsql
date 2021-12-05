@@ -9,5 +9,6 @@ public interface IFoodDao extends IGenericDao<Integer, Food> {
     Food update(Food food);
     Food findEqualUnique(String property, Object value);
     List<Food> getListByFoodTypeIDAndLimit(long foodTypeId,int limit);
+    List<Food> getListByFoodTypeIDAndCount(long foodTypeId,int first,int limit);
     List<Food> getListFoodNew(int first,int limit);
 }

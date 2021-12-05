@@ -20,7 +20,7 @@
         function loadMore() {
             var countFood = document.getElementsByClassName("food").length;
             jQuery.ajax({
-                url: "/loadMore",
+                url: "/loadMoreHome",
                 type: "get",
                 data:{
                     count : countFood

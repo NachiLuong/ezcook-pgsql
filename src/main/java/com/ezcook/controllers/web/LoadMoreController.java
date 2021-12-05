@@ -26,7 +26,7 @@ import java.util.Random;
 
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(urlPatterns = {"/loadMore"})
+@WebServlet(urlPatterns = {"/loadMoreHome", "/loadMoreCategory"})
 public class LoadMoreController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
@@ -38,66 +38,95 @@ public class LoadMoreController extends HttpServlet {
 //        req.setCharacterEncoding("UTF-8");
 //        resp.setCharacterEncoding("UTF-8");
 //        resp.setContentType("text/html; charset=UTF-8");
-        int count= Integer.parseInt(req.getParameter("count"));
-        FoodDao foodDao = new FoodDao();
-        FoodService cs = new FoodService();
-        List<Food> listFoodNew = foodDao.getListFoodNew(count,6);
-        //PrintWriter out=resp.getWriter();
-        ServletOutputStream out = resp.getOutputStream();
-        for (Food food : listFoodNew) {
-            out.write("<div class=\"food item text-center\">\n".getBytes("UTF-8"));
-            out.write("<a href=\"<c:url value='/#'/>\">\n".getBytes("UTF-8"));
-            out.write("<img src=\"".getBytes("UTF-8"));
-            out.write(food.getImage().getBytes("UTF-8"));
-            out.write("\" alt=\"".getBytes("UTF-8"));
-            out.write(food.getName().getBytes("UTF-8"));
-            out.write("\"/></a>\n".getBytes("UTF-8"));
-            out.write("<div>\n".getBytes("UTF-8"));
-            out.write("<span>Ezook <i class=\"fal fa-utensils-alt\"></i> <c:out value='${food.foodtype.name}'/></span>\n".getBytes("UTF-8"));
-            out.write(" <a href=\"<c:url value='/#'/>\">\n".getBytes("UTF-8"));
-            out.write("<h5>".getBytes("UTF-8"));
-            out.write(food.getName().getBytes("UTF-8"));
-            out.write("</h5>\n".getBytes("UTF-8"));
-            out.write("</a>\n".getBytes("UTF-8"));
-            out.write("<span class=\"author\">by <a href=\"<c:url value='/#'/>\">Ezcook</a></span>\n".getBytes("UTF-8"));
-            out.write("<p id=\"demo\"></p>\n".getBytes("UTF-8"));
-            out.write("\n".getBytes("UTF-8"));
-            out.write("<hr>\n".getBytes("UTF-8"));
-            out.write("<p class=\"content-food\">".getBytes("UTF-8"));
-            out.write(cs.getTextBetweenTags("p", food.getContent()).getBytes("UTF-8"));
-            out.write("</p>\n".getBytes("UTF-8"));
-            out.write("<a href=\"<c:url value='/#'/>\">Xem tiếp...</a>\n".getBytes("UTF-8"));
-            out.write("<div class=\"social-icon\">\n".getBytes("UTF-8"));
-            out.write("<a href=\"<c:url value='/#'/>\"><i class=\"fab fa-facebook-f\"></i></a>\n".getBytes("UTF-8"));
-            out.write("<a href=\"<c:url value='/#'/>\"><i class=\"fab fa-google-plus-g\"></i></a>\n".getBytes("UTF-8"));
-            out.write("<a href=\"<c:url value='/#'/>\"><i class=\"fab fa-twitter\"></i></a>\n".getBytes("UTF-8"));
-            out.write("<a href=\"<c:url value='/#'/>\"><i class=\"fab fa-instagram\"></i></a>\n".getBytes("UTF-8"));
-            out.write("</div>\n".getBytes("UTF-8"));
-            out.write("</div>\n".getBytes("UTF-8"));
-            out.write("</div>".getBytes("UTF-8"));
-
-//            out.print("<div class=\"item text-center\">\n" +
-//                    "                        <a href=\"<c:url value='/#'/>\">\n" +
-//                    "                            <img src=\"" + food.getImage() + "\" alt=\"" + food.getName() + "\"/></a>\n" +
-//                    "                        <div>\n" +
-//                    "                            <span>Ezook <i class=\"fal fa-utensils-alt\"></i> Đồ uống</span>\n" +
-//                    "                            <a href=\"<c:url value='/#'/>\">\n" +
-//                    "                                <h5>" + food.getName() + "Lê Thị Ngọc Diễm" + "</h5>\n" +
-//                    "                            </a>\n" +
-//                    "                            <span class=\"author\">by <a href=\"<c:url value='/#'/>\">Ezcook</a></span>\n" +
-//                    "                            <p id=\"demo\"></p>\n" +
-//                    "\n" +
-//                    "                            <hr>\n" +
-//                    "                            <p class=\"content-food\">" + cs.getTextBetweenTags("p", food.getContent()) + "</p>\n" +
-//                    "                            <a href=\"<c:url value='/#'/>\">Xem tiếp...</a>\n" +
-//                    "                            <div class=\"social-icon\">\n" +
-//                    "                                <a href=\"<c:url value='/#'/>\"><i class=\"fab fa-facebook-f\"></i></a>\n" +
-//                    "                                <a href=\"<c:url value='/#'/>\"><i class=\"fab fa-google-plus-g\"></i></a>\n" +
-//                    "                                <a href=\"<c:url value='/#'/>\"><i class=\"fab fa-twitter\"></i></a>\n" +
-//                    "                                <a href=\"<c:url value='/#'/>\"><i class=\"fab fa-instagram\"></i></a>\n" +
-//                    "                            </div>\n" +
-//                    "                        </div>\n" +
-//                    "                    </div>".getBytes("UTF-8"));
+        if (req.getServletPath().equals("/loadMoreHome")) {
+            int count = Integer.parseInt(req.getParameter("count"));
+            FoodDao foodDao = new FoodDao();
+            FoodService cs = new FoodService();
+            List<Food> listFoodNew = foodDao.getListFoodNew(count, 6);
+            //PrintWriter out=resp.getWriter();
+            ServletOutputStream out = resp.getOutputStream();
+            for (Food food : listFoodNew) {
+                out.write("<div class=\"food item text-center\">\n".getBytes("UTF-8"));
+                out.write("<a href=\"<c:url value='/#'/>\">\n".getBytes("UTF-8"));
+                out.write("<img src=\"".getBytes("UTF-8"));
+                out.write(food.getImage().getBytes("UTF-8"));
+                out.write("\" alt=\"".getBytes("UTF-8"));
+                out.write(food.getName().getBytes("UTF-8"));
+                out.write("\"/></a>\n".getBytes("UTF-8"));
+                out.write("<div>\n".getBytes("UTF-8"));
+                out.write("<span>Ezook <i class=\"fal fa-utensils-alt\"></i> Đồ uống</span>\n".getBytes("UTF-8"));
+                out.write(" <a href=\"<c:url value='/#'/>\">\n".getBytes("UTF-8"));
+                out.write("<h5>".getBytes("UTF-8"));
+                out.write(food.getName().getBytes("UTF-8"));
+                out.write("</h5>\n".getBytes("UTF-8"));
+                out.write("</a>\n".getBytes("UTF-8"));
+                out.write("<span class=\"author\">by <a href=\"<c:url value='/#'/>\">Ezcook</a></span>\n".getBytes("UTF-8"));
+                out.write("<p id=\"demo\"></p>\n".getBytes("UTF-8"));
+                out.write("\n".getBytes("UTF-8"));
+                out.write("<hr>\n".getBytes("UTF-8"));
+                out.write("<p class=\"content-food\">".getBytes("UTF-8"));
+                out.write(cs.getTextBetweenTags("p", food.getContent()).getBytes("UTF-8"));
+                out.write("</p>\n".getBytes("UTF-8"));
+                out.write("<a href=\"<c:url value='/#'/>\">Xem tiếp...</a>\n".getBytes("UTF-8"));
+                out.write("<div class=\"social-icon\">\n".getBytes("UTF-8"));
+                out.write("<a href=\"<c:url value='/#'/>\"><i class=\"fab fa-facebook-f\"></i></a>\n".getBytes("UTF-8"));
+                out.write("<a href=\"<c:url value='/#'/>\"><i class=\"fab fa-google-plus-g\"></i></a>\n".getBytes("UTF-8"));
+                out.write("<a href=\"<c:url value='/#'/>\"><i class=\"fab fa-twitter\"></i></a>\n".getBytes("UTF-8"));
+                out.write("<a href=\"<c:url value='/#'/>\"><i class=\"fab fa-instagram\"></i></a>\n".getBytes("UTF-8"));
+                out.write("</div>\n".getBytes("UTF-8"));
+                out.write("</div>\n".getBytes("UTF-8"));
+                out.write("</div>".getBytes("UTF-8"));
+            }
+        }
+        else
+        {
+//            FoodDao foodDao = new FoodDao();
+//            String id = req.getParameter("id");
+//            long foodTypeID = Long.parseLong(id);
+//            int count = Integer.parseInt(req.getParameter("count"));
+//            List <Food> listFood = foodDao.getListByFoodTypeIDAndCount(foodTypeID,count,6);
+//
+            String id = (String) req.getSession().getAttribute("id");
+            System.out.println(id);
+            long foodTypeID = Long.parseLong(id);
+            int count = Integer.parseInt(req.getParameter("count"));
+            FoodDao foodDao = new FoodDao();
+            FoodService cs = new FoodService();
+            List<Food> listFood = foodDao.getListByFoodTypeIDAndCount(foodTypeID,count,6);
+            //PrintWriter out=resp.getWriter();
+            ServletOutputStream out = resp.getOutputStream();
+            for (Food food : listFood) {
+                out.write("<div class=\"food content\">\n".getBytes("UTF-8"));
+                out.write("<div class=\"image\">".getBytes(StandardCharsets.UTF_8));
+                out.write("<a href=\"<c:url value='/blog'/>\">\n".getBytes("UTF-8"));
+                out.write("<img src=\"".getBytes("UTF-8"));
+                out.write(food.getImage().getBytes("UTF-8"));
+                out.write("\" alt=\"".getBytes("UTF-8"));
+                out.write(food.getName().getBytes("UTF-8"));
+                out.write("\"/></a>\n".getBytes("UTF-8"));
+                out.write("</div>".getBytes(StandardCharsets.UTF_8));
+                out.write("<div class=\"item text-center\">\n".getBytes("UTF-8"));
+                out.write("<span>Ezook <i class=\"fal fa-utensils-alt\"></i>".getBytes(StandardCharsets.UTF_8));
+                out.write(food.getFoodtype().getName().getBytes(StandardCharsets.UTF_8));
+                out.write("</span>\n".getBytes("UTF-8"));
+                out.write(" <a href=\"<c:url value='/#'/>\">\n".getBytes("UTF-8"));
+                out.write("<h5>".getBytes("UTF-8"));
+                out.write(food.getName().getBytes("UTF-8"));
+                out.write("</h5>\n".getBytes("UTF-8"));
+                out.write("</a>\n".getBytes("UTF-8"));
+                out.write("<span class=\"author\">written by <a href=\"<c:url value='/#'/>\">Ezcook | </a></span>\n".getBytes("UTF-8"));
+                out.write(cs.formatTime(food.getCreatedOn()).getBytes(StandardCharsets.UTF_8));
+                out.write("<p id=\"demo\"></p>\n".getBytes("UTF-8"));
+                out.write("\n".getBytes("UTF-8"));
+                out.write("<hr>\n".getBytes("UTF-8"));
+                out.write("<p class=\"food-content\">".getBytes("UTF-8"));
+                out.write(cs.getTextBetweenTags("p", food.getContent()).getBytes("UTF-8"));
+                out.write("</p>\n".getBytes("UTF-8"));
+                out.write("<a href=\"<c:url value='/#'/>\">Xem tiếp...</a>\n".getBytes("UTF-8"));
+                out.write("</div>\n".getBytes("UTF-8"));
+                out.write("</div>\n".getBytes("UTF-8"));
+                out.write("<hr>".getBytes("UTF-8"));
+            }
         }
 
     }

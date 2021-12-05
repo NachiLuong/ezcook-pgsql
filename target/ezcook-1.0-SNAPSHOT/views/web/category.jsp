@@ -1,12 +1,12 @@
+
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file="/common/taglib.jsp" %>
-<c:url value="/home" var="home"/>
 <jsp:useBean id="cs" class="com.ezcook.services.impls.FoodService" scope="request"
              type="com.ezcook.services.IFoodService"/>
 <jsp:useBean id="food" class="com.ezcook.entities.Food" scope="request" type="com.ezcook.entities.Food"/>
 
 <jsp:useBean id="foodType" class="com.ezcook.entities.FoodType" scope="request" type="com.ezcook.entities.FoodType"/>
-
+<%--<jsp:useBean id="nameListFood" scope="request" type="com.ezcook.controllers.web.CategoryController"/>--%>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -18,7 +18,7 @@
         function loadMore() {
             var countFood = document.getElementsByClassName("food").length;
             jQuery.ajax({
-                url: "/loadMore",
+                url: "/loadMoreCategory",
                 type: "get",
                 data: {
                     count: countFood
@@ -28,6 +28,7 @@
                     var row = document.getElementById("content_new");
                     row.innerHTML += data;
                 },
+
                 error: function (xhr) {
                     console.log("Failed to push transaction. -> " + xhr.responseText);
                 }
@@ -38,47 +39,42 @@
 
 <body>
 
-<!-- input search -->
-<%--<div class="mb-3 w-50 mx-auto">--%>
-<%--    <form action="/#">--%>
-<%--        <input type="text" class="form-control" id="input1" placeholder="Enter...">--%>
-<%--        <button class="icon"><i class="fa fa-search"></i></button>--%>
-<%--    </form>--%>
-<%--</div>--%>
-
 <div id="main" class="d-flex mx-auto">
     <%-- begin container --%>
     <div id="container">
         <header class="text-center">
             <h2><span style="color:#3d3d3d;">Category:&nbsp</span>${nameListFood}</h2>
         </header>
-        <c:forEach var='food' items="${listFood}" varStatus="status">
-            <div class="content">
-                <div class="image">
-                    <a href="<c:url value='/blog'/>">
-                        <img src="<c:url value='${food.image}'/>" alt="${food.name}"/>
-                    </a>
-                </div>
-                <div class="item text-center">
-                    <span>Ezcook <i class="fal fa-utensils-alt"></i> <c:out value='${food.foodtype.name}'/></span>
-                    <a href="<c:url value='/blog'/>">
-                        <h5><c:out value='${food.name}'/></h5>
-                    </a>
-                    <span class="author">written by <a
-                            href="<c:url value='/#'/>">Ezcook</a>  | ${cs.formatTime(food.createdOn)}</span>
-                    <p id="demo"></p>
+        <div class="food-content" id="content_new">
+            <%--@elvariable id="listFood" type="java.util.List"--%>
+            <c:forEach var='food' items="${listFood}" varStatus="status">
+                <div class="food content">
+                    <div class="image">
+                        <a href="<c:url value='/blog?id=${food.id}'/>">
+                            <img src="<c:url value='${food.image}'/>" alt="${food.name}"/>
+                        </a>
+                    </div>
+                    <div class="item text-center">
+                        <span>Ezcook <i class="fal fa-utensils-alt"></i> <c:out value='${food.foodtype.name}'/></span>
+                        <a href="<c:url value='/blog?id=${food.id}'/>">
+                            <h5><c:out value='${food.name}'/></h5>
+                        </a>
+                        <span class="author">written by <a
+                                href="<c:url value='/#'/>">Ezcook</a>  | ${cs.formatTime(food.createdOn)}</span>
+                        <p id="demo"></p>
 
-                    <hr>
-                    <p class="food-content">
-                        <c:out value='${cs.getTextBetweenTags("p", food.content)}'/></p>
-                    <span><a href="<c:url value='/blog'/>">Xem tiếp...</a></span>
-                </div>
+                        <hr>
+                        <p class="food-content">
+                            <c:out value='${cs.getTextBetweenTags("p", food.content)}'/></p>
+                        <span><a href="<c:url value='/blog?id=${food.id}'/>">Xem tiếp...</a></span>
+                    </div>
 
-            </div>
-            <hr>
-        </c:forEach>
+                </div>
+                <hr>
+            </c:forEach>
+        </div>
         <div class = "text-center">
-            <button onclick="loadMore()" class="button button " style="text-align: center">Xem thêm</button>
+            <button onclick="loadMore()" class="button" style="text-align: center">Xem thêm</button>
             <br></br>
         </div>
     </div>
@@ -108,6 +104,7 @@
 
 
 <script type='text/javascript' src="<c:url value='/templates/web/common/js/common.js'/>"></script>
+
 </body>
 
 </html>

@@ -24,13 +24,13 @@ import java.util.Collections;
 
 @WebServlet(urlPatterns = {"/category"})
 public class CategoryController extends HttpServlet {
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws SecurityException, IOException, ServletException {
-        FoodTypeDao foodTypeDao=new FoodTypeDao();
-        List<FoodType> listFoodType=foodTypeDao.findAll();
-        FoodDao foodDao=new FoodDao();
-
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws SecurityException, IOException, ServletException {
+        FoodTypeDao foodTypeDao = new FoodTypeDao();
+        List<FoodType> listFoodType = foodTypeDao.findAll();
+        FoodDao foodDao = new FoodDao();
         String id = req.getParameter("id");
+        req.getSession().setAttribute("id",id);
+
         long foodTypeID = Long.parseLong(id);
         List <Food> listFood = foodDao.getListByFoodTypeIDAndLimit(foodTypeID,6);
         req.setAttribute("listFood",listFood);
@@ -41,11 +41,19 @@ public class CategoryController extends HttpServlet {
         rd.forward(req,resp);
 
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws SecurityException, IOException, ServletException {
-//        super.doPost(req, resp);
-        RequestDispatcher rd=request.getRequestDispatcher("/views/web/category.jsp");
-        rd.forward(request,response);
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPut(req, resp);
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doDelete(req, resp);
     }
 }

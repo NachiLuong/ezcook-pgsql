@@ -20,12 +20,13 @@ h4 {
     text-align: center;
 }
 #container .content {
-    padding: 20px 0px;
+    /*padding: 20px 0px;*/
     display: flex;
     /*display: inline-block;*/
 }
 #container .content .image{
     flex-basis: 50%;
+    padding: 20px 0px;
     display: inline-block;
     /*padding: 10px 0px 20px;*/
 }
@@ -38,7 +39,7 @@ h4 {
 #container .content .item{
     flex-basis: 50%;
     display:inline-block;
-    /*padding: 10px;*/
+    padding: 20px 10px;
 }
 #container .content .item> span {
     color: #689f38;
@@ -138,4 +139,7 @@ h4 {
 {
     background-color:  #6eb48c;
     color: #fff;
+}
+span.wpv-filter-next-link.page-link {
+    display: none;
 }

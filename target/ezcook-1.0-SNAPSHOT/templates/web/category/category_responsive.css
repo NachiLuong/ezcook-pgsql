@@ -1,4 +1,4 @@
-@media screen and (max-width: 1169px) {
+@media screen and (max-width: 1024px) {
     #main {
         width: 100%;
     }
@@ -10,40 +10,26 @@
     }
 }
 
-@media screen and (max-width: 400px) {
-    #related-posts > div {
-        display: block;
-    }
-}
 
-
-@media only screen and (max-width: 1300px) {
-    #container {
-        padding: 0 100px;
-    }
-    #container .content .item {
-        flex-basis: 70%;
-    }
-}
-
-@media only screen and (max-width: 1024px){
+@media only screen and (max-width: 756px){
     #container{
-        padding: 0 20px;
+        padding: 0 10px;
     }
     #container .content {
         with: 100%
     }
 }
 
-@media only screen and (max-width: 756px){
+@media only screen and (max-width: 400px) {
+    #container .content {
+        flex-wrap: wrap;
+    }
+    #container .content .image {
+        width: 100%;
+        height: auto;
+    }
     #container .content .item .food-content{
         display: none;
     }
 }
 
-@media only screen and (max-width: 400px) {
-    #container .content .image img {
-        width: 100%;
-        height: auto;
-    }
-}
