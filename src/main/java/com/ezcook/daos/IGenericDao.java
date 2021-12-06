@@ -6,6 +6,7 @@ import java.util.Map;
 
 public interface IGenericDao<ID extends Serializable, T>
 {
+    List<T> querySelector(String hqlQuery);
     List<T> findAll();
     T update(T entity);
     void save(T entity);

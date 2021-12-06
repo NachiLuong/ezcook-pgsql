@@ -1,20 +1,24 @@
 package com.ezcook.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "foodtype",schema = "public")
 public class FoodType {
     private int id;
-    private Timestamp createddate;
-    private Timestamp modifieddate;
-    private String nameFoodtype;
+    private Timestamp createdOn;
+    private Timestamp modifiedOn;
+    private String name;
     private Collection<Food> foods;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id" , nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -25,32 +29,32 @@ public class FoodType {
 
     @Basic
     @Column(name = "created_on")
-    public Timestamp getCreateddate() {
-        return createddate;
+    public Timestamp getCreatedOn() {
+        return createdOn;
     }
 
-    public void setCreateddate(Timestamp createddate) {
-        this.createddate = createddate;
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
     }
 
     @Basic
     @Column(name = "modified_on")
-    public Timestamp getModifieddate() {
-        return modifieddate;
+    public Timestamp getModifiedOn() {
+        return modifiedOn;
     }
 
-    public void setModifieddate(Timestamp modifieddate) {
-        this.modifieddate = modifieddate;
+    public void setModifiedOn(Timestamp modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
     @Basic
-    @Column(name = "name")
-    public String getNameFoodtype() {
-        return nameFoodtype;
+    @Column(name = "name", nullable = false)
+    public String getName() {
+        return name;
     }
 
-    public void setNameFoodtype(String nameFoodtype) {
-        this.nameFoodtype = nameFoodtype;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -61,11 +65,11 @@ public class FoodType {
         FoodType foodtype = (FoodType) o;
 
         if (id != foodtype.id) return false;
-        if (createddate != null ? !createddate.equals(foodtype.createddate) : foodtype.createddate != null)
+        if (!Objects.equals(createdOn, foodtype.createdOn))
             return false;
-        if (modifieddate != null ? !modifieddate.equals(foodtype.modifieddate) : foodtype.modifieddate != null)
+        if (!Objects.equals(modifiedOn, foodtype.modifiedOn))
             return false;
-        if (nameFoodtype != null ? !nameFoodtype.equals(foodtype.nameFoodtype) : foodtype.nameFoodtype != null)
+        if (!Objects.equals(name, foodtype.name))
             return false;
 
         return true;
@@ -74,13 +78,14 @@ public class FoodType {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
-        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
-        result = 31 * result + (nameFoodtype != null ? nameFoodtype.hashCode() : 0);
+        result = 31 * result + (createdOn != null ? createdOn.hashCode() : 0);
+        result = 31 * result + (modifiedOn != null ? modifiedOn.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
     @OneToMany(mappedBy = "foodtype")
+    @Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
     public Collection<Food> getFoods() {
         return foods;
     }

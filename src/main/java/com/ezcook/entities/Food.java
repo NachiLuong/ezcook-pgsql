@@ -1,19 +1,22 @@
 package com.ezcook.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "food",schema = "public")
 public class Food {
     private int id;
-    private String contentFood;
-    private Timestamp createddate;
+    private String content;
+    private Timestamp createdOn;
     private String image;
-    private String linkVideo;
-    private Timestamp modifieddate;
-    private String nameFood;
+    private String video;
+    private Timestamp modifiedOn;
+    private String name;
     private Integer idFoodtype;
     private Collection<Comment> comments;
     private FoodType foodtype;
@@ -25,20 +28,27 @@ public class Food {
 
     public Food(int id,String contentFood,Timestamp createddate,String image,String linkVideo,Timestamp modifieddate,String nameFood,Integer idFoodtype,Collection<Comment> comments,FoodType foodtype) {
         this.id=id;
-        this.contentFood=contentFood;
-        this.createddate=createddate;
+        this.content=contentFood;
+        this.createdOn=createddate;
         this.image=image;
-        this.linkVideo=linkVideo;
-        this.modifieddate=modifieddate;
-        this.nameFood=nameFood;
+        this.video=linkVideo;
+        this.modifiedOn=modifieddate;
+        this.name=nameFood;
         this.idFoodtype=idFoodtype;
         this.comments=comments;
         this.foodtype=foodtype;
     }
-
+    public Food(String name, String content, String image, String video, Integer foodtypeId) {
+        this.name = name;
+        this.content = content;
+        this.image = image;
+        this.video = video;
+        this.idFoodtype = foodtypeId;
+    }
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id" , nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -48,27 +58,27 @@ public class Food {
     }
 
     @Basic
-    @Column(name = "content")
-    public String getContentFood() {
-        return contentFood;
+    @Column(name = "content" , nullable = false)
+    public String getContent() {
+        return content;
     }
 
-    public void setContentFood(String contentFood) {
-        this.contentFood = contentFood;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Basic
     @Column(name = "created_on")
-    public Timestamp getCreateddate() {
-        return createddate;
+    public Timestamp getCreatedOn() {
+        return createdOn;
     }
 
-    public void setCreateddate(Timestamp createddate) {
-        this.createddate = createddate;
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
     }
 
     @Basic
-    @Column(name = "image")
+    @Column(name = "image" , nullable = false)
     public String getImage() {
         return image;
     }
@@ -79,32 +89,32 @@ public class Food {
 
     @Basic
     @Column(name = "video")
-    public String getLinkVideo() {
-        return linkVideo;
+    public String getVideo() {
+        return video;
     }
 
-    public void setLinkVideo(String linkVideo) {
-        this.linkVideo = linkVideo;
+    public void setVideo(String video) {
+        this.video = video;
     }
 
     @Basic
     @Column(name = "modified_on")
-    public Timestamp getModifieddate() {
-        return modifieddate;
+    public Timestamp getModifiedOn() {
+        return modifiedOn;
     }
 
-    public void setModifieddate(Timestamp modifieddate) {
-        this.modifieddate = modifieddate;
+    public void setModifiedOn(Timestamp modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
     @Basic
-    @Column(name = "name")
-    public String getNameFood() {
-        return nameFood;
+    @Column(name = "name" , nullable = false)
+    public String getName() {
+        return name;
     }
 
-    public void setNameFood(String nameFood) {
-        this.nameFood = nameFood;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Basic
@@ -125,13 +135,13 @@ public class Food {
         Food food = (Food) o;
 
         if (id != food.id) return false;
-        if (contentFood != null ? !contentFood.equals(food.contentFood) : food.contentFood != null) return false;
-        if (createddate != null ? !createddate.equals(food.createddate) : food.createddate != null) return false;
-        if (image != null ? !image.equals(food.image) : food.image != null) return false;
-        if (linkVideo != null ? !linkVideo.equals(food.linkVideo) : food.linkVideo != null) return false;
-        if (modifieddate != null ? !modifieddate.equals(food.modifieddate) : food.modifieddate != null) return false;
-        if (nameFood != null ? !nameFood.equals(food.nameFood) : food.nameFood != null) return false;
-        if (idFoodtype != null ? !idFoodtype.equals(food.idFoodtype) : food.idFoodtype != null) return false;
+        if (!Objects.equals(content, food.content)) return false;
+        if (!Objects.equals(createdOn, food.createdOn)) return false;
+        if (!Objects.equals(image, food.image)) return false;
+        if (!Objects.equals(video, food.video)) return false;
+        if (!Objects.equals(modifiedOn, food.modifiedOn)) return false;
+        if (!Objects.equals(name, food.name)) return false;
+        if (!Objects.equals(idFoodtype, food.idFoodtype)) return false;
 
         return true;
     }
@@ -139,17 +149,18 @@ public class Food {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (contentFood != null ? contentFood.hashCode() : 0);
-        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (createdOn != null ? createdOn.hashCode() : 0);
         result = 31 * result + (image != null ? image.hashCode() : 0);
-        result = 31 * result + (linkVideo != null ? linkVideo.hashCode() : 0);
-        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
-        result = 31 * result + (nameFood != null ? nameFood.hashCode() : 0);
+        result = 31 * result + (video != null ? video.hashCode() : 0);
+        result = 31 * result + (modifiedOn != null ? modifiedOn.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (idFoodtype != null ? idFoodtype.hashCode() : 0);
         return result;
     }
 
     @OneToMany(mappedBy = "food")
+    @Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
     public Collection<Comment> getComments() {
         return comments;
     }

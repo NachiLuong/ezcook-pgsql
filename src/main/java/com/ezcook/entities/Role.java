@@ -1,20 +1,24 @@
 package com.ezcook.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
-@Table(name = "role", schema = "public", catalog = "d37tfeuqn9sfbb")
+@Table(name = "role", schema = "public")
 public class Role {
     private int id;
-    private Timestamp createddate;
-    private Timestamp modifieddate;
+    private Timestamp createdOn;
+    private Timestamp modifiedOn;
     private String name;
     private Collection<User> users;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id" , nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -25,26 +29,26 @@ public class Role {
 
     @Basic
     @Column(name = "created_on")
-    public Timestamp getCreateddate() {
-        return createddate;
+    public Timestamp getCreatedOn() {
+        return createdOn;
     }
 
-    public void setCreateddate(Timestamp createddate) {
-        this.createddate = createddate;
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
     }
 
     @Basic
     @Column(name = "modified_on")
-    public Timestamp getModifieddate() {
-        return modifieddate;
+    public Timestamp getModifiedOn() {
+        return modifiedOn;
     }
 
-    public void setModifieddate(Timestamp modifieddate) {
-        this.modifieddate = modifieddate;
+    public void setModifiedOn(Timestamp modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name" , nullable = false)
     public String getName() {
         return name;
     }
@@ -61,9 +65,9 @@ public class Role {
         Role role = (Role) o;
 
         if (id != role.id) return false;
-        if (createddate != null ? !createddate.equals(role.createddate) : role.createddate != null) return false;
-        if (modifieddate != null ? !modifieddate.equals(role.modifieddate) : role.modifieddate != null) return false;
-        if (name != null ? !name.equals(role.name) : role.name != null) return false;
+        if (!Objects.equals(createdOn, role.createdOn)) return false;
+        if (!Objects.equals(modifiedOn, role.modifiedOn)) return false;
+        if (!Objects.equals(name, role.name)) return false;
 
         return true;
     }
@@ -71,13 +75,14 @@ public class Role {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (createddate != null ? createddate.hashCode() : 0);
-        result = 31 * result + (modifieddate != null ? modifieddate.hashCode() : 0);
+        result = 31 * result + (createdOn != null ? createdOn.hashCode() : 0);
+        result = 31 * result + (modifiedOn != null ? modifiedOn.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
     @OneToMany(mappedBy = "role")
+    @Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
     public Collection<User> getUsers() {
         return users;
     }

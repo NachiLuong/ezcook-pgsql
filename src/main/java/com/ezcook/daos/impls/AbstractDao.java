@@ -2,22 +2,16 @@ package com.ezcook.daos.impls;
 
 import com.ezcook.constants.WebConstant;
 import com.ezcook.daos.IGenericDao;
-
 import com.ezcook.utils.HibernateUtil;
 import javassist.tools.rmi.ObjectNotFoundException;
-import org.hibernate.HibernateException;
+import org.hibernate.*;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
-
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 
 public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, T> {
@@ -33,6 +27,38 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
     public String getPersistenceClassName() {
         return persistenceClass.getSimpleName();
     }
+
+    @Override
+    public List<T> querySelector(String hqlQuery) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        // Get session current
+//        Session session = factory.getCurrentSession();
+
+        try {
+            // Begin transaction
+            session.getTransaction().begin();
+
+            @SuppressWarnings("unchecked")
+            Query query = session.createQuery(hqlQuery);
+
+            return query.list();
+
+        } catch (Exception e) {
+
+            // Log error
+            e.printStackTrace();
+
+            // Rollback if error
+            session.getTransaction().rollback();
+        } finally {
+
+            // Close transaction
+            // factory.close();
+            session.close();
+        }
+        return null;
+    }
+
 
     @Override
     public List<T> findAll() {

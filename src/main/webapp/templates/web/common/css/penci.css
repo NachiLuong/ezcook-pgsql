@@ -4438,9 +4438,9 @@ li.penci-mega-menu>ul.sub-menu {
 #navigation .penci-megamenu .penci-mega-child-categories a {
     min-width: 0;
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     text-align: right;
-    line-height: 1.4em;
+    line-height: 1.2em;
     margin: 0;
     padding: 12px 20px;
     border-top: 1px solid transparent;

@@ -1,4 +1,4 @@
-CREATE DATABASE ezcook
+CREATE DATABASE com.ezcook
 go
 CREATE TABLE usertable(
                           id_user  int NOT NULL  PRIMARY KEY,

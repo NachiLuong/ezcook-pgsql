@@ -32,7 +32,7 @@
         <mapping class="com.ezcook.entities.Food" />
         <mapping class="com.ezcook.entities.FoodType"/>
         <mapping class="com.ezcook.entities.Role"/>
-        <mapping class="com.ezcook.entities.Statistics"/>
+        <mapping class="com.ezcook.entities.Statistical"/>
         <mapping class="com.ezcook.entities.User"/>
     </session-factory>
 </hibernate-configuration>

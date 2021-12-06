@@ -1,1 +1,1 @@
-# ezcook
+# com.ezcook

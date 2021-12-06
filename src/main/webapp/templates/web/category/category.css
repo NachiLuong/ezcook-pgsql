@@ -1,0 +1,145 @@
+h4 {
+    letter-spacing: 2px;
+}
+
+/* begin main */
+
+#main {
+    padding-top: 50px;
+    width: 1170px;
+    justify-content: space-between;
+}
+
+#container {
+    padding: 0 20px;
+    flex-basis: 75%;
+}
+#container  h2 {
+    color: #689f38;
+    text-transform: uppercase;
+    text-align: center;
+}
+#container .content {
+    /*padding: 20px 0px;*/
+    display: flex;
+    /*display: inline-block;*/
+}
+#container .content .image{
+    flex-basis: 50%;
+    padding: 20px 0px;
+    display: inline-block;
+    /*padding: 10px 0px 20px;*/
+}
+#container .content .image img{
+    width: 380px;
+    height: 250px;
+    object-fit: cover;
+}
+
+#container .content .item{
+    flex-basis: 50%;
+    display:inline-block;
+    padding: 20px 10px;
+}
+#container .content .item> span {
+    color: #689f38;
+    font-size: 90%;
+}
+#container .content .item .food-content{
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-size: 14px;
+
+}
+.content > div h5 {
+    padding-top: 10px;
+    color: #333;
+    transition: all .5s ease-in-out;
+}
+
+.content > div a,
+.content > div .author a,
+.content > div h5:hover {
+    color: #689f38;
+}
+
+.content > div .author {
+    color: rgb(129, 129, 129);
+}
+
+.content > div hr {
+    width: 50%;
+    margin: 10px auto;
+}
+
+#container > p {
+    padding-bottom: 20px;
+}
+
+#container > p > a {
+    color: #ffffff;
+    padding: 10px 20px;
+    background-color: #689f38;
+}
+
+/* AUTHOR */
+#author .social i,
+#container .content .share i {
+    width: 30px;
+    font-size: 120%;
+    text-align: center;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+#author .social i:hover,
+#container .content .share i:hover {
+    color: #689f38;
+    transform: scale(1.3);
+}
+#author {
+    padding: 0px 20px 0px;
+    flex-basis: 25%;
+}
+
+#author .sticky-author {
+    position: sticky;
+    top: 100px;
+}
+
+#author h4 {
+    padding-top: 10px;
+    position: relative;
+}
+
+#author img {
+    margin: 30px 0;
+    width: 100%;
+}
+
+#author .social {
+    padding-top: 10px;
+}
+/* end main */
+
+/* button*/
+.button
+{
+
+    padding: 5px;
+    background-color: #3d3d3d;
+    color: #fff;
+}
+
+.button:hover
+{
+    background-color:  #6eb48c;
+    color: #fff;
+}
+span.wpv-filter-next-link.page-link {
+    display: none;
+}
