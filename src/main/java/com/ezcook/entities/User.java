@@ -1,6 +1,7 @@
 package com.ezcook.entities;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

@@ -25,7 +25,7 @@
         <div style="display: flex; justify-content: space-between">
             <form action="<c:url value="/admin/foodtype"/> " method="get" class="form-inline my-2 my-lg-0">
                 <div class="input-group input-group-sm">
-                    <input type="text" name="txt" class="form-control" >
+                    <input type="text" name="txt" class="form-control"placeholder="Nhập tên" >
                     <div class="input-group-append">
                         <button style="margin-left: 10px" type="submit" class="btn btn-secondary">
                             <i class="fa fa-search"></i>Tìm kiếm

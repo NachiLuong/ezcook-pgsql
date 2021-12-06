@@ -23,6 +23,8 @@ public class FoodTypeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
         FoodTypeCommand command= FormUtil.populate(FoodTypeCommand.class, req);
 
@@ -51,6 +53,8 @@ public class FoodTypeController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
         FoodTypeCommand command= FormUtil.populate(FoodTypeCommand.class, req);
 

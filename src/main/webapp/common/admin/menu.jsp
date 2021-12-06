@@ -10,7 +10,7 @@
             <a href="#" class="img logo rounded-circle mb-5"
                style="background-image: url(/templates/admin/images/logo.jpg);"></a>
             <ul class="list-unstyled components mb-5">
-                <li class="active">
+                <li>
                     <a href="${userlist}">Tài khoản</a>
                 </li>
                 <li>

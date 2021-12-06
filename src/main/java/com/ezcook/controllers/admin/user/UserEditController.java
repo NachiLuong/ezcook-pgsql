@@ -24,8 +24,11 @@ public class UserEditController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserCommand command = FormUtil.populate(UserCommand.class, req);
+        resp.setContentType("text/html; charset=UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
+        UserCommand command = FormUtil.populate(UserCommand.class, req);
+
         List<RoleDto> roles = SingletonServiceUtil.getRoleServiceInstance().getAllRole();
         req.setAttribute("roles", roles);
         if (req.getParameter("userId") != null) { //sua
@@ -38,10 +41,12 @@ public class UserEditController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserCommand command = FormUtil.populate(UserCommand.class, req);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {UserCommand command = FormUtil.populate(UserCommand.class, req);
+        resp.setContentType("text/html; charset=UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
         UserDto pojo = command.getPojo();
+
         Integer a = pojo.getId_user();
         RoleDto roleDto = RoleBeanUtil.entity2Dto(SingletonServiceUtil.getRoleServiceInstance().findEqualUnique("name", command.getRole()));
         pojo.setRoleDto(roleDto);
@@ -73,10 +78,5 @@ public class UserEditController extends HttpServlet {
             resp.sendRedirect("/admin/user?messageResponse=fail");
         }
 
-       // resp.sendRedirect("/admin-user-list?messageResponse=ThanhCong");
-      /*  req.setAttribute("users", users);
-        req.setAttribute("pojo", command);
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/listUser.jsp");
-        rd.forward(req, resp);*/
     }
 }

@@ -22,8 +22,10 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserCommand command = FormUtil.populate(UserCommand.class, req);
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
+        UserCommand command = FormUtil.populate(UserCommand.class, req);
         UserDto pojo = command.getPojo();
         String search = req.getParameter("txt");
         List<UserDto> users;
@@ -50,8 +52,10 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserCommand command = FormUtil.populate(UserCommand.class, req);
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
+        UserCommand command = FormUtil.populate(UserCommand.class, req);
         UserDto pojo = command.getPojo();
         int sotrang;
         List<UserDto> users;

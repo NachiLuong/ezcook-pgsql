@@ -1,6 +1,5 @@
 package com.ezcook.daos;
 
-import com.ezcook.dtos.UserDto;
 import com.ezcook.entities.User;
 
 public interface IUserDao extends IGenericDao<Integer, User> {

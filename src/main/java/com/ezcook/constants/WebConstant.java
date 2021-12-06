@@ -8,4 +8,5 @@ public class WebConstant {
     public final static String ROLE_USER = "USER";
     public final static String USER_NOT_UNIQUE = "Tên đăng nhập hoặc email đã tồn tại";
     public final static String FOODTYPE_NOT_UNIQUE = "Loại thức ăn đã tồn tại";
+    public final static String FOOD_NOT_UNIQUE = "Món ăn ăn đã tồn tại";
 }

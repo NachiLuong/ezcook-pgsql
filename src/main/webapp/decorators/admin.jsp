@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/common/vendor/bootstrap/css/bootstrap.min.css'/>">
     <link rel="stylesheet" href="<c:url value='/templates/admin/css/style.css' />"/>
+
     <dec:head/>
 </head>
 <body>
@@ -27,5 +28,6 @@
 <script type='text/javascript' src="<c:url value='/templates/admin/js/jquery.min.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/main.js'/>"></script>
 <script type='text/javascript' src="<c:url value='/templates/admin/js/jquery.validate.min.js'/>"></script>
+<script type='text/javascript' src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
 </body>
 </html>

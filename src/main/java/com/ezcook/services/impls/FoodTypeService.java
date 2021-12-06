@@ -1,22 +1,21 @@
 package com.ezcook.services.impls;
 
+
 import com.ezcook.daos.IFoodTypeDao;
+import com.ezcook.daos.impls.AbstractDao;
 import com.ezcook.daos.impls.FoodTypeDao;
 import com.ezcook.dtos.FoodTypeDto;
-import com.ezcook.dtos.UserDto;
 import com.ezcook.entities.FoodType;
-import com.ezcook.entities.User;
 import com.ezcook.services.IFoodTypeService;
 import com.ezcook.utils.SingletonDaoUtil;
 import com.ezcook.utils.beanUtils.FoodTypeBeanUtil;
-import com.ezcook.utils.beanUtils.UserBeanUtil;
 
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoodTypeService implements IFoodTypeService {
+public class FoodTypeService /*extends AbstractDao<Integer, FoodType>*/ implements IFoodTypeService {
     IFoodTypeDao foodTypeDao = new FoodTypeDao();
 
     public void delete(List<Integer> ids) {
@@ -42,10 +41,10 @@ public class FoodTypeService implements IFoodTypeService {
     public Integer countFoodType() {
         return Math.toIntExact(SingletonDaoUtil.getFoodTypeDaoInstance().count());
     }
+
     public FoodTypeDto  findEqualUnique(String property, Object value){
         FoodType entity = SingletonDaoUtil.getFoodTypeDaoInstance().findEqualUnique(property,value);
-        FoodTypeDto foodTypeDto= FoodTypeBeanUtil.entity2Dto(entity);
-        return foodTypeDto;
+        return FoodTypeBeanUtil.entity2Dto(entity);
     }
     public FoodTypeDto updateFoodType(FoodTypeDto foodTypeDto){
         FoodType entity= FoodTypeBeanUtil.dto2Entity(foodTypeDto);
@@ -67,5 +66,13 @@ public class FoodTypeService implements IFoodTypeService {
         FoodType entity= FoodTypeBeanUtil.dto2Entity(foodTypeDto);
         boolean a = SingletonDaoUtil.getUserDaoInstance().isUnique("name", foodTypeDto.getName());
         return a;
+    }
+    public List<FoodTypeDto> getAllFoodType() {
+        List<FoodTypeDto> dtos=new ArrayList<>();
+        List<FoodType> entitys= SingletonDaoUtil.getFoodTypeDaoInstance().findAll();
+        for (FoodType foodType: entitys) {
+            dtos.add(FoodTypeBeanUtil.entity2Dto(foodType));
+        }
+        return dtos;
     }
 }

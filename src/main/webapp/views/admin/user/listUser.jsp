@@ -35,7 +35,7 @@
             </form>
             <a class="btn btn-secondary" id="addUser" style="float: right; margin-bottom: 5px"
                href="<c:url value="/admin/user/edit"/> ">Thêm
-                User</a>
+                Tài khoản</a>
         </div>
         <table class="table table-striped table-bordered table-hover" id="sample_1">
             <thead>
