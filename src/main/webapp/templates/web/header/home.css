@@ -1,0 +1,155 @@
+#slider {
+    margin-top: 60px;
+    z-index: 0;
+    color: #f0f0f0;
+}
+
+#slider .item >a{
+
+}
+
+#content {
+    /*width: 1170px;*/
+}
+
+.mx-auto {
+    /*padding-left: 0px;*/
+    /*margin-right: 20px;*/
+}
+
+
+.session h4 {
+    font-weight: bold;
+    background-color: #000000;
+    /*padding: 20px 20px 20px 20px;*/
+    color: #f0f0f0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+}
+
+.content-food {
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+    min-width: 80px;
+
+}
+
+.session > p {
+    font-weight: bold;
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    min-width: 80px;
+}
+
+.session > div {
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+}
+
+.session .item {
+    /*flex-basis: 30%;*/
+    padding-top: 10px;
+    display: block;
+}
+
+.session .item img {
+    display: block;
+    width: 412px;
+    margin-bottom: 20px;
+    /*width: 350px;*/
+    /*max-width: 350px;*/
+    /*min-width: 350px;*/
+    height: 300px;
+    object-fit: cover;
+}
+
+.session .item > div > span {
+    color: #689f38;
+    font-size: 90%;
+}
+
+.session .item > div h5 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    min-width: 80px;
+    padding-top: 10px;
+    color: #333;
+    transition: all .5s ease-in-out;
+}
+
+.session .item > div .social-icon i:hover,
+.item > div a,
+.session .item > div .author a,
+.session .item > div h5:hover {
+    color: white;
+    font-weight: bold;
+}
+
+.session .item > div .author {
+    color: rgb(129, 129, 129);
+}
+
+.session .item > div hr {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.session .item > div .social-icon {
+    padding: 20px 0;
+}
+
+.session .item > div .social-icon i {
+    width: 40px;
+    font-size: 150%;
+    color: #333;
+    transition: all .3s ease;
+}
+
+.food-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 8px;
+    padding-right: 8px;
+
+}
+
+.session .item > div .social-icon i:hover {
+    transform: scale(1.3);
+}
+
+.session > p {
+    padding-bottom: 20px;
+}
+
+.session > p > a {
+    color: #ffffff;
+    padding: 10px 20px;
+    background-color: #689f38;
+}
+
+.wrapper {
+    text-align: center;
+}

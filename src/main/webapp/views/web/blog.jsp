@@ -3,9 +3,9 @@
 
 <jsp:useBean id="food" scope="request" type="com.ezcook.entities.Food"/>
 <jsp:useBean id="fService" scope="request" type="com.ezcook.services.IFoodService"/>
-<jsp:useBean id="cs" scope="request" type="com.ezcook.services.ICommonService"/>
-<jsp:useBean id="user" scope="session" type="com.ezcook.entities.User"/>
-
+<jsp:useBean id="cservice" scope="request" type="com.ezcook.services.ICommonService"/>
+<%--<jsp:useBean id="user" scope="session" type="com.ezcook.entities.User"/>--%>
+<%--@elvariable id="user" type="com.ezcook.entities.User"--%>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -31,7 +31,7 @@
             <span>
                     written by
                     <a href="<c:url value='/#'/>">Ezcook</a>
-                    | &nbsp; <c:out value='${cs.formatTime(food.modifiedOn)}'/>
+                    | &nbsp; <c:out value='${cservice.formatTime(food.modifiedOn)}'/>
             </span>
         </header>
         <div class="content">
@@ -55,7 +55,7 @@
             <div id="comments">
                 <h4 class="text-center">BÌNH LUẬN</h4>
                 <div id="render-comments">
-                    <c:if test='${food.comments.size() == 0 ? false : true}'>
+                    <c:if test='${food.comments.size() != 0}'>
                         <c:forEach var='comment' items='${food.comments}'>
                             <div class="comment d-flex">
                                 <img src="<c:url value='${fService.randomImg()}'/>" alt="avatar">
@@ -63,7 +63,7 @@
                                     <h6><c:out value='${comment.user.name}'/></h6>
                                     <span>
                                     <i class="fal fa-clock"></i>
-                                    <c:out value='${cs.formatTime(comment.time)}'/>
+                                    <c:out value='${cservice.formatTime(comment.time)}'/>
                                 </span>
                                     <div class="content">
                                         <p><c:out value='${comment.content}'/></p>
@@ -102,8 +102,8 @@
                         <c:forEach var='item' items='${fService.getRelatedFood(food)}'>
                             <a href="<c:url value='/blog?id=${item.id}'/>" class="text-center">
                                 <img src="<c:url value='${item.image}'/>" alt="">
-                                <h6><c:out value='${item.nameFood}'/></h6>
-                                <span><c:out value='${cs.formatTime(item.modifieddate)}'/></span>
+                                <h6><c:out value='${item.name}'/></h6>
+                                <span><c:out value='${cservice.formatTime(item.modifiedOn)}'/></span>
                             </a>
                         </c:forEach>
                     </div>
@@ -155,7 +155,7 @@
                 callAPI(urlAPI.Comment, {
                     method: 'POST',
                     body: JSON.stringify({
-                        contentComment: content,
+                        content: content,
                         idFood: ${food.id}
                     })
                 }).then((isSuccess) => {
@@ -170,7 +170,8 @@
                         <div class="comment d-flex">
                             <img src="<c:url value='${fService.randomImg()}'/>" alt="avatar">
                             <div>
-                                <h6><c:out value='${user.name}'/></h6>
+                                <h6>
+                                <c:out value='${user.name}'/></h6>
                                 <span>
                                     <i class="fal fa-clock"></i>
                                     <c:out value='Hôm nay'/>

@@ -5,6 +5,7 @@ import com.ezcook.constants.WebConstant;
 import com.ezcook.dtos.RoleDto;
 import com.ezcook.dtos.UserDto;
 import com.ezcook.utils.FormUtil;
+import com.ezcook.utils.SessionUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 import com.ezcook.utils.beanUtils.RoleBeanUtil;
 
@@ -24,24 +25,31 @@ public class UserEditController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html; charset=UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        req.setCharacterEncoding("UTF-8");
-        UserCommand command = FormUtil.populate(UserCommand.class, req);
+        if (SessionUtil.getInstance().getValue(req, "useradmin") != null) {
+            resp.setContentType("text/html; charset=UTF-8");
+            resp.setCharacterEncoding("UTF-8");
+            req.setCharacterEncoding("UTF-8");
+            UserCommand command = FormUtil.populate(UserCommand.class, req);
 
-        List<RoleDto> roles = SingletonServiceUtil.getRoleServiceInstance().getAllRole();
-        req.setAttribute("roles", roles);
-        if (req.getParameter("userId") != null) { //sua
-            Integer id = Integer.valueOf(req.getParameter("userId"));
-            UserDto dto = SingletonServiceUtil.getUserServiceInstance().findEqualUnique("id", id);
-            req.setAttribute("user", dto);
+            List<RoleDto> roles = SingletonServiceUtil.getRoleServiceInstance().getAllRole();
+            req.setAttribute("roles", roles);
+            if (req.getParameter("userId") != null) { //sua
+                Integer id = Integer.valueOf(req.getParameter("userId"));
+                UserDto dto = SingletonServiceUtil.getUserServiceInstance().findEqualUnique("id", id);
+                req.setAttribute("user", dto);
+            }
+            RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/edit.jsp");
+            rd.forward(req, resp);
+        } else {
+            resp.sendRedirect("/login");
         }
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user/edit.jsp");
-        rd.forward(req, resp);
+
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {UserCommand command = FormUtil.populate(UserCommand.class, req);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserCommand command = FormUtil.populate(UserCommand.class, req);
+
         resp.setContentType("text/html; charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");

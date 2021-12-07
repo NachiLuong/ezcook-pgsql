@@ -7,6 +7,7 @@ import com.ezcook.dtos.FoodTypeDto;
 import com.ezcook.dtos.RoleDto;
 import com.ezcook.dtos.UserDto;
 import com.ezcook.utils.FormUtil;
+import com.ezcook.utils.SessionUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 import com.ezcook.utils.beanUtils.RoleBeanUtil;
 
@@ -26,18 +27,23 @@ public class FoodTypeEditController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        resp.setCharacterEncoding("UTF-8");
-        req.setCharacterEncoding("UTF-8");
-        FoodTypeCommand command= FormUtil.populate(FoodTypeCommand.class, req);
+        if (SessionUtil.getInstance().getValue(req, "useradmin")!= null){
+            resp.setContentType("text/html");
+            resp.setCharacterEncoding("UTF-8");
+            req.setCharacterEncoding("UTF-8");
+            FoodTypeCommand command= FormUtil.populate(FoodTypeCommand.class, req);
 
-        if (req.getParameter("foodtypeId") != null) { //sua
-            Integer id = Integer.valueOf(req.getParameter("foodtypeId"));
-            FoodTypeDto dto = SingletonServiceUtil.getFoodTypeServiceInstance().findEqualUnique("id", id);
-            req.setAttribute("foodtype", dto);
+            if (req.getParameter("foodtypeId") != null) { //sua
+                Integer id = Integer.valueOf(req.getParameter("foodtypeId"));
+                FoodTypeDto dto = SingletonServiceUtil.getFoodTypeServiceInstance().findEqualUnique("id", id);
+                req.setAttribute("foodtype", dto);
+            }
+            RequestDispatcher rd = req.getRequestDispatcher("/views/admin/foodtype/edit.jsp");
+            rd.forward(req, resp);
+        }else {
+            resp.sendRedirect("/login");
         }
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/foodtype/edit.jsp");
-        rd.forward(req, resp);
+
     }
 
     @Override

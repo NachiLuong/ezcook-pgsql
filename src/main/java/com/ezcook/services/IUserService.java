@@ -18,5 +18,6 @@ public interface IUserService {
     List<UserDto> pagination(Integer pageNumber, Integer pageSize);
     List<UserDto> paginationSearch(Integer pageNumber, Integer pageSize, Object value);
     Integer countUser();
+    User findByUsername(String username);
 
 }

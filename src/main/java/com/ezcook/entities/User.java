@@ -22,7 +22,26 @@ public class User {
     private Integer idRole;
     private Collection<Comment> comments;
     private Role role;
+    public User(){
 
+    }
+    public User(String email, String name, String username, String password, Integer id, Timestamp createdOn, Timestamp modifiedOn) {
+        this.email=email;
+        this.name=name;
+        this.createdOn=createdOn;
+        this.modifiedOn=modifiedOn;
+        this.id=id;
+        this.username=username;
+        this.password=password;
+    }
+    public User(String email, String name, String username, String password, Timestamp createdOn, Timestamp modifiedOn) {
+        this.email=email;
+        this.name=name;
+        this.createdOn=createdOn;
+        this.modifiedOn=modifiedOn;
+        this.username=username;
+        this.password=password;
+    }
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

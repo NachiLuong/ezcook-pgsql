@@ -6,16 +6,22 @@ import com.ezcook.daos.impls.UserDao;
 import com.ezcook.dtos.CheckLogin;
 import com.ezcook.dtos.RoleDto;
 import com.ezcook.dtos.UserDto;
+import com.ezcook.entities.Food;
 import com.ezcook.entities.User;
 import com.ezcook.services.IUserService;
+import com.ezcook.utils.HibernateUtil;
 import com.ezcook.utils.SingletonDaoUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 import com.ezcook.utils.beanUtils.UserBeanUtil;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 //import javax.inject.Inject;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +29,26 @@ public class UserService  implements IUserService {
 
 //    @Inject
     IUserDao userDao = new UserDao();
-
+    @Override
+    public User findByUsername(String username){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM User WHERE username = :username");
+            query.setParameter("username", username);
+            List<User> list = query.list();
+            return list.get(0);
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
     @Override
     public CheckLogin checkLogin(String username, String password) {
         CheckLogin checkLogin = new CheckLogin();

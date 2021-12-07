@@ -1,5 +1,7 @@
 package com.ezcook.controllers.admin;
 
+import com.ezcook.utils.SessionUtil;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +18,13 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws SecurityException, IOException, ServletException {
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
-        rd.forward(req, resp);
+        if (SessionUtil.getInstance().getValue(req, "useradmin")!= null){
+            RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
+            rd.forward(req, resp);
+        }else {
+            resp.sendRedirect("/login");
+        }
+
     }
 
     @Override

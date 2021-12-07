@@ -43,8 +43,8 @@
                     <h5 style="color: red">${messageResponse}</h5>
                 </div>
             </c:if>
-            <input type="text" placeholder="Tài khoản" name="pojo.username"/>
-            <input type="password" placeholder="Mật khẩu" name="pojo.password"/>
+            <input type="text" placeholder="Tài khoản" name="username"/>
+            <input type="password" placeholder="Mật khẩu" name="password"/>
             <a href="${forgotpass}">Quên mật khẩu</a>
             <button type="submit">Đăng Nhập</button>
         </form>

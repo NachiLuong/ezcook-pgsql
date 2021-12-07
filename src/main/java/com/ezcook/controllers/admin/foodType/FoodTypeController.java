@@ -4,6 +4,7 @@ import com.ezcook.command.FoodTypeCommand;
 import com.ezcook.dtos.FoodTypeDto;
 import com.ezcook.dtos.UserDto;
 import com.ezcook.utils.FormUtil;
+import com.ezcook.utils.SessionUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -23,32 +24,37 @@ public class FoodTypeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        resp.setCharacterEncoding("UTF-8");
-        req.setCharacterEncoding("UTF-8");
-        FoodTypeCommand command= FormUtil.populate(FoodTypeCommand.class, req);
+        if (SessionUtil.getInstance().getValue(req, "useradmin")!= null){
+            resp.setContentType("text/html");
+            resp.setCharacterEncoding("UTF-8");
+            req.setCharacterEncoding("UTF-8");
+            FoodTypeCommand command= FormUtil.populate(FoodTypeCommand.class, req);
 
-        FoodTypeDto pojo= command.getPojo();
-        String search = req.getParameter("txt");
-        List<FoodTypeDto> foodtypes;
-        if (search == "" || search == null) {
-            foodtypes = SingletonServiceUtil.getFoodTypeServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
-        } else {
-            foodtypes = SingletonServiceUtil.getFoodTypeServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(), search);
+            FoodTypeDto pojo= command.getPojo();
+            String search = req.getParameter("txt");
+            List<FoodTypeDto> foodtypes;
+            if (search == "" || search == null) {
+                foodtypes = SingletonServiceUtil.getFoodTypeServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+            } else {
+                foodtypes = SingletonServiceUtil.getFoodTypeServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(), search);
+            }
+            int sotrang;
+            if (SingletonServiceUtil.getFoodTypeServiceInstance().countFoodType() % command.getMaxPageItems() == 0)
+                sotrang = SingletonServiceUtil.getFoodTypeServiceInstance().countFoodType() / command.getMaxPageItems();
+            else
+                sotrang = SingletonServiceUtil.getFoodTypeServiceInstance().countFoodType() / command.getMaxPageItems() + 1;
+
+            command.setTotalItems(sotrang);
+
+            req.setAttribute("foodtypes", foodtypes);
+            checkMessage(req);
+            req.setAttribute("pojo", command);
+            RequestDispatcher rd = req.getRequestDispatcher("/views/admin/foodtype/listFoodType.jsp");
+            rd.forward(req, resp);
+        }else {
+            resp.sendRedirect("/login");
         }
-        int sotrang;
-        if (SingletonServiceUtil.getFoodTypeServiceInstance().countFoodType() % command.getMaxPageItems() == 0)
-            sotrang = SingletonServiceUtil.getFoodTypeServiceInstance().countFoodType() / command.getMaxPageItems();
-        else
-            sotrang = SingletonServiceUtil.getFoodTypeServiceInstance().countFoodType() / command.getMaxPageItems() + 1;
 
-        command.setTotalItems(sotrang);
-
-        req.setAttribute("foodtypes", foodtypes);
-        checkMessage(req);
-        req.setAttribute("pojo", command);
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/foodtype/listFoodType.jsp");
-        rd.forward(req, resp);
     }
 
     @Override

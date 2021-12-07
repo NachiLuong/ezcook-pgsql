@@ -3,6 +3,7 @@ package com.ezcook.controllers.admin.food;
 import com.ezcook.command.FoodCommand;
 import com.ezcook.dtos.FoodDto;
 import com.ezcook.utils.FormUtil;
+import com.ezcook.utils.SessionUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -22,31 +23,36 @@ public class FoodController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        resp.setCharacterEncoding("UTF-8");
-        req.setCharacterEncoding("UTF-8");
-        FoodCommand command = FormUtil.populate(FoodCommand.class, req);
-        FoodDto pojo = command.getPojo();
-        String search = req.getParameter("txt");
-        List<FoodDto> foods;
-        if (search == "" || search == null) {
-            foods = SingletonServiceUtil.getFoodServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
-        } else {
-            foods = SingletonServiceUtil.getFoodServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(), search);
+        if (SessionUtil.getInstance().getValue(req, "useradmin")!= null){
+            resp.setContentType("text/html");
+            resp.setCharacterEncoding("UTF-8");
+            req.setCharacterEncoding("UTF-8");
+            FoodCommand command = FormUtil.populate(FoodCommand.class, req);
+            FoodDto pojo = command.getPojo();
+            String search = req.getParameter("txt");
+            List<FoodDto> foods;
+            if (search == "" || search == null) {
+                foods = SingletonServiceUtil.getFoodServiceInstance().pagination(command.getPage(), command.getMaxPageItems());
+            } else {
+                foods = SingletonServiceUtil.getFoodServiceInstance().paginationSearch(command.getPage(), command.getMaxPageItems(), search);
+            }
+            int sotrang;
+            if (SingletonServiceUtil.getFoodServiceInstance().countFood() % command.getMaxPageItems() == 0)
+                sotrang = SingletonServiceUtil.getFoodServiceInstance().countFood() / command.getMaxPageItems();
+            else
+                sotrang = SingletonServiceUtil.getFoodServiceInstance().countFood() / command.getMaxPageItems() + 1;
+
+            command.setTotalItems(sotrang);
+
+            req.setAttribute("foods", foods);
+            checkMessage(req);
+            req.setAttribute("pojo", command);
+            RequestDispatcher rd = req.getRequestDispatcher("/views/admin/food/listFood.jsp");
+            rd.forward(req, resp);
+        }else {
+            resp.sendRedirect("/login");
         }
-        int sotrang;
-        if (SingletonServiceUtil.getFoodServiceInstance().countFood() % command.getMaxPageItems() == 0)
-            sotrang = SingletonServiceUtil.getFoodServiceInstance().countFood() / command.getMaxPageItems();
-        else
-            sotrang = SingletonServiceUtil.getFoodServiceInstance().countFood() / command.getMaxPageItems() + 1;
 
-        command.setTotalItems(sotrang);
-
-        req.setAttribute("foods", foods);
-        checkMessage(req);
-        req.setAttribute("pojo", command);
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/food/listFood.jsp");
-        rd.forward(req, resp);
     }
 
     @Override

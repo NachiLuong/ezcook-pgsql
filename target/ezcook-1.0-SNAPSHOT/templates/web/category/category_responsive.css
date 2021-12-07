@@ -1,0 +1,35 @@
+@media screen and (max-width: 1024px) {
+    #main {
+        width: 100%;
+    }
+    #container {
+        flex-basis: 100%;
+    }
+    #author {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 756px){
+    #container{
+        padding: 0 10px;
+    }
+    #container .content {
+        with: 100%
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #container .content {
+        flex-wrap: wrap;
+    }
+    #container .content .image {
+        width: 100%;
+        height: auto;
+    }
+    #container .content .item .food-content{
+        display: none;
+    }
+}
+

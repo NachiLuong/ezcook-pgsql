@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/common/css/penci.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/common/css/base.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/common/common.css'/>">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/header/css/header.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/header/header.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/header/css/header_responsive.css'/>">
     <script type='text/javascript'
             src="<c:url value='/templates/web/common/js/common.js'/>">

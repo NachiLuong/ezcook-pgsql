@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 @WebServlet(urlPatterns = {"/api-comment"})
 public class CommentAPI extends HttpServlet {
@@ -37,6 +39,8 @@ public class CommentAPI extends HttpServlet {
             Comment comment = JsonToEntityUtil.of(req.getReader()).toModel(Comment.class);
             User user = (User) SessionUtil.getInstance().getValue(req, "user");
             comment.setIdUser(user.getId());
+            comment.setTime(Timestamp.from(Instant.now()));
+
             commentService.save(comment);
             printWriterUtil.println(true);
         } catch (Exception e) {

@@ -14,7 +14,7 @@
                         <a class="nav-link" href="#">Chào Trung</a>
                     </li>--%>
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">Thoát</a>
+                        <a class="nav-link" href="<c:url value='/login?action=logout'/>">Thoát</a>
                     </li>
                 </ul>
             </div>

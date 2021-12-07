@@ -29,6 +29,8 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 <!--        <property name="hbm2ddl.auto">update</property>-->
+        <!-- Lazy fix -->
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
         <mapping class="com.ezcook.entities.Comment" />
         <mapping class="com.ezcook.entities.Food" />
