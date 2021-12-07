@@ -3,13 +3,29 @@
         width: 100% !important;
     }
 }
-
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 820px) {
     #content .session > div {
-        display: block;
+        /*display: block;*/
+    }
+    .food-content{
+        /*display: grid;*/
+        grid-template-columns: 1fr 1fr;
     }
 
     #content .session > div .item img {
-        width: 100%;
+        /*width: 100%;*/
+    }
+}
+@media screen and (max-width: 599px) {
+    #content .session > div {
+        /*display: block;*/
+    }
+    .food-content{
+        /*display: grid;*/
+        grid-template-columns: 1fr;
+    }
+
+    #content .session > div .item img {
+        /*width: 100%;*/
     }
 }

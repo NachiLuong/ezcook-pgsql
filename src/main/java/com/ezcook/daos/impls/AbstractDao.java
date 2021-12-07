@@ -232,4 +232,35 @@ public class AbstractDao<ID extends Serializable, T> implements IGenericDao<ID, 
         }
         return true;
     }
+
+    @Override
+    public List<T> querySelector(String hqlQuery) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        // Get session current
+//        Session session = factory.getCurrentSession();
+
+        try {
+            // Begin transaction
+            session.getTransaction().begin();
+
+            @SuppressWarnings("unchecked")
+            Query query = session.createQuery(hqlQuery);
+
+            return query.list();
+
+        } catch (Exception e) {
+
+            // Log error
+            e.printStackTrace();
+
+            // Rollback if error
+            session.getTransaction().rollback();
+        } finally {
+
+            // Close transaction
+            // factory.close();
+            session.close();
+        }
+        return null;
+    }
 }

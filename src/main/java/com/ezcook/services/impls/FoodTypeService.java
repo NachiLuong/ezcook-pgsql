@@ -80,4 +80,12 @@ public class FoodTypeService /*extends AbstractDao<Integer, FoodType>*/ implemen
     public FoodType findById(int id) {
         return foodTypeDao.findByID(id);
     }
+    @Override
+    public List<FoodType> findAll() {
+        return foodTypeDao.findAll();
+    }
+    @Override
+    public String getNameFoodType(long foodTypeId) {
+        return foodTypeDao.getNameFoodType(foodTypeId);
+    }
 }
