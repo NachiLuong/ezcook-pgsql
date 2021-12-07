@@ -15,7 +15,7 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/header/home.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/home/home.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/templates/web/home/css/home_responsive.css'/>">
     <script>
         window.onload = function () {
@@ -117,10 +117,10 @@
                                             value='${cs.getTextBetweenTags("p", food.content)}'/></p>
                                     <a href="<c:url value='/blog?id=${food.id}'/>">Xem tiếp...</a>
                                     <div class="social-icon">
-                                        <a href="<c:url value='/#'/>"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="<c:url value='/#'/>"><i class="fab fa-google-plus-g"></i></a>
-                                        <a href="<c:url value='/#'/>"><i class="fab fa-twitter"></i></a>
-                                        <a href="<c:url value='/#'/>"><i class="fab fa-instagram"></i></a>
+                                        <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/> " target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                                        <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-twitter"></i></a>
+                                        <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -155,10 +155,10 @@
                             <a href="<c:url value='/#'/>">Xem tiếp...</a>
 
                             <div class="social-icon">
-                                <a href="<c:url value='/#'/>"><i class="fab fa-facebook-f"></i></a>
-                                <a href="<c:url value='/#'/>"><i class="fab fa-google-plus-g"></i></a>
-                                <a href="<c:url value='/#'/>"><i class="fab fa-twitter"></i></a>
-                                <a href="<c:url value='/#'/>"><i class="fab fa-instagram"></i></a>
+                                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -191,10 +191,10 @@
                                         value='${cs.getTextBetweenTags("p", food.content)}'/></p>
                                 <a href="<c:url value='/blog?id=${food.id}'/>">Xem tiếp...</a>
                                 <div class="social-icon">
-                                    <a href="<c:url value='/#'/>"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="<c:url value='/#'/>"><i class="fab fa-google-plus-g"></i></a>
-                                    <a href="<c:url value='/#'/>"><i class="fab fa-twitter"></i></a>
-                                    <a href="<c:url value='/#'/>"><i class="fab fa-instagram"></i></a>
+                                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -223,10 +223,10 @@
                                         value='${cs.getTextBetweenTags("p", food.content)}'/></p>
                                 <a href="<c:url value='/blog?id=${food.id}'/>">Xem tiếp...</a>
                                 <div class="social-icon">
-                                    <a href="<c:url value='/#'/>"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="<c:url value='/#'/>"><i class="fab fa-google-plus-g"></i></a>
-                                    <a href="<c:url value='/#'/>"><i class="fab fa-twitter"></i></a>
-                                    <a href="<c:url value='/#'/>"><i class="fab fa-instagram"></i></a>
+                                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>"target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>

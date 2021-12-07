@@ -1,10 +1,13 @@
 package com.ezcook.controllers.login;
 
+import com.ezcook.entities.Role;
 import com.ezcook.entities.User;
 import com.ezcook.services.IUserService;
 import com.ezcook.services.impls.UserService;
 import com.ezcook.utils.GoogleUtil;
 import com.ezcook.utils.SessionUtil;
+import com.ezcook.utils.SingletonDaoUtil;
+import com.ezcook.utils.SingletonServiceUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,13 +38,16 @@ public class LoginGoogleController extends HttpServlet {
                 int id;
                 if (!userService.isExistEmail(user.getEmail())) {
                     StringBuilder email= new StringBuilder(user.getEmail());
+                    Role role = SingletonDaoUtil.getRoleDaoInstance().getRoleByName("USER");
+                    user.setRole(role);
                     user.setName(email.replace(email.indexOf("@"), email.length(), "").toString());
                     userService.save(user);
                 }
                 id = userService.findOneByEmail(user.getEmail()).getId();
                 SessionUtil.getInstance().putValue(req, "user", userService.findById(id));
-                RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
-                rd.forward(req, resp);
+                resp.sendRedirect("/home");
+                /*RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
+                rd.forward(req, resp);*/
             }
         } else {
             doDelete(req, resp);
@@ -58,7 +64,7 @@ public class LoginGoogleController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
         SessionUtil.getInstance().remove(req, "user");
-        RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
         rd.forward(req, resp);
     }
 }

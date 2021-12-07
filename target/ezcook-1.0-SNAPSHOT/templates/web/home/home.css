@@ -104,7 +104,7 @@
 .item > div a,
 .session .item > div .author a,
 .session .item > div h5:hover {
-    color: white;
+    color: #00ff17;
     font-weight: bold;
 }
 

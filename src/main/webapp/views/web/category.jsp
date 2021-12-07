@@ -102,12 +102,12 @@
                 yêu gia đình, bếp, vườn, chụp ảnh, du lịch...</p>
             <h4>LIÊN HỆ VỚI TÔI</h4>
             <div class="social">
-                <a href="<c:url value='/#'/>"><i class="fab fa-facebook-f"></i></a>
-                <a href="<c:url value='/#'/>"><i class="fab fa-instagram-square"></i></a>
-                <a href="<c:url value='/#'/>"><i class="fab fa-twitter"></i></a>
-                <a href="<c:url value='/#'/>"><i class="fab fa-tiktok"></i></a>
-                <a href="<c:url value='/#'/>"><i class="fab fa-youtube"></i></a>
-                <a href="<c:url value='/#'/>"><i class="far fa-envelope"></i></a>
+                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank"><i class="fab fa-instagram-square"></i></a>
+                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank"><i class="far fa-envelope"></i></a>
             </div>
         </div>
     </div>

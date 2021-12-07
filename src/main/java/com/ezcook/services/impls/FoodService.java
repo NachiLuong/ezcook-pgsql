@@ -47,6 +47,7 @@ public class FoodService implements IFoodService {
     }
     public FoodDto updateFood(FoodDto foodDto){
         Food entity= FoodBeanUtil.dto2Entity(foodDto);
+        entity.setCreatedOn(Timestamp.from(Instant.now()));
         entity.setModifiedOn(Timestamp.from(Instant.now()));
         entity=SingletonDaoUtil.getFoodDaoInstance().update(entity);
         foodDto= FoodBeanUtil.entity2Dto(entity);

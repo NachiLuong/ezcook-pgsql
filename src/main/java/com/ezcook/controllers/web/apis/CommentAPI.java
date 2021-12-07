@@ -4,6 +4,7 @@ import com.ezcook.entities.Comment;
 import com.ezcook.entities.User;
 import com.ezcook.services.ICommentService;
 import com.ezcook.services.impls.CommentService;
+import com.ezcook.services.impls.FoodService;
 import com.ezcook.utils.JsonToEntityUtil;
 import com.ezcook.utils.PrintWriterUtil;
 import com.ezcook.utils.SessionUtil;
@@ -38,9 +39,9 @@ public class CommentAPI extends HttpServlet {
         try {
             Comment comment = JsonToEntityUtil.of(req.getReader()).toModel(Comment.class);
             User user = (User) SessionUtil.getInstance().getValue(req, "user");
-            comment.setIdUser(user.getId());
+            comment.setUser(user);
+            comment.setFood(new FoodService().findById(comment.getIdFood()));
             comment.setTime(Timestamp.from(Instant.now()));
-
             commentService.save(comment);
             printWriterUtil.println(true);
         } catch (Exception e) {

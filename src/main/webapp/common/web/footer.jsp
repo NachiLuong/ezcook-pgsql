@@ -6,49 +6,49 @@
         <div class="footer-socials-section">
             <ul class="footer-socials">
                 <li>
-                    <a href="<c:url value='/#'/>" target="_blank">
+                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank">
                         <i class="fa fa-facebook"></i>
                         <span>Facebook</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/#'/>" target="_blank">
+                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank">
                         <i class="fa fa-twitter"></i>
                         <span>Twitter</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/#'/>" target="_blank">
+                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank">
                         <i class="fa fa-google-plus"></i>
                         <span>Google +</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/#'/>" target="_blank">
+                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank">
                         <i class="fa fa-instagram"></i>
                         <span>Instagram</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/#'/>" target="_blank">
+                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank">
                         <i class="fa fa-pinterest"></i>
                         <span>Pinterest</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/#'/>" target="_blank">
+                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank">
                         <i class="fa fa-tumblr"></i>
                         <span>Tumblr</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/#'/>" target="_blank">
+                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>" target="_blank">
                         <i class="fa fa-youtube-play"></i>
                         <span>Youtube</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/#'/>">
+                    <a href="<c:url value='https://www.facebook.com/lqtrung.01/'/>">
                         <i class="fa fa-envelope-o"></i>
                         <span>Email</span>
                     </a>
@@ -60,15 +60,15 @@
                 <ul id="menu-footer-menu" class="footer-menu">
                     <li id="menu-item-1175"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1175">
-                        <a href="<c:url value='/#'/>">Home</a>
+                        <a href="<c:url value='/home'/>">Home</a>
                     </li>
                     <li id="menu-item-1174"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1174">
-                        <a href="<c:url value='/#'/>">About me</a>
+                        <a href="<c:url value='/home'/>">About me</a>
                     </li>
                     <li id="menu-item-1176"
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1176">
-                        <a href="<c:url value='/#'/>">Cookbooks</a>
+                        <a href="<c:url value='/home'/>">Cookbooks</a>
                     </li>
                 </ul>
             </div>

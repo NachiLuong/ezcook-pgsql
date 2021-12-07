@@ -26,7 +26,7 @@ public class UserEditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (SessionUtil.getInstance().getValue(req, "useradmin") != null) {
-            resp.setContentType("text/html; charset=UTF-8");
+            resp.setContentType("text/html");
             resp.setCharacterEncoding("UTF-8");
             req.setCharacterEncoding("UTF-8");
             UserCommand command = FormUtil.populate(UserCommand.class, req);
@@ -50,7 +50,7 @@ public class UserEditController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
 
-        resp.setContentType("text/html; charset=UTF-8");
+        resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
         UserDto pojo = command.getPojo();

@@ -22,7 +22,7 @@
                         <label class="col-md-2 control-label">Tên: <span class="required">* </span></label>
                         <div class="col-md-10">
                             <input type="text" class=" form-control" value="${food.name}" name="pojo.name"
-                                   required minlength="2" maxlength="45"/>
+                                   required minlength="2" />
                             <span></span>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <label class="col-md-2 control-label">Hình ảnh<span class="required"> * </span></label>
                         <div class="col-md-10">
                             <textarea type="text" class=" form-control" <%--value="${food.image}"--%> name="pojo.image"
-                                      required minlength="2" maxlength="45">${food.image}</textarea>
+                                      required minlength="2" >${food.image}</textarea>
                         </div>
                     </div>
                     <div class="form-group margin-bottom-10">
@@ -101,7 +101,7 @@
                         <label class="col-md-2 control-label">Tên: <span class="required">* </span></label>
                         <div class="col-md-10">
                             <input type="text" class=" form-control" name="pojo.name"
-                                   required minlength="2" maxlength="45"/>
+                                   required minlength="2" />
                             <span></span>
                         </div>
                     </div>

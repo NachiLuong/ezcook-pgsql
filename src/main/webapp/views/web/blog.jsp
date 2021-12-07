@@ -119,8 +119,8 @@
         <div class="sticky-author">
             <h4>AUTHOR</h4>
             <img class="rounded-circle w-70"
-                 src="http://www.esheepkitchen.com/wp-content/uploads/2018/04/about-me.jpg" alt="author">
-            <p>Căn Bếp nhà Esheep. Góc nhỏ mày mò chia sẻ công thức nấu ăn, làm bánh, review đồ bếp. Chia sẻ tình
+                 src="https://github.com/NachiLuong/ezcook-pgsql/blob/trung-admin/src/main/webapp/templates/admin/images/logo.jpg?raw=true" alt="author">
+            <p>Căn Bếp nhà Ezcook. Góc nhỏ mày mò chia sẻ công thức nấu ăn, làm bánh, review đồ bếp. Chia sẻ tình
                 yêu gia đình, bếp, vườn, chụp ảnh, du lịch...</p>
             <h4>LIÊN HỆ VỚI TÔI</h4>
             <div class="social">
