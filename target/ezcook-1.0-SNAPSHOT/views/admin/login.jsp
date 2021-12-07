@@ -7,7 +7,17 @@
 <head>
     <script src="https://fonts.googleapis.com/css?family=Montserrat:400,800"></script>
     <link rel="stylesheet" href="<c:url value='/templates/login/query.js' />"/>
-    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type='text/javascript'>
+        function check(input) {
+            if (input.value != document.getElementById('password').value) {
+                input.setCustomValidity('Nhập lại mật khẩu không khơp !');
+            } else {
+                // input is valid -- reset the error message
+                input.setCustomValidity('');
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="container" id="container">
@@ -16,16 +26,16 @@
             <h1>Tạo tài khoản</h1>
             <br>
             <span>Nhập thông tin</span>
-            <c:if test="${messexist !=null}">
-                <div id="thongbao" class="alert alert-dismissible alert-success ">
-                    <h5 style="color: red">${messexist}</h5>
+            <c:if test="${message !=null}">
+                <div id="thongbao" class="alert alert-dismissible">
+                    <h5 style="color: red">${message}</h5>
                 </div>
             </c:if>
-            <input type="text" placeholder="Họ và Tên" name="pojo.fullname" />
-            <input type="text" placeholder="Tài khoản" name="pojo.username"/>
-            <input type="password" placeholder="Mật khẩu" name="pojo.password"/>
-            <input type="password" placeholder="Nhập lại mật khẩu"/>
-            <input type="email" placeholder="Email" name="pojo.email"/>
+            <input type="text" placeholder="Họ và Tên" name="pojo.fullname" required />
+            <input type="text" placeholder="Tài khoản"  name="pojo.username" required minlength="6" maxlength="20" pattern="[a-z][6-20]"/>
+            <input type="text" placeholder="Mật khẩu" id="password" name="pojo.password" required minlength="6" maxlength="20"/>
+            <input type="text" placeholder="Nhập lại mật khẩu" required oninput="check(this)"/>
+            <input type="email" placeholder="Email" name="pojo.email" required/>
             <button type="submit">Đăng kí</button>
         </form>
     </div>
@@ -38,9 +48,9 @@
                    class="social "><i class="fa fa-google iconGoogle"></i></a>
             </div>
             <span>Hoặc</span>
-            <c:if test="${messageResponse !=null}">
-                <div id="thongbao" class="alert alert-dismissible alert-success ">
-                    <h5 style="color: red">${messageResponse}</h5>
+            <c:if test="${messexist !=null}">
+                <div id="thongbao" class="alert alert-dismissible">
+                    <h5 style="color: red">${messexist}</h5>
                 </div>
             </c:if>
             <input type="text" placeholder="Tài khoản" name="username"/>

@@ -6,6 +6,7 @@ import com.ezcook.constants.WebConstant;
 import com.ezcook.dtos.RoleDto;
 import com.ezcook.dtos.UserDto;
 import com.ezcook.utils.FormUtil;
+import com.ezcook.utils.SessionUtil;
 import com.ezcook.utils.SingletonServiceUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -32,11 +33,13 @@ public class RegisterController extends HttpServlet {
         boolean checkEmailAndUsername = SingletonServiceUtil.getUserServiceInstance().userUnique(pojo);
         try{
             if(checkEmailAndUsername){ //khong trung
+                SessionUtil.getInstance().putValue(req, "user", pojo);
                 SingletonServiceUtil.getUserServiceInstance().saveUser(pojo);
                 resp.sendRedirect("/home");
             }else {
-                req.setAttribute("messexist", WebConstant.USER_NOT_UNIQUE);
-                resp.sendRedirect("/login");
+//                req.setAttribute("messexist", WebConstant.USER_NOT_UNIQUE);
+                resp.sendRedirect("/login?message=regisfail");
+
             }
         }catch (Exception e){
             throw e;

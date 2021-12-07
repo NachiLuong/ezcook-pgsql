@@ -18,21 +18,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ResourceBundle;
+
 @WebServlet(urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws SecurityException, IOException, ServletException {
         try {
-            if (req.getParameter("action").equals("logout")){
-                SessionUtil.getInstance().remove(req,"user");
-                SessionUtil.getInstance().remove(req,"useradmin");
+            if (req.getParameter("action").equals("logout")) {
+                SessionUtil.getInstance().remove(req, "user");
+                SessionUtil.getInstance().remove(req, "useradmin");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
         }
-
+        checkMessage(req);
         RequestDispatcher rd = req.getRequestDispatcher("/views/admin/login.jsp");
         rd.forward(req, resp);
     }
@@ -40,11 +42,11 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws SecurityException, IOException, ServletException {
-        String name= req.getParameter("username");
-        String pass= req.getParameter("password");
-
+        String name = req.getParameter("username");
+        String pass = req.getParameter("password");
+        checkMessage(req);
         IUserService userService = new UserService();
-        if (name !=null && pass !=null) {
+        if (name != null && pass != null) {
             CheckLogin login = userService.checkLogin(name, pass);
             if (login.isUserExist()) {
                 if (login.getRoleName().equals(WebConstant.ROLE_ADMIN)) {
@@ -55,9 +57,25 @@ public class LoginController extends HttpServlet {
                     resp.sendRedirect("/home");
                 }
             } else {
-                req.setAttribute("messageResponse", "Tài khoản hoặc mật khẩu sai");
+               /* req.setAttribute("messageResponse", "Tài khoản hoặc mật khẩu sai");
                 RequestDispatcher rd = req.getRequestDispatcher("/views/admin/login.jsp");
-                rd.forward(req, resp);
+                rd.forward(req, resp);*/
+                resp.sendRedirect("/login?messexist=loginfail");
+            }
+        }
+    }
+
+    public void checkMessage(HttpServletRequest request) {
+        String message = request.getParameter("messexist");
+        String message1 = request.getParameter("message");
+        if (message != null) {
+            if (message.trim().equals("loginfail")) {
+                request.setAttribute("messexist", "Tài khoản hoặc mật khẩu sai");
+            }
+        }
+        if (message1 != null) {
+            if (message1.trim().equals("regisfail")) {
+                request.setAttribute("message", "Tên đăng nhập hoặc mail đã tồn tại");
             }
         }
     }

@@ -72,7 +72,7 @@
                                title="${food.name}"></a>
                             <div class="penci-slide-overlay penci-slider7-overlay">
                                 <a class="overlay-link"
-                                   href="#"></a>
+                                   href="<c:url value='/blog?id=${food.id}'/>"></a>
                                 <div class="penci-mag-featured-content">
                                     <div class="feat-text">
                                         <h3><a title="${food.name}"

@@ -16,7 +16,8 @@
 <header>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script>
-        document.addEventListener("touchstart", function(){}, true);
+        document.addEventListener("touchstart", function () {
+        }, true);
     </script>
     <a href="<c:url value='#'/>" id="header-up" class="text-center rounded">
         <i class="fal fa-chevron-up text-white"></i>
@@ -605,18 +606,24 @@
                 </li>
 
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54">
-                    <form class="search-container" action="<c:url value="/search"/>" method="GET" style="padding-top: 10px">
-                        <input id="search-box" type="text" class="search-box" name="key" value="${key}" placeholder="Tìm kiếm"  />
+                    <form class="search-container" action="<c:url value="/search"/>" method="GET"
+                          style="padding-top: 10px">
+                        <input id="search-box" type="text" class="search-box" name="key" value="${key}"
+                               placeholder="Tìm kiếm"/>
                         <label for="search-box"><span class="glyphicon glyphicon-search search-icon"></span></label>
-                        <input type="submit" id="search-submit" />
+                        <input type="submit" id="search-submit"/>
                     </form>
                 </li>
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-53">
-                    <a href="<c:url value='/login'/>">Đăng nhập</a>
-                </li>
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-53">
-                    <a href="<c:url value='/login?action=logout'/>">Logout</a>
-                </li>
+                <c:if test="${user == null}">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-53">
+                        <a href="<c:url value='/login'/>">Đăng nhập</a>
+                    </li>
+                </c:if>
+                <c:if test="${user != null}">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-53">
+                        <a href="<c:url value='/login?action=logout'/>">Logout</a>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </nav>
