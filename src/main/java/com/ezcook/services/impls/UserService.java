@@ -4,6 +4,7 @@ import com.ezcook.daos.IUserDao;
 import com.ezcook.daos.impls.AbstractDao;
 import com.ezcook.daos.impls.UserDao;
 import com.ezcook.dtos.CheckLogin;
+import com.ezcook.dtos.RoleDto;
 import com.ezcook.dtos.UserDto;
 import com.ezcook.entities.User;
 import com.ezcook.services.IUserService;
@@ -124,6 +125,10 @@ public class UserService  implements IUserService {
         return userDto;
     }
     public boolean userUnique(UserDto userDto){
+        if (userDto.getRoleDto() == null){
+            RoleDto roleDto= SingletonServiceUtil.getRoleServiceInstance().getRoleByName("USER");
+            userDto.setRoleDto(roleDto);
+        }
         User entity= UserBeanUtil.dto2Entity(userDto);
         boolean a = SingletonDaoUtil.getUserDaoInstance().isUnique("email", userDto.getEmail())
                 && SingletonDaoUtil.getUserDaoInstance().isUnique("username", userDto.getUsername());

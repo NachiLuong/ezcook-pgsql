@@ -23,11 +23,10 @@ public class RoleService extends AbstractDao<Integer, Role> implements IRoleServ
         }
         return dtos;
     }
-    /*public RoleDto findRoleUnique(String property, Object value){
-        Role entity= SingletonDaoUtil.getRoleDaoInstance().findEqualUnique(property, value);
-        RoleDto dto= RoleBeanUtil.entity2Dto(entity);
-        return dto;
-    }*/
+   public RoleDto getRoleByName(String roleName){
+        Role entity= SingletonDaoUtil.getRoleDaoInstance().getRoleByName(roleName);
+        return RoleBeanUtil.entity2Dto(entity);
+   }
 
 
 }

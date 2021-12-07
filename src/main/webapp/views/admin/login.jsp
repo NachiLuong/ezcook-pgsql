@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <c:url var="login" value="/login"/>
 <c:url var="register" value="/register"/>
+<c:url var="forgotpass" value="/login/forgotpass"/>
 <html>
 <head>
     <script src="https://fonts.googleapis.com/css?family=Montserrat:400,800"></script>
@@ -11,7 +12,7 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="${register}">
+        <form action="${register}" method="post">
             <h1>Tạo tài khoản</h1>
             <br>
             <span>Nhập thông tin</span>
@@ -23,9 +24,9 @@
             <input type="text" placeholder="Họ và Tên" name="pojo.fullname" />
             <input type="text" placeholder="Tài khoản" name="pojo.username"/>
             <input type="password" placeholder="Mật khẩu" name="pojo.password"/>
-            <input type="password" placeholder="Nhập lại mật khẩu" name="pojo.username"/>
+            <input type="password" placeholder="Nhập lại mật khẩu"/>
             <input type="email" placeholder="Email" name="pojo.email"/>
-            <button>Đăng kí</button>
+            <button type="submit">Đăng kí</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
@@ -44,7 +45,7 @@
             </c:if>
             <input type="text" placeholder="Tài khoản" name="pojo.username"/>
             <input type="password" placeholder="Mật khẩu" name="pojo.password"/>
-            <a href="#">Quên mật khẩu</a>
+            <a href="${forgotpass}">Quên mật khẩu</a>
             <button type="submit">Đăng Nhập</button>
         </form>
     </div>

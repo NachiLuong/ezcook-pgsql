@@ -3,6 +3,7 @@ package com.ezcook.controllers.login;
 
 import com.ezcook.command.UserCommand;
 import com.ezcook.constants.WebConstant;
+import com.ezcook.dtos.RoleDto;
 import com.ezcook.dtos.UserDto;
 import com.ezcook.utils.FormUtil;
 import com.ezcook.utils.SingletonServiceUtil;
@@ -20,8 +21,7 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws SecurityException, IOException, ServletException {
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/login.jsp");
-        rd.forward(req, resp);
+
     }
 
     @Override
@@ -32,13 +32,11 @@ public class RegisterController extends HttpServlet {
         boolean checkEmailAndUsername = SingletonServiceUtil.getUserServiceInstance().userUnique(pojo);
         try{
             if(checkEmailAndUsername){ //khong trung
-
-                RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
-                rd.forward(req, resp);
+                SingletonServiceUtil.getUserServiceInstance().saveUser(pojo);
+                resp.sendRedirect("/home");
             }else {
                 req.setAttribute("messexist", WebConstant.USER_NOT_UNIQUE);
-                RequestDispatcher rd = req.getRequestDispatcher("/views/web/login.jsp");
-                rd.forward(req, resp);
+                resp.sendRedirect("/login");
             }
         }catch (Exception e){
             throw e;
