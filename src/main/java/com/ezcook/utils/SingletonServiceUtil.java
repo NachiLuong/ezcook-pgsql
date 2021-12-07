@@ -9,7 +9,14 @@ public class SingletonServiceUtil {
     private static FoodService foodServiceImpl = null;
     private static FoodTypeService foodTypeServiceImpl = null;
     private static StatisticsService statisticsServiceImpl = null;
+    private static CommonService commonServiceImpl =null;
 
+    public static CommonService getCommonServiceInstance() {
+        if (commonServiceImpl == null) {
+            commonServiceImpl = new CommonService();
+        }
+        return commonServiceImpl;
+    }
     public static UserService getUserServiceInstance() {
         if (userServiceImpl == null) {
             userServiceImpl = new UserService();

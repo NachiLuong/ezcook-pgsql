@@ -6,16 +6,17 @@ import com.ezcook.daos.impls.FoodDao;
 import com.ezcook.dtos.FoodDto;
 import com.ezcook.entities.Food;
 import com.ezcook.services.IFoodService;
+import com.ezcook.services.IFoodTypeService;
 import com.ezcook.utils.SingletonDaoUtil;
 import com.ezcook.utils.beanUtils.FoodBeanUtil;
 
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class FoodService implements IFoodService {
     IFoodDao foodDao=new FoodDao();
+    private final IFoodTypeService foodTypeService = new FoodTypeService();
     public void delete(List<Integer> ids) {
         foodDao.delete(ids);
     }
@@ -63,5 +64,33 @@ public class FoodService implements IFoodService {
         Food entity= FoodBeanUtil.dto2Entity(foodDto);
         boolean a = SingletonDaoUtil.getFoodDaoInstance().isUnique("name", foodDto.getName());
         return a;
+    }
+
+    @Override
+    public Food findById(int id) {
+        return foodDao.findByID(id);
+    }
+
+    @Override
+    public String randomImg() {
+        Random random = new Random();
+        int key = random.nextInt(3);
+        switch (key) {
+            case 1: return "/templates/web/blog/imgs/user1.png";
+            case 2: return "/templates/web/blog/imgs/user2.png";
+        }
+        return "/templates/web/blog/imgs/user3.png";
+    }
+
+    @Override
+    public Collection<Food> getRelatedFood(Food food) {
+        Collection<Food> foods = foodTypeService.findById(food.getIdFoodtype()).getFoods();
+        Collections.shuffle((List<Food>) foods);
+        foods.remove(food);
+        Collection<Food> result = new ArrayList<>();
+        result.add(((List<Food>) foods).get(0));
+        result.add(((List<Food>) foods).get(1));
+        result.add(((List<Food>) foods).get(2));
+        return result;
     }
 }

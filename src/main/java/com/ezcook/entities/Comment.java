@@ -26,6 +26,7 @@ public class Comment {
         this.idFood = foodId;
         this.idUser = userId;
     }
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

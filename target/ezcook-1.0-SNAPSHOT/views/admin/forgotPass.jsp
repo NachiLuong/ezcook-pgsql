@@ -25,15 +25,15 @@
 <div class="container" id="container">
 
     <div class="form-container sign-in-container">
-        <form action="${login}" method="post">
+        <form action="${forgotpass}" method="post">
             <h1>Quên mật khẩu</h1>
-            <c:if test="${messageResponse !=null}">
+            <c:if test="${message !=null}">
                 <div id="thongbao" class="alert alert-dismissible alert-success ">
-                    <h5 style="color: red">${messageResponse}</h5>
+                    <h5 style="color: red">${message}</h5>
                 </div>
             </c:if>
-            <input type="text" placeholder="Tài khoản" name="pojo.username"/>
-            <input type="password" placeholder="Email:" name="pojo.password"/>
+            <input type="text" placeholder="Tài khoản" name="username"/>
+            <input type="text" placeholder="Email:" name="email"/>
             <br>
             <button type="submit">Gửi mật khẩu</button>
         </form>

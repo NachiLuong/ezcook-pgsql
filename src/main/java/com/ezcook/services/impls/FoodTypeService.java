@@ -75,4 +75,9 @@ public class FoodTypeService /*extends AbstractDao<Integer, FoodType>*/ implemen
         }
         return dtos;
     }
+
+    @Override
+    public FoodType findById(int id) {
+        return foodTypeDao.findByID(id);
+    }
 }

@@ -1,11 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="Java" %>
 <%@ include file="/common/taglib.jsp" %>
 
+<jsp:useBean id="food" scope="request" type="com.ezcook.entities.Food"/>
+<jsp:useBean id="fService" scope="request" type="com.ezcook.services.IFoodService"/>
+<jsp:useBean id="cs" scope="request" type="com.ezcook.services.ICommonService"/>
+<jsp:useBean id="user" scope="session" type="com.ezcook.entities.User"/>
+
 <!DOCTYPE html>
 <html lang="en-US">
 
 <head>
-    <title>Blog</title>
+    <title><c:out value='${food.name}'/></title>
     <link rel="stylesheet" type='text/css' href="<c:url value='/templates/web/blog/css/blog.css'/>">
     <link rel="stylesheet" type='text/css' href="<c:url value='/templates/web/blog/css/blog_responsive.css'/>">
 </head>
@@ -18,40 +23,25 @@
     <div id="container">
         <header class="text-center">
             <div class="category">
-                <a href="<c:url value='/#'/>">Bánh ngọt</a>
+                <a href="<c:url value='/#'/>">Công thức</a>
                 <i class="fal fa-hat-chef"></i>
-                <a href="<c:url value='/#'/>">Đồ uống</a>
+                <a href="<c:url value='/#'/>"><c:out value='${food.foodtype.name}'/></a>
             </div>
-            <h1>[SQUID GAME] Trò chơi con mực</h1>
+            <h1><c:out value='${food.name}'/></h1>
             <span>
                     written by
                     <a href="<c:url value='/#'/>">Ezcook</a>
-                    | &nbsp;September 25, 2021
-                </span>
+                    | &nbsp; <c:out value='${cs.formatTime(food.modifiedOn)}'/>
+            </span>
         </header>
         <div class="content">
-            <p>[SQUID GAME] Trò chơi con mực</p>
-            <p>Thì ra cái trò làm kẹo & tách kẹo Dalgona này lại thú vị như vậy! Bảo sao nó siêu hot! Phim mình chưa
-                xem nhưng kẹo thì mình biết làm. Hồi sang Hàn thi vòng chung kết thế giới của The Global Taste Of
-                Korea; cũng có một vòng thi nhỏ tìm
-                hiểu về các loại bánh kẹo dân gian của Hàn Quốc và mình cũng biết đến loại kẹo này!</p>
-            <p>Nhưng đến bây giờ mới là lần đầu tiên mình làm thử, và tách thử với lời thách trị giá 10 tỉ VND! Ok
-                fine! Cùng xem cách làm kẹo Dalgona bất bại và xem cái kết tách kẹo trị giá 10 tỉ của mình tại
-                Tiktok Yêu Bếp ha! Ha ha</p>
-            <p>Link đây xem liền:</p>
-            <a href="<c:url value='/#'/>">https://facebook.com/</a>
-            <img src="https://i0.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/242768151_407692067393135_5100537142423214304_n.jpeg?resize=1170%2C1170&ssl=1"
-                 alt="">
-            <img src="https://i2.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/242858485_407692080726467_3821887621109054611_n.jpeg?resize=1170%2C1170&ssl=1"
-                 alt="">
-            <img src="https://i1.wp.com/www.esheepkitchen.com/wp-content/uploads/2021/09/242903881_407692074059801_7330616119444446629_n.jpeg?resize=1170%2C1170&ssl=1"
-                 alt="">
-            <p>Video hướng dẫn:</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ndih2mTqyEM"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-            </iframe>
+            <c:if test='${food.content != null}'>
+                <c:out value='${food.content}' escapeXml="false"/>
+            </c:if>
+            <c:if test='${food.video != null && food.video != ""}'>
+                <p>Video hướng dẫn:</p>
+                <c:out value='${food.video}' escapeXml="false"/>
+            </c:if>
             <p>Share this:</p>
             <div class="share">
                 <a href="<c:url value='/#'/>"><i class="fab fa-facebook-f"></i></a>
@@ -61,108 +51,28 @@
                 <a href="<c:url value='/#'/>"><i class="fab fa-google-plus-g"></i></a>
             </div>
             <hr>
+
             <div id="comments">
                 <h4 class="text-center">BÌNH LUẬN</h4>
-                <div class="comment d-flex">
-                    <img src="<c:url value='/templates/web/blog/imgs/user1.png'/>" alt="">
-                    <div>
-                        <h6>Đỗ Quốc Việt</h6>
-                        <span>
-                                <i class="fal fa-clock"></i>
-                                October 20, 2021 - 10:04 PM
-                            </span>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam, in earum
-                                incidunt cum quos illo fugit architecto vitae, ipsa quibusdam aliquam eaque saepe at
-                                deleniti, amet repudiandae corrupti expedita!</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam obcaecati, eos pariatur
-                                nihil natus facere porro. Perspiciatis neque, fugit reiciendis autem est molestias,
-                                tenetur inventore sed iusto aperiam possimus! Animi.</p>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="comment d-flex">
-                    <img src="<c:url value='/templates/web/blog/imgs/user2.png'/>" alt="">
-                    <div>
-                        <h6>John Smith</h6>
-                        <span>
-                                <i class="fal fa-clock"></i>
-                                October 20, 2021 - 10:04 PM
-                            </span>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam, in earum
-                                incidunt cum quos illo fugit architecto vitae, ipsa quibusdam aliquam eaque saepe at
-                                deleniti, amet repudiandae corrupti expedita!</p>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="comment d-flex">
-                    <img src="<c:url value='/templates/web/blog/imgs/user3.png'/>" alt="">
-                    <div>
-                        <h6>Phan Thị Trà Vy</h6>
-                        <span>
-                                <i class="fal fa-clock"></i>
-                                October 20, 2021 - 10:04 PM
-                            </span>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam, in earum
-                                incidunt cum quos illo fugit architecto vitae, ipsa quibusdam aliquam eaque saepe at
-                                deleniti, amet repudiandae corrupti expedita!</p>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="comment d-flex">
-                    <img src="<c:url value='/templates/web/blog/imgs/user1.png'/>" alt="">
-                    <div>
-                        <h6>Đỗ Quốc Việt</h6>
-                        <span>
-                                <i class="fal fa-clock"></i>
-                                October 20, 2021 - 10:04 PM
-                            </span>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam, in earum
-                                incidunt cum quos illo fugit architecto vitae, ipsa quibusdam aliquam eaque saepe at
-                                deleniti, amet repudiandae corrupti expedita!</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam obcaecati, eos pariatur
-                                nihil natus facere porro. Perspiciatis neque, fugit reiciendis autem est molestias,
-                                tenetur inventore sed iusto aperiam possimus! Animi.</p>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="comment d-flex">
-                    <img src="<c:url value='/templates/web/blog/imgs/user2.png'/>" alt="">
-                    <div>
-                        <h6>John Smith</h6>
-                        <span>
-                                <i class="fal fa-clock"></i>
-                                October 20, 2021 - 10:04 PM
-                            </span>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam, in earum
-                                incidunt cum quos illo fugit architecto vitae, ipsa quibusdam aliquam eaque saepe at
-                                deleniti, amet repudiandae corrupti expedita!</p>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="comment d-flex">
-                    <img src="<c:url value='/templates/web/blog/imgs/user3.png'/>" alt="">
-                    <div>
-                        <h6>Phan Thị Trà Vy</h6>
-                        <span>
-                                <i class="fal fa-clock"></i>
-                                October 20, 2021 - 10:04 PM
-                            </span>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam, in earum
-                                incidunt cum quos illo fugit architecto vitae, ipsa quibusdam aliquam eaque saepe at
-                                deleniti, amet repudiandae corrupti expedita!</p>
-                        </div>
-                    </div>
+                <div id="render-comments">
+                    <c:if test='${food.comments.size() == 0 ? false : true}'>
+                        <c:forEach var='comment' items='${food.comments}'>
+                            <div class="comment d-flex">
+                                <img src="<c:url value='${fService.randomImg()}'/>" alt="avatar">
+                                <div>
+                                    <h6><c:out value='${comment.user.name}'/></h6>
+                                    <span>
+                                    <i class="fal fa-clock"></i>
+                                    <c:out value='${cs.formatTime(comment.time)}'/>
+                                </span>
+                                    <div class="content">
+                                        <p><c:out value='${comment.content}'/></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </c:forEach>
+                    </c:if>
                 </div>
             </div>
 
@@ -170,11 +80,14 @@
             <div id="add-comment">
                 <h4 class="text-center">ĐỂ LẠI BÌNH LUẬN</h4>
                 <form class="text-center">
-                    <label for="">
+                    <label class="w-100 d-block">
+                        <textarea class="w-100 fw-600" name="content" id="content-submit-comment" rows="5"
+                                  placeholder="Bình luận của bạn"></textarea>
                     </label>
-                    <textarea class="w-100" name="content" id="" rows="5" placeholder="Bình luận của bạn">
-                    </textarea>
-                    <input type="submit" value="GỬI BÌNH LUẬN" class="rounded">
+                    <label>
+                        <input id="submit-comment" type="text" value="ĐỂ LẠI BÌNH LUẬN"
+                               class="rounded text-center cursor-p"/>
+                    </label>
                 </form>
             </div>
             <%-- add comment --%>
@@ -182,29 +95,20 @@
             <%-- Related Posts --%>
 
             <hr>
-            <div id="related-posts" class="text-center">
-                <h4 class="text-center">BÀI VIẾT LIÊN QUAN</h4>
-                <div>
-                    <a href="<c:url value='/#'/>" class="text-center">
-                        <img src="<c:url value='https://s1.img.yan.vn//YanNews/2167221/201406/20140616-0358-kitty-4.jpg'/>"
-                             alt="">
-                        <h6>CÁCH LÀM BIZCOCHO DE LIMON BÁNH TRUYỀN THỐNG TÂY...</h6>
-                        <span>January 3, 2019</span>
-                    </a>
-                    <a href="<c:url value='/#'/>" class="text-center">
-                        <img src="<c:url value='https://s1.img.yan.vn//YanNews/2167221/201406/20140616-0358-kitty-4.jpg'/>"
-                             alt="">
-                        <h6>CÁCH LÀM BIZCOCHO DE LIMON BÁNH TRUYỀN THỐNG TÂY...</h6>
-                        <span>January 3, 2019</span>
-                    </a>
-                    <a href="<c:url value='/#'/>" class="text-center">
-                        <img src="<c:url value='https://s1.img.yan.vn//YanNews/2167221/201406/20140616-0358-kitty-4.jpg'/>"
-                             alt="">
-                        <h6>CÁCH LÀM BIZCOCHO DE LIMON BÁNH TRUYỀN THỐNG TÂY...</h6>
-                        <span>January 3, 2019</span>
-                    </a>
+            <c:if test='${fService.getRelatedFood(food).size() == 0 ? false : true}'>
+                <div id="related-posts" class="text-center">
+                    <h4 class="text-center">BÀI VIẾT LIÊN QUAN</h4>
+                    <div>
+                        <c:forEach var='item' items='${fService.getRelatedFood(food)}'>
+                            <a href="<c:url value='/blog?id=${item.id}'/>" class="text-center">
+                                <img src="<c:url value='${item.image}'/>" alt="">
+                                <h6><c:out value='${item.nameFood}'/></h6>
+                                <span><c:out value='${cs.formatTime(item.modifieddate)}'/></span>
+                            </a>
+                        </c:forEach>
+                    </div>
                 </div>
-            </div>
+            </c:if>
             <%-- Related Posts --%>
         </div>
     </div>
@@ -233,6 +137,75 @@
 </div>
 <%-- end main --%>
 
-<script type="text/javascript" src="<c:url value='/templates/web/blog/js/blog.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/templates/web/blog/blog.js'/>"></script>
+<script>
+
+    const urlAPI = {
+        Comment: 'http://localhost:8080/api-comment'
+    }
+
+    const submitComment = function () {
+        let btnSubmit = $('#submit-comment');
+        let textArea = $('#content-submit-comment');
+        btnSubmit.onclick = function () {
+            let content = textArea.value;
+            if (content) {
+
+                // send api add comment
+                callAPI(urlAPI.Comment, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        contentComment: content,
+                        idFood: ${food.id}
+                    })
+                }).then((isSuccess) => {
+                    if (!isSuccess) {
+                        return false;
+                    }
+                });
+
+                // render page
+                let commentRender = $('#render-comments');
+                commentRender.innerHTML = `
+                        <div class="comment d-flex">
+                            <img src="<c:url value='${fService.randomImg()}'/>" alt="avatar">
+                            <div>
+                                <h6><c:out value='${user.name}'/></h6>
+                                <span>
+                                    <i class="fal fa-clock"></i>
+                                    <c:out value='Hôm nay'/>
+                                </span>
+                                <div class="content">
+                                    <p>` + content + `</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                ` + commentRender.innerHTML;
+
+                // reset input
+                textArea.value = '';
+            }
+        }
+    }
+
+    const callAPI = function (url, options) {
+        return fetch(url, options)
+            .then((resp) => {
+                console.log(resp);
+                return resp.json();
+            })
+            .then((valueOfResponse) => {
+                console.log(valueOfResponse);
+                return valueOfResponse;
+            })
+        // .catch((err) => {
+        //     window.alert(err);
+        // })
+    }
+
+    submitComment();
+
+</script>
 </body>
 </html>

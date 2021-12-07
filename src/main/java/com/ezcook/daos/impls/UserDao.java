@@ -9,8 +9,37 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class UserDao extends AbstractDao<Integer, User> implements IUserDao {
+import java.sql.Timestamp;
+import java.time.Instant;
 
+public class UserDao extends AbstractDao<Integer, User> implements IUserDao {
+    @Override
+    public void save(User user) {
+        user.setCreatedOn(Timestamp.from(Instant.now()));
+        user.setModifiedOn(Timestamp.from(Instant.now()));
+        super.save(user);
+    }
+    public User findByUsernameAndEmail(String username, String email){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM User WHERE username = :username and email=:email");
+            query.setParameter("username",username);
+            query.setParameter("email",email);
+            transaction.commit();
+            return (User) query.uniqueResult();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        } finally {
+            session.flush();
+            session.close();
+        }
+        return null;
+    }
     @Override
     public Object[] checkLogin(String username, String password) {
         Session session = HibernateUtil.getSessionFactory().openSession();

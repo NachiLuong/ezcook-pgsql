@@ -6,7 +6,6 @@ import com.ezcook.services.impls.UserService;
 import com.ezcook.utils.GoogleUtil;
 import com.ezcook.utils.SessionUtil;
 
-//import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +19,6 @@ public class LoginGoogleController extends HttpServlet {
 
     private static final Long serialVersionUID = 1L;
 
-//    @Inject
     IUserService userService = new UserService();
 
     @Override
@@ -40,7 +38,7 @@ public class LoginGoogleController extends HttpServlet {
                 }
                 id = userService.findOneByEmail(user.getEmail()).getId();
                 SessionUtil.getInstance().putValue(req, "user", userService.findById(id));
-                RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+                RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
                 rd.forward(req, resp);
             }
         } else {

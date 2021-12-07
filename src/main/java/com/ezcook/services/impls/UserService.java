@@ -67,9 +67,9 @@ public class UserService  implements IUserService {
 
     @Override
     public void save(User user) {
-        user.setCreatedOn(Timestamp.from(Instant.now()));
+       /* user.setCreatedOn(Timestamp.from(Instant.now()));
         user.setModifiedOn(Timestamp.from(Instant.now()));
-        user.setIdRole(1);
+        user.setIdRole(1);*/
         userDao.save(user);
     }
 
