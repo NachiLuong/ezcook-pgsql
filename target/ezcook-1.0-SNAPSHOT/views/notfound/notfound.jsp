@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="<c:url value='/templates/notfound/style.css' />"/>
     <link rel="stylesheet" href="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif">
 
-    <title>Title</title>
+    <title>Lỗi rồi</title>
 </head>
 <body>
 <section class="page_404">
@@ -15,7 +15,7 @@
             <div class="col-sm-12 ">
                 <div class="col-sm-10 col-sm-offset-1  text-center">
                     <div class="four_zero_four_bg">
-                        <h1 class="text-center ">Lỗi rồi</h1>
+                        <h1 class="text-center ">Ezcook: Lỗi rồi</h1>
                     </div>
                     <div class="contant_box_404">
                         <h3 class="h2">

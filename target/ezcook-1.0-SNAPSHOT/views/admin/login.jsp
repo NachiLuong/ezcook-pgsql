@@ -33,8 +33,8 @@
             </c:if>
             <input type="text" placeholder="Họ và Tên" name="pojo.fullname" required />
             <input type="text" placeholder="Tài khoản"  name="pojo.username" required minlength="6" maxlength="20" pattern="[a-z][6-20]"/>
-            <input type="text" placeholder="Mật khẩu" id="password" name="pojo.password" required minlength="6" maxlength="20"/>
-            <input type="text" placeholder="Nhập lại mật khẩu" required oninput="check(this)"/>
+            <input type="password" placeholder="Mật khẩu" id="password" name="pojo.password" required minlength="6" maxlength="20"/>
+            <input type="password" placeholder="Nhập lại mật khẩu" required oninput="check(this)"/>
             <input type="email" placeholder="Email" name="pojo.email" required/>
             <button type="submit">Đăng kí</button>
         </form>
